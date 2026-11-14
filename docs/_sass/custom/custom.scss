@@ -484,6 +484,15 @@ figure.highlight {
   border-radius: 0;
 }
 
+// Selecting text in a dark block: the page's black selection would be
+// invisible, so inside code blocks it is white on cyan.
+.main-content pre::selection,
+.main-content pre *::selection {
+  color: #fff;
+  text-shadow: none;
+  background: $revolt-cyan;
+}
+
 // Console transcript lines, marked up by assets/js/revolt-console.js.
 // Input is bright, results are dimmer, the prompt glyphs and comments
 // recede.  Without the script the block is plain light-on-dark text.
