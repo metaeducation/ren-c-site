@@ -1,0 +1,41 @@
+---
+layout: default
+---
+{%- comment -%}
+  Layout for a datatype's reference page.  The front matter names the type
+  (`datatype:`) and, for an antiform, the fundamental type it is the
+  antiform of (`antiform-of:`), whether it is stable (`stable:`), the
+  one-line summary from %types.r (`summary:`), and a `sample:` expression
+  that produces one.  tools/doctest-runner.r checks the name is a datatype
+  and that the sample really is an antiform of the documented type.
+{%- endcomment -%}
+{%- assign heart = page["antiform-of"] -%}
+<h1 class="datatype-name"><code>{{ page.datatype | upcase }}</code></h1>
+
+<dl class="datatype-facts">
+  {%- if page.summary %}
+  <dt>Summary</dt>
+  <dd>{{ page.summary }}</dd>
+  {%- endif %}
+  {%- if heart %}
+  <dt>Kind</dt>
+  <dd>Antiform of <code>{{ heart | upcase }}</code></dd>
+  <dt>Stability</dt>
+  <dd>
+    {%- if page.stable -%}
+    Stable: can be held in a variable or passed as an argument, but not put in a list
+    {%- else -%}
+    Unstable: can't be held in a variable or put in a list; it has to be dealt with where it is produced
+    {%- endif -%}
+  </dd>
+  {%- else %}
+  <dt>Kind</dt>
+  <dd>Fundamental type{% if page.antiform %}, whose antiform is <code>{{ page.antiform | upcase }}</code>{% endif %}</dd>
+  {%- endif %}
+  {%- if page.sample %}
+  <dt>Example</dt>
+  <dd><code>{{ page.sample | escape }}</code></dd>
+  {%- endif %}
+</dl>
+
+{{ content }}

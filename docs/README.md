@@ -122,6 +122,37 @@ hairlines, `#333` text, black for headings and links.  Where it lives:
 | `assets/images/revolt-mark.svg` | The flat `[o]` mark (also `favicon.svg`); `favicon.ico`, `icon-*.png` and `apple-touch-icon.png` are rendered from it (the 16px icon is the original hand-pixelled one). |
 | `assets/images/revolt-3d.png` | The 3-D render of the mark, used in the homepage hero and `og-image.png`. |
 
+### Datatype pages
+
+A datatype's page uses `layout: datatype`.  For an antiform:
+
+```yaml
+---
+layout: datatype
+title: SPLICE!
+parent: Antiforms
+grand_parent: Datatypes
+permalink: /docs/datatypes/splice/
+datatype: splice!
+antiform-of: block!
+stable: true
+summary: fragment of multiple values without a surrounding container
+sample: "spread [a b c]"
+---
+```
+
+The layout shows these as a fact box at the top.  The tests check that
+`datatype:` names a datatype and, when `antiform-of:` is given, that the
+`sample:` expression produces an antiform of that type (the pairing has
+changed historically, so it's worth checking).  `summary:` is the one-line
+description from the interpreter's `%types.r`.  A fundamental type's page
+leaves out `antiform-of:` and `stable:`, and may give `antiform:` to name
+its antiform.
+
+Molds of frames and errors include fields that vary between sessions
+(`line:`, `where:`, `file:`), so transcripts shouldn't show them; show
+`type of` or a field instead.
+
 ## Running the tests locally
 
 ```sh

@@ -25,6 +25,8 @@ keeps that name.)
 
 ## Documentation
 
+* **[Datatypes](/docs/datatypes/)** -- every kind of value, and the
+  [antiforms](/docs/datatypes/antiforms/) that carry signals
 * **[Natives](/docs/natives/)** -- the functions built into the interpreter
   * [REDUCE](/docs/natives/reduce/)
 

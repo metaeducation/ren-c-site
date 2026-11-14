@@ -54,6 +54,8 @@ parse-block-file: func [
         source: "?"
         kind: "?"
         native: null
+        datatype: null
+        antiform-of: null
         match: copy []
         body: null
     ]
@@ -71,6 +73,8 @@ parse-block-file: func [
                     "SOURCE" [header.source: val]
                     "KIND" [header.kind: val]
                     "NATIVE" [header.native: val]
+                    "DATATYPE" [header.datatype: val]
+                    "ANTIFORM-OF" [header.antiform-of: val]
                     "MATCH-ERROR-TEXT" [append header.match val]
                 ]
             ]
@@ -132,9 +136,20 @@ evaluate: func [
 
     return make object! [
         outcome: 'value
-        molded: mold unlift lifted
+        molded: mold-or-explain unlift lifted
         shown: unspaced ["== " molded]
     ]
+]
+
+; Not every value can be molded (a bare BLANK! has no representation, for
+; instance).  An example that produces one should fail its check, not take
+; the whole page's run down with it.
+;
+mold-or-explain: func [return: [text!] value [element?]] [
+    let molded: ~
+    let e: sys.util/recover [molded: mold value]  ; NULL if no panic
+    if e [return unspaced ["(unmoldable: " form e ")"]]
+    return molded
 ]
 
 error-matches: func [
@@ -415,6 +430,92 @@ run-spec: func [return: [block!] header [object!]] [
 ]
 
 
+=== DATATYPE BLOCKS ===
+
+; The front matter of a datatype's page names the type (`datatype:`), and
+; for an antiform, which fundamental type it is the antiform of
+; (`antiform-of:`) along with a `sample:` expression that produces one.
+; The pairing has changed historically (SPLICE! was the antiform of GROUP!
+; for a while), so it is checked: LIFT the sample's result into a quasiform,
+; take the quasi off, and the type of what's left must be the documented
+; fundamental type.
+
+; Evaluates source text the way an example would be (bound into the user
+; context) and gives back the LIFTed result, or an ERROR! if it panicked.
+; (The antiform datatypes such as SPLICE! aren't in LIB, but the user
+; context sees them, so names are resolved by evaluation rather than by
+; looking in LIB.)
+;
+eval-lifted: func [return: [element? error!] source [text!]] [
+    let r: sys.util/enrecover [
+        let code: transcode source  ; may panic on bad source, that's a result
+        wrap* system.contexts.user code
+        lift eval inside system.contexts.user code
+    ]
+    if error? r [return r]
+    return unlift r
+]
+
+lookup-datatype: func [
+    "The DATATYPE! a name refers to, or NULL (with a problem added)"
+    return: [null? datatype!]
+    name [text!]
+    problems [block!]
+][
+    let lifted: eval-lifted name
+    if error? lifted [
+        append problems unspaced ["  " name " is not a known word: " form lifted]
+        return null
+    ]
+    if not quasi? lifted [
+        append problems unspaced ["  " name " is not a datatype"]
+        return null
+    ]
+    let value: unlift lifted
+    if not datatype? value [
+        append problems unspaced ["  " name " is not a datatype"]
+        return null
+    ]
+    return value
+]
+
+run-datatype: func [return: [block!] header [object!]] [
+    if not header.datatype [
+        return ["  datatype block has no DATATYPE: name"]
+    ]
+    let problems: copy []
+    let type: lookup-datatype header.datatype problems
+    if not type [return problems]
+
+    if not header.antiform-of [
+        return []  ; a fundamental type's page, nothing more to check
+    ]
+    let heart: lookup-datatype header.antiform-of problems
+    if not heart [return problems]
+
+    if empty? trim copy header.body [
+        return ["  antiform page needs a SAMPLE: expression in its front matter"]
+    ]
+    let lifted: eval-lifted header.body
+    if error? lifted [
+        return reduce [unspaced ["  sample panicked: " form lifted]]
+    ]
+    if not quasi? lifted [
+        return reduce [
+            unspaced ["  sample " trim copy header.body " did not produce an antiform"]
+        ]
+    ]
+    let actual: type of unquasi lifted
+    if actual <> heart [
+        return reduce [
+            unspaced ["  documented as antiform of: " mold lift heart]
+            unspaced ["       sample is antiform of: " mold lift actual]
+        ]
+    ]
+    return []
+]
+
+
 === MAIN ===
 
 files: map-each 'arg system.script.args [local-to-file arg]
@@ -432,6 +533,7 @@ for-each 'file files [
         "positive-test" [run-positive header]
         "negative-test" [run-negative header]
         "spec" [run-spec header]
+        "datatype" [run-datatype header]
     ] else [
         reduce [unspaced ["  unknown block kind: " header.kind]]
     ]

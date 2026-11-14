@@ -38,6 +38,10 @@ Pages whose front matter has `native:` and a `spec: |` literal block also
 produce a "spec" test, which checks the documented spec's parameters
 against the real function's.
 
+Pages whose front matter has `datatype:` produce a "datatype" test, which
+checks the name is a datatype; if the page also has `antiform-of:` and a
+`sample:` expression, the sample must produce an antiform of that type.
+
 Output is one directory per page, one file per block, in page order:
 
     <out-dir>/<page-stem>/001-transcript.r
@@ -78,12 +82,13 @@ _FENCE_CLOSE = re.compile(r'^```\s*$')
 
 
 class Block:
-    def __init__(self, kind, line, text, match=None, native=None):
-        self.kind = kind          # transcript, positive-test, negative-test, spec
+    def __init__(self, kind, line, text, match=None, native=None, extra=None):
+        self.kind = kind          # transcript, positive-test, negative-test, spec, datatype
         self.line = line          # 1-based line of the opening fence in the .md
         self.text = text
         self.match = match or []
         self.native = native
+        self.extra = extra or {}  # further `; KEY: value` header lines
 
 
 def parse_front_matter(lines):
@@ -117,7 +122,10 @@ def parse_front_matter(lines):
                 spec_lines = []
                 spec_line = i + 2  # first content line, 1-based
             else:
-                fields[key] = val.strip('"\'')
+                # one pair of matching quotes, if any (not every quote char)
+                if len(val) >= 2 and val[0] == val[-1] and val[0] in ('"', "'"):
+                    val = val[1:-1]
+                fields[key] = val
         i += 1
     if spec_lines is not None:
         fields['spec'] = '\n'.join(spec_lines).rstrip() + '\n'
@@ -135,6 +143,11 @@ def extract_from_file(md_path: Path):
     fields, spec, spec_line, start = parse_front_matter(lines)
     if fields.get('native') and spec:
         blocks.append(Block('spec', spec_line, spec, native=fields['native']))
+    if fields.get('datatype'):
+        extra = {'DATATYPE': fields['datatype']}
+        if fields.get('antiform-of'):
+            extra['ANTIFORM-OF'] = fields['antiform-of']
+        blocks.append(Block('datatype', 1, fields.get('sample', '') + '\n', extra=extra))
 
     pending = None  # (kind, match) from a doctest comment on previous line
     i = start
@@ -196,6 +209,8 @@ def render(block: Block, source: str) -> str:
     ]
     if block.native:
         out.append(f'; NATIVE: {block.native}')
+    for key, val in block.extra.items():
+        out.append(f'; {key}: {val}')
     for phrase in block.match:
         out.append(f'; MATCH-ERROR-TEXT: {phrase}')
     out.append(';---')

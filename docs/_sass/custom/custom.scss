@@ -667,6 +667,45 @@ figure.highlight {
   }
 }
 
+//=== Datatype reference pages (layout: datatype) ============================//
+
+.main-content h1.datatype-name {
+  margin-bottom: 0.6em;
+
+  code {
+    font-family: $mono-font-family;
+    letter-spacing: 0;
+  }
+}
+
+// The fact box at the top of a datatype page: same panel as a native's
+// spec, as a definition list.
+.main-content dl.datatype-facts {
+  grid-template: auto / 7em 1fr;
+  padding: 0.6rem 1rem;
+  margin-bottom: 2rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  background-color: $revolt-panel;
+  border: 1px solid $revolt-rule;
+  border-left: 3px solid $revolt-black;
+  border-radius: $border-radius;
+
+  dt {
+    font-weight: 600;
+    color: $revolt-graphite;
+  }
+
+  dd {
+    color: $revolt-ink;
+  }
+
+  code {
+    font-size: 0.9em;
+    background-color: #fff;
+  }
+}
+
 //=== Tables =================================================================//
 
 .table-wrapper {
