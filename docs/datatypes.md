@@ -42,46 +42,46 @@ are the ones the interpreter's own `types.r` table gives them.
 
 | Type | Summary | Example |
 |---|---|---|
-| `INTEGER!` | 64 bit integer | `1` |
-| `DECIMAL!` | 64bit floating point number (IEEE standard) | `1.5` |
-| `PERCENT!` | special form of decimals (used mainly for layout) | `10%` |
-| `PAIR!` | two dimensional point or size | `10x20` |
-| `TIME!` | time of day or duration | `12:30` |
-| `DATE!` | day, month, year, time of day, and timezone | `1-Jan-2026` |
+| [`INTEGER!`](/docs/datatypes/integer/) | 64 bit integer | `1` |
+| [`DECIMAL!`](/docs/datatypes/decimal/) | 64bit floating point number (IEEE standard) | `1.5` |
+| [`PERCENT!`](/docs/datatypes/percent/) | special form of decimals (used mainly for layout) | `10%` |
+| [`PAIR!`](/docs/datatypes/pair/) | two dimensional point or size | `10x20` |
+| [`TIME!`](/docs/datatypes/time/) | time of day or duration | `12:30` |
+| [`DATE!`](/docs/datatypes/date/) | day, month, year, time of day, and timezone | `1-Jan-2026` |
 
 ### Strings and other UTF-8 values
 
 | Type | Summary | Example |
 |---|---|---|
-| `TEXT!` | text string series of characters | `"abc"` |
-| `FILE!` | file name or path | `%file.txt` |
-| `TAG!` | markup string (HTML or XML) | `<div>` |
-| `URL!` | uniform resource locator or identifier | `http://example.com` |
-| `EMAIL!` | email address | `user@example.com` |
-| `RUNE!` | immutable codepoint or codepoint sequence | `#a` |
-| `BLOB!` | series of bytes | `#{DECAFBAD}` |
+| [`TEXT!`](/docs/datatypes/text/) | text string series of characters | `"abc"` |
+| [`FILE!`](/docs/datatypes/file/) | file name or path | `%file.txt` |
+| [`TAG!`](/docs/datatypes/tag/) | markup string (HTML or XML) | `<div>` |
+| [`URL!`](/docs/datatypes/url/) | uniform resource locator or identifier | `http://example.com` |
+| [`EMAIL!`](/docs/datatypes/email/) | email address | `user@example.com` |
+| [`RUNE!`](/docs/datatypes/rune/) | immutable codepoint or codepoint sequence | `#a` |
+| [`BLOB!`](/docs/datatypes/blob/) | series of bytes | `#{DECAFBAD}` |
 
 ### Lists
 
 | Type | Summary | Example |
 |---|---|---|
-| `BLOCK!` | list of elements that blocks evaluation unless EVAL is used | `[a b]` |
-| `GROUP!` | list that evaluates expressions as an isolated group | `(a b)` |
-| `FENCE!` | list of elements that are used in construction via MAKE | `{a b}` |
+| [`BLOCK!`](/docs/datatypes/block/) | list of elements that blocks evaluation unless EVAL is used | `[a b]` |
+| [`GROUP!`](/docs/datatypes/group/) | list that evaluates expressions as an isolated group | `(a b)` |
+| [`FENCE!`](/docs/datatypes/fence/) | list of elements that are used in construction via MAKE | `{a b}` |
 
 ### Sequences
 
 | Type | Summary | Example |
 |---|---|---|
-| `TUPLE!` | member selection with inert bias | `a.b` |
-| `CHAIN!` | refinement and function call dialect | `a:b` |
-| `PATH!` | member or refinement selection with execution bias | `a/b` |
+| [`TUPLE!`](/docs/datatypes/tuple/) | member selection with inert bias | `a.b` |
+| [`CHAIN!`](/docs/datatypes/chain/) | refinement and function call dialect | `a:b` |
+| [`PATH!`](/docs/datatypes/path/) | member or refinement selection with execution bias | `a/b` |
 
 ### Words
 
 | Type | Summary | Example |
 |---|---|---|
-| `WORD!` | evaluates a variable or action | `a` |
+| [`WORD!`](/docs/datatypes/word/) | evaluates a variable or action | `a` |
 
 Setting and getting are spelled with CHAIN!s: `a:` is the word with an
 empty slot after it, and `:a` with one before.
@@ -90,24 +90,24 @@ empty slot after it, and `:a` with one before.
 
 | Type | Summary | Example |
 |---|---|---|
-| `OBJECT!` | context of names with values | `make object! [a: 1]` |
-| `MODULE!` | loadable context of code and data | |
-| `ERROR!` | context with id, arguments, and stack origin | `make error! "oops"` |
-| `PORT!` | external series, an I/O channel | |
-| `FRAME!` | arguments and locals of a function state | `make frame! append/` |
-| `LET!` | context containing a single variable | |
+| [`OBJECT!`](/docs/datatypes/object/) | context of names with values | `make object! [a: 1]` |
+| [`MODULE!`](/docs/datatypes/module/) | loadable context of code and data | |
+| [`ERROR!`](/docs/datatypes/error/) | context with id, arguments, and stack origin | `make error! "oops"` |
+| [`PORT!`](/docs/datatypes/port/) | external series, an I/O channel | |
+| [`FRAME!`](/docs/datatypes/frame/) | arguments and locals of a function state | `make frame! append/` |
+| [`LET!`](/docs/datatypes/let/) | context containing a single variable | |
 
 ### Other
 
 | Type | Summary | Example |
 |---|---|---|
-| `BLANK!` | evaluation separator, no rendering (shows in lists via commas) | the `,` in `[a, b]` |
-| `MAP!` | name-value pairs (hash associative) | `make map! [a 1]` |
-| `BITSET!` | set of bit flags | `make bitset! "abc"` |
-| `HANDLE!` | arbitrary internal object or value | |
-| `OPAQUE!` | extension cell which uses its type information slot for data | |
-| `VARARGS!` | evaluator position for variable numbers of arguments | |
-| `PARAMETER!` | function parameter description | |
+| [`BLANK!`](/docs/datatypes/blank/) | evaluation separator, no rendering (shows in lists via commas) | the `,` in `[a, b]` |
+| [`MAP!`](/docs/datatypes/map/) | name-value pairs (hash associative) | `make map! [a 1]` |
+| [`BITSET!`](/docs/datatypes/bitset/) | set of bit flags | `make bitset! "abc"` |
+| [`HANDLE!`](/docs/datatypes/handle/) | arbitrary internal object or value | |
+| [`OPAQUE!`](/docs/datatypes/opaque/) | extension cell which uses its type information slot for data | |
+| [`VARARGS!`](/docs/datatypes/varargs/) | evaluator position for variable numbers of arguments | |
+| [`PARAMETER!`](/docs/datatypes/parameter/) | function parameter description | |
 
 ## Decorated Forms
 
@@ -144,14 +144,14 @@ See [Antiforms](/docs/datatypes/antiforms/) for how they work.
 
 | Antiform | Of | Summary | Stable? |
 |---|---|---|---|
-| [`LOGIC!`](/docs/datatypes/logic/) | `WORD!` | either ~okay~, or ~null~ (the only "falsey" state) | yes |
-| [`SPLICE!`](/docs/datatypes/splice/) | `BLOCK!` | fragment of multiple values without a surrounding container | yes |
-| [`DATATYPE!`](/docs/datatypes/datatype/) | `FENCE!` | the type of a value expressed as an antiform | yes |
-| [`ACTION!`](/docs/datatypes/action/) | `FRAME!` | will trigger function execution from words | yes |
-| [`VOID!`](/docs/datatypes/void/) | `BLANK!` | panics on WORD! access, multi-step evaluations discard | no |
-| [`TRASH!`](/docs/datatypes/trash/) | `TAG!` | panics on WORD! access, console does not display | no |
-| [`PACK!`](/docs/datatypes/pack/) | `GROUP!` | multi-return that decays to first item, empty is HEAVY VOID | no |
-| [`FAILURE!`](/docs/datatypes/failure/) | `ERROR!` | failure state that is escalated to a panic if not triaged | no |
+| [`LOGIC!`](/docs/datatypes/logic/) | [`WORD!`](/docs/datatypes/word/) | either ~okay~, or ~null~ (the only "falsey" state) | yes |
+| [`SPLICE!`](/docs/datatypes/splice/) | [`BLOCK!`](/docs/datatypes/block/) | fragment of multiple values without a surrounding container | yes |
+| [`DATATYPE!`](/docs/datatypes/datatype/) | [`FENCE!`](/docs/datatypes/fence/) | the type of a value expressed as an antiform | yes |
+| [`ACTION!`](/docs/datatypes/action/) | [`FRAME!`](/docs/datatypes/frame/) | will trigger function execution from words | yes |
+| [`VOID!`](/docs/datatypes/void/) | [`BLANK!`](/docs/datatypes/blank/) | panics on WORD! access, multi-step evaluations discard | no |
+| [`TRASH!`](/docs/datatypes/trash/) | [`TAG!`](/docs/datatypes/tag/) | panics on WORD! access, console does not display | no |
+| [`PACK!`](/docs/datatypes/pack/) | [`GROUP!`](/docs/datatypes/group/) | multi-return that decays to first item, empty is HEAVY VOID | no |
+| [`FAILURE!`](/docs/datatypes/failure/) | [`ERROR!`](/docs/datatypes/error/) | failure state that is escalated to a panic if not triaged | no |
 
 ## Type Constraints
 
