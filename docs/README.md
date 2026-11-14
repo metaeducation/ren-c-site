@@ -1,6 +1,6 @@
-# ren-c-site docs
+# revolt-site docs
 
-This directory is the source for the REVOLT documentation site, built with
+This directory is the source for the Revolt documentation site, built with
 Jekyll and the [just-the-docs](https://just-the-docs.com) theme (the same
 setup as [needful.metaeducation.com](https://needful.metaeducation.com)).
 
@@ -156,7 +156,7 @@ Molds of frames and errors include fields that vary between sessions
 ## Running the tests locally
 
 ```sh
-python tools/run-doctests.py --r3 C:/Projects/ren-c/build/r3.exe
+python tools/run-doctests.py --r3 C:/Projects/revolt/build/r3.exe
 python tools/run-doctests.py --page reduce     # just one page
 ```
 

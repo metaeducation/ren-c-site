@@ -158,9 +158,9 @@ reduce [1 + 1, elide print "side effect", 3]
 Earlier versions of REDUCE did erase VOID!, and the decision to stop doing
 that is discussed on the forum:
 
-* [VOID! Behavior in REDUCE](https://rebol.metaeducation.com/t/void-behavior-in-reduce/2703)
-* [REDUCE Religiosity: N Expressions In, N Values Out](https://rebol.metaeducation.com/t/reduce-religiosity-n-expressions-in-n-values-out/2642)
-* [Should VOID! Be Offered to Predicates for REDUCE, ANY, ALL, etc.?](https://rebol.metaeducation.com/t/should-void-be-offered-to-predicates-for-reduce-any-all-etc/1872)
+* [VOID! Behavior in REDUCE](https://revolt.metaeducation.com/forum/t/void-behavior-in-reduce/2703)
+* [REDUCE Religiosity: N Expressions In, N Values Out](https://revolt.metaeducation.com/forum/t/reduce-religiosity-n-expressions-in-n-values-out/2642)
+* [Should VOID! Be Offered to Predicates for REDUCE, ANY, ALL, etc.?](https://revolt.metaeducation.com/forum/t/should-void-be-offered-to-predicates-for-reduce-any-all-etc/1872)
 
 ## See Also
 

@@ -12,6 +12,6 @@ antiform: datatype!
 
 A list in braces, such as `{a: 1}`.  It is new: historical Rebol used braces for strings.
 
-Along with MAKE, the forum has proposed giving FENCE! a role in code: evaluating one could return its contents as a BLOCK! bound into a new context that holds its top-level assignments (a WRAP).  See [FENCE!'s Higher Calling: WRAP](https://rebol.metaeducation.com/t/fence-s-higher-calling-wrap/2613) (2025).
+Along with MAKE, the forum has proposed giving FENCE! a role in code: evaluating one could return its contents as a BLOCK! bound into a new context that holds its top-level assignments (a WRAP).  See [FENCE!'s Higher Calling: WRAP](https://revolt.metaeducation.com/forum/t/fence-s-higher-calling-wrap/2613) (2025).
 
 Its antiform is [DATATYPE!](/docs/datatypes/datatype/).

@@ -76,7 +76,7 @@ _DOCTEST_COMMENT = re.compile(
     r'\s*-->\s*$'
 )
 
-_FENCE_OPEN = re.compile(r'^```(?:rebol|ren-c|r3)\s*$')
+_FENCE_OPEN = re.compile(r'^```(?:rebol|revolt|r3)\s*$')
 _ANY_FENCE_OPEN = re.compile(r'^```')
 _FENCE_CLOSE = re.compile(r'^```\s*$')
 

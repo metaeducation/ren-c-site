@@ -63,5 +63,5 @@ does:
 == \~okay~\  ; antiform (logic!)
 ```
 
-See [Should Strings Nest Levels to Avoid Escaping?](https://rebol.metaeducation.com/t/should-strings-nest-levels-to-avoid-escaping/2311)
+See [Should Strings Nest Levels to Avoid Escaping?](https://revolt.metaeducation.com/forum/t/should-strings-nest-levels-to-avoid-escaping/2311)
 (2024) for the reasoning.

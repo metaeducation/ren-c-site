@@ -1,6 +1,6 @@
-title: REVOLT
+title: Revolt
 description: >
-  Reference documentation for REVOLT, a deeply redesigned branch of the Rebol
+  Reference documentation for Revolt, a deeply redesigned branch of the Rebol
   language, with every example tested against a current interpreter each time
   the site is built.
 
@@ -13,7 +13,7 @@ baseurl: ""
 # https://just-the-docs.com
 remote_theme: just-the-docs/just-the-docs@v0.10.0
 
-# "REVOLT" look: black and white with dim grays, after rebolsource.net.
+# "Revolt" look: black and white with dim grays, after rebolsource.net.
 # Variables: _sass/color_schemes/revolt.scss.  Palette and fonts:
 # _sass/custom/setup.scss (fonts loaded by _includes/head_custom.html).
 # Everything decorative: _sass/custom/custom.scss.
@@ -44,7 +44,7 @@ highlighter: rouge
 # !!! Repository name assumed; change if the repo lives elsewhere.
 gh_edit_link: true
 gh_edit_link_text: "Edit this page on GitHub"
-gh_edit_repository: "https://github.com/metaeducation/ren-c-site"
+gh_edit_repository: "https://github.com/metaeducation/revolt-site"
 gh_edit_branch: "main"
 gh_edit_source: "docs"
 gh_edit_view_mode: "edit"
@@ -55,9 +55,9 @@ aux_links:
   "Console":
     - "/console/"
   "GitHub":
-    - "https://github.com/metaeducation/ren-c"
+    - "https://github.com/metaeducation/revolt"
   "Forum":
-    - "https://rebol.metaeducation.com"
+    - "https://revolt.metaeducation.com/forum/"
 
 plugins:
   - jekyll-sitemap

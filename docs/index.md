@@ -5,18 +5,16 @@ nav_order: 1
 permalink: /
 ---
 
-<h1 class="revolt-visually-hidden">REVOLT</h1>
+<h1 class="revolt-visually-hidden">Revolt</h1>
 
 <header class="revolt-hero">
-  <p class="revolt-hero-wordmark" role="img" aria-label="REVOLT"><span aria-hidden="true">REV</span><img src="{{ '/assets/images/revolt-3d.png' | relative_url }}" alt="" width="371" height="391"><span aria-hidden="true">LT</span></p>
+  <p class="revolt-hero-wordmark" role="img" aria-label="Revolt"><span aria-hidden="true">REV</span><img src="{{ '/assets/images/revolt-3d.png' | relative_url }}" alt="" width="371" height="391"><span aria-hidden="true">LT</span></p>
   <p class="revolt-hero-tagline">A deeply redesigned branch of the Rebol language.</p>
-  <p class="revolt-hero-actions"><a class="btn btn-primary" href="{{ '/console/' | relative_url }}">Open the Web Console</a> <a class="btn" href="https://github.com/metaeducation/ren-c">Source on GitHub</a></p>
+  <p class="revolt-hero-actions"><a class="btn btn-primary" href="{{ '/console/' | relative_url }}">Open the Web Console</a> <a class="btn" href="https://github.com/metaeducation/revolt">Source on GitHub</a></p>
 </header>
 
-REVOLT is developed at
-[github.com/metaeducation/ren-c](https://github.com/metaeducation/ren-c).
-(The project was called Ren-C for most of its history, and the repository
-keeps that name.)
+**Revolt** (previously codenamed "Ren-C") is developed at
+[github.com/metaeducation/revolt](https://github.com/metaeducation/revolt).
 
 ## Try It
 
@@ -27,10 +25,12 @@ keeps that name.)
 
 * **[Datatypes](/docs/datatypes/)** -- every kind of value, and the
   [antiforms](/docs/datatypes/antiforms/) that carry signals
+
 * **[Natives](/docs/natives/)** -- the functions built into the interpreter
   * [REDUCE](/docs/natives/reduce/)
+  * *(more to come, just a demo of the statically validated example mechanic)*
 
-Every example in the documentation is run by a current REVOLT interpreter
+Every example in the documentation is run by a current Revolt interpreter
 each time this site is built, and the result has to match what the page
 shows:
 
@@ -49,8 +49,9 @@ an error, the interpreter has to produce that error:
 
 ## Community
 
-* [Forum](https://rebol.metaeducation.com) -- design discussion and questions
-* [REVOLT on GitHub](https://github.com/metaeducation/ren-c) -- source and
+* [Forum](https://revolt.metaeducation.com/forum/) -- design discussion and
+  questions
+* [Revolt on GitHub](https://github.com/metaeducation/revolt) -- source and
   issues
-* [This site on GitHub](https://github.com/metaeducation/ren-c-site) --
+* [This site on GitHub](https://github.com/metaeducation/revolt-site) --
   every page has a link at the bottom to edit it, or to report a problem

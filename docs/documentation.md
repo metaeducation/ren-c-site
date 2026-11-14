@@ -9,5 +9,5 @@ permalink: /docs/
 # Documentation
 
 Everything under `/docs/` is reference material.  The examples on these
-pages are run by a current REVOLT interpreter every time the site is built,
+pages are run by a current Revolt interpreter every time the site is built,
 so they show what the interpreter actually does.

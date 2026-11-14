@@ -11,7 +11,7 @@ permalink: /docs/natives/
 
 Reference pages for the functions built into the interpreter.
 
-Every console example on these pages is run against a real REVOLT
+Every console example on these pages is run against a real Revolt
 interpreter whenever the site is built.  That includes the examples that
 show errors: they have to fail, and with the message shown.  The parameter
 list at the top of each page is checked against the interpreter's own

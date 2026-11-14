@@ -15,7 +15,7 @@ The interpreter is found from --r3, then the R3 environment variable, then
 
 Usage:
     python tools/run-doctests.py
-    python tools/run-doctests.py --r3 C:/Projects/ren-c/build/r3.exe
+    python tools/run-doctests.py --r3 C:/Projects/revolt/build/r3.exe
     python tools/run-doctests.py --page reduce      # only pages matching
 """
 

@@ -1,8 +1,8 @@
-# ren-c-site
+# revolt-site
 
-Source for the REVOLT documentation website (REVOLT is the new name of
+Source for the Revolt documentation website (Revolt is the new name of
 Ren-C; the repositories keep the old name).  Every example on the site is
-run against a current REVOLT interpreter before the site deploys, including
+run against a current Revolt interpreter before the site deploys, including
 the ones that are supposed to fail.
 
 | Path | What |

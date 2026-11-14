@@ -160,10 +160,10 @@ quasi off, and ask that:
 The design argument, and the history of how the eight came to be the eight,
 is on the forum rather than here:
 
-* [A Justification of Generalized Isotopes](https://rebol.metaeducation.com/t/a-justification-of-generalized-isotopes/1918)
+* [A Justification of Generalized Isotopes](https://revolt.metaeducation.com/forum/t/a-justification-of-generalized-isotopes/1918)
   (2022, kept current) -- why one lift/unlift mechanism beats a pile of
   special types, starting from the old `APPEND/ONLY` problem.  ("Isotopes"
   was the earlier name for antiforms and quasiforms together.)
-* [Which Antiforms Are In Use?](https://rebol.metaeducation.com/t/which-antiforms-are-in-use/2276)
+* [Which Antiforms Are In Use?](https://revolt.metaeducation.com/forum/t/which-antiforms-are-in-use/2276)
   (2024, kept current) -- the table above, and a history of which type
   each antiform has been attached to over time.
