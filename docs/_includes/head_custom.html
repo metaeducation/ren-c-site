@@ -1,0 +1,13 @@
+{%- comment -%}
+  just-the-docs hook: extra tags for <head>.  Loads the web fonts named in
+  _sass/custom/setup.scss, the icons, and the console-transcript script.
+{%- endcomment -%}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,100..125,500..800&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;700&display=swap">
+<link rel="icon" type="image/svg+xml" href="{{ '/assets/images/favicon.svg' | relative_url }}">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/images/apple-touch-icon.png' | relative_url }}">
+<meta name="theme-color" content="#fdfdfd">
+<meta property="og:image" content="{{ '/assets/images/og-image.png' | absolute_url }}">
+<meta name="twitter:card" content="summary_large_image">
+<script src="{{ '/assets/js/revolt-console.js' | relative_url }}" defer></script>

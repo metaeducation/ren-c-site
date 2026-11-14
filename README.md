@@ -1,7 +1,8 @@
 # ren-c-site
 
-Source for the Ren-C documentation website.  Every example on the site is
-run against a current Ren-C interpreter before the site deploys, including
+Source for the REVOLT documentation website (REVOLT is the new name of
+Ren-C; the repositories keep the old name).  Every example on the site is
+run against a current REVOLT interpreter before the site deploys, including
 the ones that are supposed to fail.
 
 | Path | What |

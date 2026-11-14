@@ -1,6 +1,6 @@
 # ren-c-site docs
 
-This directory is the source for the Ren-C documentation site, built with
+This directory is the source for the REVOLT documentation site, built with
 Jekyll and the [just-the-docs](https://just-the-docs.com) theme (the same
 setup as [needful.metaeducation.com](https://needful.metaeducation.com)).
 
@@ -87,7 +87,8 @@ A native's page uses `layout: native` and puts its spec in the front matter:
 layout: native
 title: REDUCE
 parent: Natives
-permalink: /reduce
+grand_parent: Documentation
+permalink: /docs/natives/reduce/
 native: reduce
 spec: |
   "Evaluates N expressions to produce N results (but discards BLANK!)"
@@ -103,6 +104,23 @@ The layout shows the spec at the top of the page.  The tests check that the
 spec is valid and that its parameter names match the interpreter's own
 function.  (Copy the spec from the `native [...]` comment above the
 function's C source.)
+
+## The Look
+
+The site is black and white with dim grays, after
+[rebolsource.net](https://rebolsource.net): a `#fdfdfd` page, `#ddd`
+hairlines, `#333` text, black for headings and links.  Where it lives:
+
+| File | What |
+|---|---|
+| `_sass/custom/setup.scss` | Palette (`$revolt-*`), fonts (Archivo, Inter, JetBrains Mono), type scale (19px body). |
+| `_sass/color_schemes/revolt.scss` | Maps the palette onto just-the-docs' named variables (`color_scheme: revolt` in `_config.yml`). |
+| `_sass/custom/custom.scss` | Everything decorative: wordmark, nav, dark console blocks, callouts, tables, homepage hero. |
+| `_includes/title.html` | The sidebar wordmark, REV[o]LT, with the mark standing in for the O. |
+| `_includes/head_custom.html` | Web fonts, icons, social image, and the console script. |
+| `assets/js/revolt-console.js` | Marks up `>>` / `==` / `**` lines in transcripts so input is bright and results dim.  Cosmetic; the blocks work without it. |
+| `assets/images/revolt-mark.svg` | The flat `[o]` mark (also `favicon.svg`); `favicon.ico`, `icon-*.png` and `apple-touch-icon.png` are rendered from it (the 16px icon is the original hand-pixelled one). |
+| `assets/images/revolt-3d.png` | The 3-D render of the mark, used in the homepage hero and `og-image.png`. |
 
 ## Running the tests locally
 

@@ -1,0 +1,72 @@
+//
+// File: %setup.scss  (just-the-docs hook, imported before color schemes)
+//
+//=============================================================================//
+//
+// Palette and typography for the REVOLT site.  just-the-docs imports this
+// file before every color scheme, so the $revolt-* variables are visible to
+// _sass/color_schemes/revolt.scss and to _sass/custom/custom.scss.
+//
+// The look is black and white with dim grays, carried over from
+// rebolsource.net: a #fdfdfd page, #ddd hairlines, #333 text.
+//
+// Faces are loaded in _includes/head_custom.html from Google Fonts:
+//
+//   Archivo         - the REV[o]LT wordmark (expanded, heavy) and headings
+//   Inter           - body text
+//   JetBrains Mono  - code and console transcripts
+//
+
+$revolt-display-font-family: "Archivo", "Helvetica Neue", helvetica, arial,
+  sans-serif;
+
+$body-font-family: "Inter", "Helvetica Neue", helvetica, arial, sans-serif;
+
+$mono-font-family: "JetBrains Mono", "SFMono-Regular", menlo, consolas,
+  monospace;
+
+$body-line-height: 1.5;
+$content-line-height: 1.7;
+$border-radius: 3px;
+
+// Type scale.  just-the-docs defaults to 16px body text, which reads small
+// next to an article page; this scale gives 19px body text on desktop (17px
+// on phones), the same as needful.metaeducation.com.  The theme picks
+// heading sizes from these slots: h1 = 9 (8 on phones), h2 = 7 (6), h3 = 6
+// (5), h4 = 3 (2); navigation and tables use slot 3.
+
+$font-size-1: 0.7rem;
+$font-size-1-sm: 0.75rem;
+$font-size-2: 0.8rem;      // small labels, breadcrumbs, aux links
+$font-size-3: 0.9375rem;   // nav links, tables, captions (15px)
+$font-size-4: 1.0625rem;   // body on narrow screens (17px)
+$font-size-5: 1.1875rem;   // body on desktop (19px)
+$font-size-6: 1.35rem;     // h3
+$font-size-7: 1.75rem;     // h2
+$font-size-8: 2.2rem;      // h1 on narrow screens
+$font-size-9: 2.6rem;      // h1
+$font-size-10: 3rem;
+$font-size-10-sm: 3.4rem;
+
+$content-width: 52rem;
+
+// Core palette (used by color_schemes/revolt.scss and custom/custom.scss).
+// Grays only: the one "color" on the site is the black of the mark.
+
+$revolt-paper:     #fdfdfd;  // page background (rebolsource.net body)
+$revolt-panel:     #f8f8f8;  // table headers, spec blocks (rebolsource th)
+$revolt-wash:      #f3f3f3;  // inline code, hover highlights
+$revolt-rule-lt:   #ebebeb;  // faint dividers
+$revolt-rule:      #dddddd;  // hairlines, table borders (rebolsource hr)
+$revolt-rule-dk:   #c4c4c4;  // button borders, mark outline
+$revolt-silver:    #999999;  // footers, bullets, placeholders
+$revolt-smoke:     #767676;  // secondary text (4.5:1 on paper)
+$revolt-graphite:  #555555;  // muted headings (rebolsource h3.muted)
+$revolt-ink:       #333333;  // body text
+$revolt-black:     #111111;  // headings, links, wordmark, the mark itself
+
+$revolt-coal:      #1c1c1c;  // console block background
+$revolt-coal-dk:   #141414;  // console block border
+$revolt-ash:       #e9e9e9;  // console text
+$revolt-ash-dim:   #b4b4b4;  // console results
+$revolt-ash-faint: #8a8a8a;  // console comments, prompts

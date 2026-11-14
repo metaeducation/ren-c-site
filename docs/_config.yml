@@ -1,25 +1,35 @@
-title: Ren-C
+title: REVOLT
 description: >
-  Reference documentation for Ren-C, with every example tested against a
-  current interpreter each time the site is built.
+  Reference documentation for REVOLT, a deeply redesigned branch of the Rebol
+  language, with every example tested against a current interpreter each time
+  the site is built.
 
-# !!! Set these when the custom domain is chosen (see README.md)
-url: ""
+# Custom domain.  Must agree with docs/CNAME, and with the DNS CNAME record
+# (revolt -> metaeducation.github.io) at the registrar.
+url: "https://revolt.metaeducation.com"
 baseurl: ""
 
 # Same theme as needful.metaeducation.com.
 # https://just-the-docs.com
 remote_theme: just-the-docs/just-the-docs@v0.10.0
 
-color_scheme: dark
-callouts_level: loud
+# "REVOLT" look: black and white with dim grays, after rebolsource.net.
+# Variables: _sass/color_schemes/revolt.scss.  Palette and fonts:
+# _sass/custom/setup.scss (fonts loaded by _includes/head_custom.html).
+# Everything decorative: _sass/custom/custom.scss.
+color_scheme: revolt
+favicon_ico: "/assets/images/favicon.ico"
+
+# Callouts are monochrome; the "colors" here are mapped to grays by the
+# color scheme (note: dark gray bar, tip: mid gray, warning: black).
+callouts_level: quiet
 callouts:
   note:
     title: Note
-    color: blue
+    color: purple
   tip:
     title: Tip
-    color: green
+    color: blue
   warning:
     title: Warning
     color: red
@@ -39,8 +49,12 @@ gh_edit_branch: "main"
 gh_edit_source: "docs"
 gh_edit_view_mode: "edit"
 
+# The console is copied into /console/ by the workflow after Jekyll runs
+# (it lives in the replpad-js repository), so it is not a page Jekyll knows.
 aux_links:
-  "Ren-C on GitHub":
+  "Console":
+    - "/console/"
+  "GitHub":
     - "https://github.com/metaeducation/ren-c"
   "Forum":
     - "https://rebol.metaeducation.com"

@@ -2,7 +2,8 @@
 layout: native
 title: REDUCE
 parent: Natives
-permalink: /reduce
+grand_parent: Documentation
+permalink: /docs/natives/reduce/
 native: reduce
 spec: |
   "Evaluates N expressions to produce N results (but discards BLANK!)"

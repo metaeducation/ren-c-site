@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- REVOLT mark: the "[o]" of the original Rebol logo, seen from above. -->
+  <rect x="4.5" y="4.5" width="55" height="55" rx="6" fill="#ffffff" stroke="#c4c4c4" stroke-width="1"/>
+  <path d="M10 4 H17.5 Q12 32 17.5 60 H10 A6 6 0 0 1 4 54 V10 A6 6 0 0 1 10 4 Z" fill="#111111"/>
+  <path d="M54 4 H46.5 Q52 32 46.5 60 H54 A6 6 0 0 0 60 54 V10 A6 6 0 0 0 54 4 Z" fill="#111111"/>
+  <circle cx="32" cy="32" r="11" fill="none" stroke="#111111" stroke-width="8"/>
+</svg>

@@ -1,0 +1,839 @@
+//
+// File: %custom.scss  (just-the-docs hook, imported last)
+//
+//=============================================================================//
+//
+// Styling for the REVOLT documentation site on top of the just-the-docs
+// theme: the REV[o]LT wordmark, hairline chrome, dark console transcripts,
+// monochrome callouts and tables, the homepage hero.
+//
+// The palette ($revolt-*) and fonts come from _sass/custom/setup.scss; the
+// theme's named colors are mapped in _sass/color_schemes/revolt.scss.
+//
+// Everything here is cosmetic.  Deleting this file leaves a plain but working
+// light-gray just-the-docs site.
+//
+
+// stylelint-disable selector-no-type, selector-max-type, max-nesting-depth
+
+$revolt-hairline: $revolt-rule;
+
+//=== Page chrome ============================================================//
+
+body {
+  background-color: $revolt-paper;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  color: #fff;
+  background: $revolt-black;
+}
+
+code,
+kbd,
+pre {
+  font-variant-ligatures: none; // keep -> and >> as separate glyphs
+  font-feature-settings: "liga" 0, "calt" 0;
+}
+
+// Inline code at 0.75em (the theme default) is hard to read at body size.
+code {
+  font-size: 0.85em;
+}
+
+//=== Sidebar ================================================================//
+
+.side-bar {
+  background-color: $revolt-paper;
+  border-right-color: $revolt-hairline !important;
+}
+
+.site-header {
+  border-bottom: 1px solid $revolt-hairline !important;
+}
+
+.site-title {
+  gap: 0;
+  color: $revolt-black;
+
+  &:hover {
+    background-image: none;
+    background-color: $revolt-wash;
+  }
+}
+
+// The wordmark: REV, the [o] mark in place of the O, LT.
+.revolt-wordmark {
+  display: inline-flex;
+  align-items: center;
+  font-family: $revolt-display-font-family;
+  font-size: 1.55rem;
+  font-stretch: 125%;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: $revolt-black;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  .revolt-mark {
+    flex: 0 0 auto;
+    width: 1.12em;
+    height: 1.12em;
+    margin: 0 0.06em;
+  }
+}
+
+.site-nav {
+  @include mq(md) {
+    padding-top: $sp-6;
+  }
+}
+
+.nav-list .nav-list-item {
+  font-size: 1rem !important;
+
+  .nav-list-link {
+    color: $revolt-ink;
+    transition: color 120ms ease, background-color 120ms ease;
+
+    &:hover {
+      color: $revolt-black;
+      background-image: none;
+      background-color: $revolt-wash;
+    }
+
+    &.active {
+      color: $revolt-black;
+      font-weight: 600;
+      background-image: none;
+      background-color: $revolt-wash;
+      box-shadow: inset 3px 0 0 $revolt-black;
+    }
+  }
+
+  > .nav-list .nav-list-item .nav-list-link {
+    color: $revolt-graphite;
+
+    &:hover,
+    &.active {
+      color: $revolt-black;
+    }
+  }
+
+  .nav-list-expander {
+    color: $revolt-silver;
+
+    &:hover {
+      color: $revolt-black;
+      background-image: none;
+      background-color: $revolt-wash;
+    }
+  }
+}
+
+.site-footer {
+  color: $revolt-smoke;
+}
+
+.revolt-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding-right: $sp-2;
+  font-size: 0.8rem !important;
+
+  .revolt-footer-line {
+    color: $revolt-smoke;
+  }
+
+  a {
+    color: $revolt-smoke;
+    text-decoration: underline;
+    text-decoration-color: $revolt-rule-dk;
+    text-underline-offset: 2px;
+
+    &:hover {
+      color: $revolt-black;
+      text-decoration-color: $revolt-black;
+    }
+  }
+}
+
+//=== Top header (search + aux links) ========================================//
+
+.main-header {
+  border-bottom: 1px solid $revolt-hairline !important;
+}
+
+.search-input {
+  color: $revolt-ink;
+  background-color: $revolt-paper;
+
+  &::placeholder {
+    color: $revolt-silver;
+  }
+
+  &:focus {
+    background-color: #fff;
+  }
+}
+
+.search-label .search-icon {
+  color: $revolt-silver;
+}
+
+.search-results {
+  border: 1px solid $revolt-rule;
+  border-top: 0;
+}
+
+.search-result-title {
+  color: $revolt-black;
+}
+
+.search-result-highlight {
+  color: $revolt-black;
+}
+
+.aux-nav .site-button {
+  font-family: $body-font-family;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: $revolt-graphite;
+
+  &:hover {
+    color: $revolt-black;
+    background-image: none;
+    background-color: $revolt-wash;
+  }
+}
+
+.site-button .icon {
+  color: $revolt-ink;
+}
+
+.breadcrumb-nav-list-item {
+  font-size: 0.75rem !important;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  a {
+    color: $revolt-smoke;
+
+    &:hover {
+      color: $revolt-black;
+    }
+  }
+
+  > span {
+    color: $revolt-black;
+  }
+
+  &::after {
+    color: $revolt-rule-dk;
+  }
+}
+
+//=== Content typography =====================================================//
+
+.main-content {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: $revolt-display-font-family;
+    font-weight: 700;
+    color: $revolt-black;
+
+    code {
+      font-size: 0.9em;
+      font-weight: 700;
+      color: inherit;
+      background: transparent;
+      border: 0;
+      padding: 0;
+    }
+  }
+
+  h1 {
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    margin-bottom: 1em;
+
+    // A short heavy rule under the title, in the black of the mark.
+    &::after {
+      display: block;
+      width: 2.75rem;
+      height: 4px;
+      margin-top: 0.5em;
+      content: "";
+      background: $revolt-black;
+    }
+  }
+
+  h2 {
+    padding-bottom: 0.3em;
+    margin-top: 2.4em;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    border-bottom: 1px solid $revolt-hairline;
+  }
+
+  h3 {
+    margin-top: 1.9em;
+    font-weight: 600;
+    color: $revolt-ink;
+  }
+
+  h4 {
+    font-family: $body-font-family;
+    font-size: 0.8rem !important;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: $revolt-graphite;
+  }
+
+  h5,
+  h6 {
+    font-family: $body-font-family;
+    font-weight: 600;
+    color: $revolt-ink;
+  }
+
+  a:not([class]) {
+    color: $revolt-black;
+    text-decoration-color: $revolt-rule-dk;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+
+    &:hover {
+      text-decoration-color: $revolt-black;
+    }
+  }
+
+  strong {
+    color: $revolt-black;
+  }
+
+  // Code inside a link reads as a link, not as inline code with a faint
+  // underline under it.
+  a:not([class]) code {
+    color: $revolt-black;
+    border-color: $revolt-rule-dk;
+  }
+
+  a:hover code {
+    border-color: $revolt-black;
+  }
+
+  ul > li::before {
+    color: $revolt-silver;
+  }
+
+  ol > li::before {
+    font-weight: 600;
+    color: $revolt-smoke;
+  }
+
+  // Divider: a hairline with the mark's "[o]" set into it.
+  hr {
+    position: relative;
+    height: auto;
+    margin: 2.5rem 0;
+    line-height: 1;
+    text-align: center;
+    background: none;
+    border: 0;
+
+    &::before {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      left: 0;
+      height: 1px;
+      content: "";
+      background: $revolt-hairline;
+    }
+
+    &::after {
+      position: relative;
+      padding: 0 0.8em;
+      font-family: $mono-font-family;
+      font-size: 0.85rem;
+      color: $revolt-silver;
+      content: "[o]";
+      background: $revolt-paper;
+    }
+  }
+
+  blockquote {
+    padding: 0.2rem 0 0.2rem 1.1rem;
+    margin-left: 0;
+    color: $revolt-graphite;
+    border-left: 3px solid $revolt-rule-dk;
+  }
+
+  dt {
+    color: $revolt-black;
+  }
+}
+
+.anchor-heading svg {
+  color: $revolt-silver;
+}
+
+//=== Code ===================================================================//
+
+:not(pre, figure) > code {
+  color: $revolt-black;
+  background-color: $revolt-wash;
+  border-color: $revolt-rule-lt;
+}
+
+// Fenced code blocks are dark: white-on-black, like the mark.  Console
+// transcripts (the usual content on this site) read as a terminal.
+//
+// (The theme's OneLight syntax sheet paints every .highlight element light
+// gray, including the inner div.highlight, so that class is restyled here
+// and the containers below only add the frame.)
+.highlight {
+  color: $revolt-ash;
+  background-color: $revolt-coal;
+}
+
+div.highlighter-rouge,
+figure.highlight {
+  position: relative;
+  margin-bottom: 1.25rem;
+  background-color: $revolt-coal;
+  border: 1px solid $revolt-coal-dk;
+  border-radius: $border-radius;
+  box-shadow: none;
+
+  div.highlight,
+  pre.highlight,
+  pre {
+    background-color: transparent;
+  }
+
+  code {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: $revolt-ash;
+  }
+
+  > button {
+    color: $revolt-ash-dim;
+    background-color: $revolt-coal;
+    border-color: $revolt-coal;
+
+    svg {
+      fill: $revolt-ash-dim;
+    }
+
+    &:hover {
+      color: #fff;
+
+      svg {
+        fill: #fff;
+      }
+    }
+  }
+}
+
+// Console transcript lines, marked up by assets/js/revolt-console.js.
+// Input is bright, results are dimmer, the prompt glyphs and comments
+// recede.  Without the script the block is plain light-on-dark text.
+.rc-in {
+  color: #fff;
+  font-weight: 700;
+}
+
+.rc-out {
+  color: $revolt-ash-dim;
+}
+
+.rc-err {
+  color: $revolt-ash;
+}
+
+.rc-txt {
+  color: $revolt-ash-dim;
+  font-style: italic;
+}
+
+.rc-mark {
+  font-weight: 400;
+  color: $revolt-ash-faint;
+}
+
+.rc-err .rc-mark {
+  color: $revolt-ash;
+}
+
+.rc-cmt {
+  font-weight: 400;
+  font-style: italic;
+  color: $revolt-ash-faint;
+}
+
+// Rouge token colors, in grays, for any block that does get a lexer.  These
+// override the OneLight rules that just-the-docs imports, since this file is
+// compiled after them.
+.highlight {
+  .c,
+  .c1,
+  .cm,
+  .cs,
+  .cp,
+  .cpf {
+    font-style: italic;
+    color: $revolt-ash-faint;
+  }
+
+  .k,
+  .kd,
+  .kr,
+  .kc,
+  .kp,
+  .kv,
+  .kn,
+  .kt,
+  .nc,
+  .nn,
+  .nb,
+  .nf,
+  .fm,
+  .gh,
+  .gu,
+  .gs {
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .s,
+  .s1,
+  .s2,
+  .sb,
+  .sc,
+  .sd,
+  .se,
+  .sh,
+  .si,
+  .sx,
+  .sr,
+  .ss,
+  .m,
+  .mi,
+  .mf,
+  .mh,
+  .mo,
+  .mb,
+  .mx,
+  .il {
+    color: #d2d2d2;
+  }
+
+  .n,
+  .nv,
+  .na,
+  .ni,
+  .nl,
+  .nt,
+  .nx,
+  .no,
+  .py,
+  .o,
+  .ow,
+  .p,
+  .w {
+    color: $revolt-ash;
+  }
+
+  .gi,
+  .gd {
+    background: transparent;
+  }
+
+  .ge {
+    font-style: italic;
+  }
+
+  // Rouge marks unrecognized tokens as errors; never paint them red.
+  .err {
+    color: inherit;
+    background: transparent;
+  }
+
+  .lineno,
+  .gl {
+    color: $revolt-ash-faint;
+  }
+}
+
+//=== Native reference pages (layout: native) ================================//
+
+.main-content h1.native-name {
+  margin-bottom: 0.6em;
+
+  code {
+    font-family: $mono-font-family;
+    letter-spacing: 0;
+  }
+}
+
+// The spec block is a signature, not a transcript, so it is light: a gray
+// panel with a black bar, the inverse of the console blocks.
+.native-spec {
+  margin-bottom: 2rem;
+
+  figure.highlight {
+    color: $revolt-ink;
+    background-color: $revolt-panel;
+    border: 1px solid $revolt-rule;
+    border-left: 3px solid $revolt-black;
+
+    pre,
+    code {
+      color: $revolt-ink;
+      background-color: transparent;
+    }
+
+    code {
+      font-size: 0.9rem;
+    }
+
+    > button {
+      color: $revolt-smoke;
+      background-color: $revolt-panel;
+      border-color: $revolt-panel;
+
+      svg {
+        fill: $revolt-smoke;
+      }
+    }
+  }
+}
+
+//=== Tables =================================================================//
+
+.table-wrapper {
+  border: 1px solid $revolt-rule;
+  border-radius: $border-radius;
+  box-shadow: none;
+}
+
+th {
+  font-family: $body-font-family;
+  font-size: 0.9rem !important;
+  font-weight: 400;
+  color: $revolt-graphite;
+  background-color: $revolt-panel;
+}
+
+td {
+  font-size: 1rem !important;
+  line-height: 1.5;
+  background-color: #fff;
+}
+
+tbody tr:nth-child(even) td {
+  background-color: #fff;
+}
+
+thead th {
+  border-bottom: 1px solid $revolt-rule;
+}
+
+th,
+td {
+  border-bottom-color: $revolt-rule-lt;
+  border-left-color: $revolt-rule-lt;
+}
+
+tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+//=== Buttons, labels, callouts ==============================================//
+
+.btn {
+  color: $revolt-black;
+  background-color: #fff;
+  border: 1px solid $revolt-rule-dk;
+  box-shadow: none;
+
+  &:hover,
+  &:active {
+    color: $revolt-black;
+    background-color: #fff;
+    border-color: $revolt-black;
+  }
+
+  &:focus,
+  &:focus:hover {
+    box-shadow: 0 0 0 3px rgba($revolt-black, 0.15);
+  }
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: $revolt-black;
+  border-color: $revolt-black;
+
+  &:hover,
+  &:active {
+    color: #fff;
+    background-color: #000;
+    border-color: #000;
+  }
+}
+
+.label:not(g),
+.label-blue:not(g),
+.label-green:not(g),
+.label-purple:not(g),
+.label-red:not(g),
+.label-yellow:not(g) {
+  font-weight: 600;
+  color: #fff;
+  background-color: $revolt-graphite;
+}
+
+// Callouts are flat: a wash, a bar, and a small-caps title.  (The theme's
+// callout rules come from _config.yml; the colors are mapped to grays in
+// _sass/color_schemes/revolt.scss.)
+.main-content {
+  p.note,
+  blockquote.note,
+  p.tip,
+  blockquote.tip,
+  p.warning,
+  blockquote.warning {
+    padding: 0.9rem 1.1rem;
+    border-left-width: 3px;
+    box-shadow: none;
+
+    &::before,
+    > .note-title,
+    > .tip-title,
+    > .warning-title {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+    }
+  }
+
+  p.warning,
+  blockquote.warning {
+    border-left-width: 5px;
+  }
+}
+
+//=== Homepage hero ==========================================================//
+
+.main-content .revolt-hero {
+  margin: 0.5rem 0 2.5rem;
+  text-align: center;
+
+  @include mq(md) {
+    margin-top: 1rem;
+  }
+}
+
+// REV, the 3-D tile standing in for the O, LT.
+.main-content .revolt-hero-wordmark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 1rem;
+  font-family: $revolt-display-font-family;
+  font-size: 2.5rem;
+  font-stretch: 125%;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.03em;
+  color: $revolt-black;
+  text-transform: uppercase;
+
+  @include mq(sm) {
+    font-size: 4.2rem;
+  }
+
+  @include mq(md) {
+    font-size: 5.2rem;
+  }
+
+  img {
+    display: block;
+    width: 1.22em;
+    height: auto;
+    margin: 0 0.04em;
+    // the render carries its own drop shadow below the tile, so the image
+    // box is taller than the tile; nudge it so the face sits on the line
+    transform: translateY(0.04em);
+  }
+}
+
+.main-content .revolt-hero-tagline {
+  max-width: 34rem;
+  margin: 0 auto 1.5rem;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  color: $revolt-graphite;
+}
+
+.main-content .revolt-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin: 0;
+
+  .btn {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 0.55rem 1.1rem;
+  }
+}
+
+//=== Page footer ============================================================//
+
+.main-content .revolt-colophon {
+  font-size: 0.8rem;
+  color: $revolt-smoke;
+
+  a {
+    color: $revolt-smoke;
+
+    &:hover {
+      color: $revolt-black;
+    }
+  }
+}
+
+// stylelint-enable selector-no-type, selector-max-type, max-nesting-depth
+
+// Keeps a real <h1> in the document for accessibility and search indexing
+// while the wordmark carries the visible title.
+.revolt-visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

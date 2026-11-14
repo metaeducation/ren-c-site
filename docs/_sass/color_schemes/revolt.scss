@@ -1,0 +1,72 @@
+//
+// File: %revolt.scss  (color scheme for just-the-docs)
+//
+//=============================================================================//
+//
+// "REVOLT" color scheme: black and white with dim grays.
+//
+// Selected by `color_scheme: revolt` in docs/_config.yml.  just-the-docs
+// imports light.scss first (all `!default`), then this file, so plain
+// assignments here win.  Decorative styling lives in _sass/custom/custom.scss;
+// this file only maps the palette onto the theme's named variables.
+//
+// The $revolt-* palette is defined in _sass/custom/setup.scss, because
+// just-the-docs compiles custom.scss into every stylesheet (including the
+// stock light/dark ones), and those must see the variables too.
+//
+
+$color-scheme: light;
+
+// The theme's grays are faintly violet; make them neutral.
+
+$grey-dk-000: $revolt-silver;
+$grey-dk-100: $revolt-graphite;
+$grey-dk-200: #444444;
+$grey-dk-250: $revolt-ink;
+$grey-dk-300: $revolt-black;
+$grey-lt-000: $revolt-panel;
+$grey-lt-100: $revolt-wash;
+$grey-lt-200: $revolt-rule-lt;
+$grey-lt-300: $revolt-rule;
+
+// The theme's named hues are used by labels, buttons, and callouts.  The
+// callouts in _config.yml are: note = purple, tip = blue, warning = red.
+// (-000 is the callout's wash, -300 its bar and title.)
+
+$purple-000: #b5b5b5;
+$purple-100: #8c8c8c;
+$purple-200: #666666;
+$purple-300: #444444;
+$blue-000: #c0c0c0;
+$blue-100: #a0a0a0;
+$blue-200: #8a8a8a;
+$blue-300: $revolt-smoke;
+$green-000: #a8a8a8;
+$green-100: #8c8c8c;
+$green-200: #707070;
+$green-300: $revolt-graphite;
+$yellow-000: #c4c4c4;
+$yellow-100: #b0b0b0;
+$yellow-200: $revolt-silver;
+$yellow-300: $revolt-smoke;
+$red-000: #9a9a9a;
+$red-100: $revolt-graphite;
+$red-200: $revolt-ink;
+$red-300: $revolt-black;
+
+// just-the-docs named slots
+
+$body-background-color: $revolt-paper;
+$body-heading-color: $revolt-black;
+$body-text-color: $revolt-ink;
+$link-color: $revolt-black;
+$nav-child-link-color: $revolt-graphite;
+$sidebar-color: $revolt-paper;
+$base-button-color: #ffffff;
+$btn-primary-color: $revolt-black;
+$code-background-color: $revolt-wash;
+$feedback-color: $revolt-wash;
+$table-background-color: #ffffff;
+$search-background-color: #ffffff;
+$search-result-preview-color: $revolt-smoke;
+$border-color: $revolt-rule;

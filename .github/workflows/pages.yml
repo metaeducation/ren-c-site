@@ -94,6 +94,37 @@ jobs:
           source: ./docs
           destination: ./_site
 
+      # The web console lives in its own repository.  It's all static files
+      # (the interpreter itself is fetched from S3 by load-r3.js), so it is
+      # copied in as-is to /console/.
+      #
+      # This happens *after* Jekyll, so Jekyll never sees the files (it would
+      # turn the console's .md files into pages, and might process others).
+      #
+      # It's the console's master branch as of this build.  A push to
+      # replpad-js doesn't redeploy the site by itself: use "Run workflow"
+      # here (or wait for the weekly run).
+      #
+      - name: Fetch Web Console
+        uses: actions/checkout@v6
+        with:
+          repository: hostilefork/replpad-js
+          ref: master
+          path: replpad-js
+
+      # (sudo because jekyll-build-pages runs in a container that writes
+      # _site as root)
+      #
+      - name: Add Web Console At /console/
+        run: |
+          sudo mkdir -p _site/console
+          sudo rsync -a \
+            --exclude '.git*' --exclude '.github/' \
+            --exclude 'tests/' --exclude '*.md' \
+            replpad-js/ _site/console/
+          echo "Console files: $(find _site/console -type f | wc -l)"
+          test -f _site/console/index.html
+
       - uses: actions/upload-pages-artifact@v3
         if: github.event_name != 'pull_request'
 
