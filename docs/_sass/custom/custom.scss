@@ -451,6 +451,39 @@ figure.highlight {
   }
 }
 
+// Rouge has no Rebol lexer, and when it can't highlight a fence kramdown
+// emits a bare <pre><code class="language-rebol"> with none of the wrappers
+// above.  assets/js/revolt-console.js rebuilds those into the theme's
+// structure (so the copy button appears), but the bare form has to look
+// right on its own too, for readers without JavaScript.
+.main-content pre {
+  padding: $sp-3;
+  margin-bottom: 1.25rem;
+  overflow-x: auto;
+  background-color: $revolt-coal;
+  border: 1px solid $revolt-coal-dk;
+  border-radius: $border-radius;
+
+  > code {
+    padding: 0;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: $revolt-ash;
+    background-color: transparent;
+    border: 0;
+  }
+}
+
+// ...but inside the wrappers, the wrapper is the frame.
+.main-content div.highlighter-rouge pre,
+.main-content figure.highlight pre {
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+}
+
 // Console transcript lines, marked up by assets/js/revolt-console.js.
 // Input is bright, results are dimmer, the prompt glyphs and comments
 // recede.  Without the script the block is plain light-on-dark text.

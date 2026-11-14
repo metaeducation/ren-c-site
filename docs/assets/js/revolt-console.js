@@ -14,6 +14,12 @@
 // for Rebol since Rouge has no lexer for it.  Without this script, or with
 // JavaScript off, the blocks are plain light-on-dark text.
 //
+// Also: when Rouge has no lexer, kramdown emits a bare <pre><code> instead
+// of the <div class="highlighter-rouge"><div class="highlight"><pre> nest
+// that just-the-docs styles and adds its copy button to.  This script is
+// loaded with `defer`, so it runs before the theme's DOMContentLoaded
+// handlers; it rebuilds bare blocks into that structure first.
+//
 
 (function () {
   "use strict";
@@ -69,11 +75,28 @@
     code.appendChild(frag);
   }
 
+  // <pre><code class="language-x"> (not already inside a wrapper) becomes
+  // <div class="language-x highlighter-rouge"><div class="highlight">
+  // <pre class="highlight"><code>, as kramdown would have produced with a
+  // lexer.
+  function wrap(code) {
+    var pre = code.parentNode;
+    if (!pre || pre.tagName !== "PRE") return;
+    if (pre.parentNode.closest(".highlighter-rouge, figure.highlight")) return;
+    var m = /(?:^|\s)language-([\w-]+)/.exec(code.className);
+    var outer = document.createElement("div");
+    outer.className = (m ? "language-" + m[1] + " " : "") + "highlighter-rouge";
+    var inner = document.createElement("div");
+    inner.className = "highlight";
+    pre.parentNode.insertBefore(outer, pre);
+    outer.appendChild(inner);
+    inner.appendChild(pre);
+    pre.className = "highlight";
+  }
+
   function run() {
-    var blocks = document.querySelectorAll(
-      "div.language-rebol pre code, pre code.language-rebol"
-    );
-    blocks.forEach(decorate);
+    document.querySelectorAll("pre > code[class*='language-']").forEach(wrap);
+    document.querySelectorAll("div.language-rebol pre code").forEach(decorate);
   }
 
   if (document.readyState === "loading") {
