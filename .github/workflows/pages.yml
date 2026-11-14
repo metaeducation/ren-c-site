@@ -1,0 +1,112 @@
+#
+# File: %pages.yml
+#
+#=============================================================================#
+#
+# Tests every example in docs/ against a current Ren-C interpreter, and only
+# if they all behave as documented, builds the site with Jekyll and deploys
+# it to GitHub Pages.
+#
+# Pull requests run the tests (and the Jekyll build) but don't deploy.
+#
+# The weekly schedule matters: the docs can be broken without any commit to
+# this repository, by a change to the interpreter.  A scheduled run catches
+# that and redeploys.
+#
+# One-time setup: Settings > Pages > Build and deployment > Source must be
+# "GitHub Actions".
+#
+
+name: Test and Deploy Docs
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '17 6 * * 1'  # Mondays 06:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+
+jobs:
+
+  #====# TEST THE EXAMPLES #=================================================#
+
+  doctests:
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+    steps:
+      - uses: actions/checkout@v6
+
+      # Downloads the latest greenlit interpreter and puts `r3` on the PATH.
+      # The checked build is slower but gives better diagnostics if
+      # something crashes.
+      #
+      # https://github.com/metaeducation/ren-c-action
+      #
+      - name: Install Ren-C Interpreter
+        uses: metaeducation/ren-c-action@release
+        with:
+          checked: true
+
+      # Basic sanity checks of the interpreter itself, before trusting it to
+      # judge the docs.  (--version is here because it once crashed.)
+      #
+      - name: Interpreter Smoke Tests
+        run: |
+          r3 --version
+          r3 --do "print -[Ren-C is alive]-"
+
+      - name: Run Documentation Examples
+        run: python3 tools/run-doctests.py
+
+
+  #====# BUILD THE SITE #====================================================#
+
+  build:
+    needs: doctests
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/configure-pages@v5
+        if: github.event_name != 'pull_request'
+
+      - uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./docs
+          destination: ./_site
+
+      - uses: actions/upload-pages-artifact@v3
+        if: github.event_name != 'pull_request'
+
+
+  #====# DEPLOY #============================================================#
+
+  deploy:
+    needs: build
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

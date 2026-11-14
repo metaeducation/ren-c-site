@@ -1,0 +1,7 @@
+build/
+_site/
+.jekyll-cache/
+.sass-cache/
+docs/Gemfile
+docs/Gemfile.lock
+__pycache__/

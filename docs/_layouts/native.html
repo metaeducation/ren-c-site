@@ -1,0 +1,16 @@
+---
+layout: default
+---
+{%- comment -%}
+  Layout for a native's reference page.  The page's front matter holds the
+  spec (`native:` and `spec: |`), which is shown here above the page body.
+  The same spec is checked against the interpreter by tools/doctest-runner.r,
+  so a parameter that is renamed or removed fails the build.
+{%- endcomment -%}
+<h1 class="native-name"><code>{{ page.native | upcase }}</code></h1>
+
+<div class="native-spec">
+{% highlight text %}{{ page.spec | strip }}{% endhighlight %}
+</div>
+
+{{ content }}

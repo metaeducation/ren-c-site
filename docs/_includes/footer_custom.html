@@ -1,0 +1,12 @@
+{%- comment -%}
+  just-the-docs hook: appended to each page's footer, after the "Edit this
+  page on GitHub" link.  Offers a pre-filled GitHub issue for people who
+  won't make a PR, as discussed on the forum (documentation feedback goes
+  to the issue tracker, not to on-page comments).
+{%- endcomment -%}
+{%- assign source_path = page.path -%}
+<p>
+  <a href="{{ site.gh_edit_repository }}/issues/new?title={{ 'Docs: ' | append: page.title | url_encode }}&body={{ 'Page: ' | append: page.url | append: '%0ASource: docs/' | append: source_path | url_encode | replace: '%250A', '%0A' }}">Report a problem with this page</a>
+  &middot;
+  <a href="{{ site.gh_edit_repository }}/issues?q=is%3Aissue+is%3Aopen+{{ page.title | url_encode }}">Open issues mentioning this page</a>
+</p>
