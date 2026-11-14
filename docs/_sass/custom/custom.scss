@@ -728,16 +728,34 @@ tbody tr:last-child td {
   }
 }
 
+// The primary button is black; on hover it fills with the same cyan as a
+// text selection inside a console block, keeping its black edge.
+// (The theme paints these with a background-image gradient, which would sit
+// on top of any background-color, so the gradient is cleared.)
 .btn-primary {
   color: #fff;
   background-color: $revolt-black;
+  background-image: none;
   border-color: $revolt-black;
+  box-shadow: none;
+  transition: background-color 120ms ease;
 
   &:hover,
-  &:active {
+  &:active,
+  &:focus {
     color: #fff;
-    background-color: #000;
-    border-color: #000;
+    background-color: $revolt-cyan;
+    background-image: none;
+    border-color: $revolt-black;
+  }
+
+  &:active {
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25);
+  }
+
+  &:focus,
+  &:focus:hover {
+    box-shadow: 0 0 0 3px rgba($revolt-cyan, 0.3);
   }
 }
 
