@@ -82,6 +82,10 @@ This one pair of operations works for every antiform, current and future,
 which is the reason antiforms are a general mechanism rather than a
 collection of special types.
 
+Quasiforms are also values in their own right, with uses that have nothing
+to do with antiforms.  See [Quasiforms](/docs/concepts/quasiforms/), which
+also covers how quoting and quasiforms stack up into the "lifting ladder".
+
 ## Stable and Unstable
 
 Antiforms come in two grades.
@@ -105,10 +109,11 @@ But while antiforms cannot themselves be put *literally* in lists, they may repr
 
 ```
 
-**Unstable** antiforms (VOID!, TRASH!, PACK!, FAILURE!) go further: they can't be fetched from WORD! variables or passed as normal arguments.  Assigning one either *decays* it to a stable value
-(a PACK! becomes its first item), unsets the variable (VOID!), or errors
-(FAILURE!).  They have to be dealt with where they are produced, or
-`LIFT`ed first.
+**Unstable** antiforms (VOID!, TRASH!, PACK!, FAILURE!) go further: they
+can't be fetched from WORD! variables or passed as normal arguments.  Assigning
+one either *decays* it to a stable value (a PACK! becomes its first item),
+unsets the variable (VOID!), or errors (FAILURE!).  They have to be dealt with
+where they are produced, or `LIFT`ed first.
 
 ```
 >> p: pack [1 2]
@@ -122,8 +127,7 @@ But while antiforms cannot themselves be put *literally* in lists, they may repr
 ```
 
 The practical consequence: anything that can sit in a variable can be
-tested by `IF` without special handling, because the antiforms that
-can't be tested are exactly the ones that can't be passed as normal arguments.
+tested by `IF` without special handling.
 
 ## Telling Them Apart
 

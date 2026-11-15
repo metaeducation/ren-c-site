@@ -12,7 +12,8 @@ one function or one type.**
 
 | Page | The idea |
 |---|---|
-| `antiforms.md` | Values that can't be put in a list: quasiforms, LIFT and UNLIFT, stable and unstable. |
+| `antiforms.md` | Values that can't be put in a list: how they're written, LIFT and UNLIFT, stable and unstable. |
+| `quasiforms.md` | Values with tildes (`~foo~`): how they stand in for antiforms, the lifting ladder, and their use in dialects. |
 | `constness.md` | Read-only views of series.  Spans CONST, MUTABLE, COPY, EVAL, and every function and loop body. |
 | `purity.md` | Functions that depend only on their arguments.  Spans PURE, IMPURE, FINAL, and the evaluator's binding. |
 | `infix.md` | Functions that run in the same step as their left side.  Spans INFIX, THEN, ELSE, ALSO, the operators, and how every expression is evaluated. |
@@ -59,7 +60,7 @@ layout: default
 title: Constness
 parent: Concepts
 grand_parent: Documentation
-nav_order: 2
+nav_order: 3
 permalink: /docs/concepts/constness/
 ---
 ```
