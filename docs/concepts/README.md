@@ -15,6 +15,7 @@ one function or one type.**
 | `antiforms.md` | Values that can't be put in a list: quasiforms, LIFT and UNLIFT, stable and unstable. |
 | `constness.md` | Read-only views of series.  Spans CONST, MUTABLE, COPY, EVAL, and every function and loop body. |
 | `purity.md` | Functions that depend only on their arguments.  Spans PURE, IMPURE, FINAL, and the evaluator's binding. |
+| `infix.md` | Functions that run in the same step as their left side.  Spans INFIX, THEN, ELSE, ALSO, the operators, and how every expression is evaluated. |
 
 The reason is discoverability.  Someone learning the language looks in
 Concepts for "what is this and why", and shouldn't have to know that the
