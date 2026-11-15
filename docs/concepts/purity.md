@@ -3,7 +3,7 @@ layout: default
 title: Purity
 parent: Concepts
 grand_parent: Documentation
-nav_order: 5
+nav_order: 6
 permalink: /docs/concepts/purity/
 ---
 

@@ -133,6 +133,7 @@ hairlines, `#333` text, black for headings and links.  Where it lives:
 | `_sass/custom/custom.scss` | Everything decorative: wordmark, nav, dark console blocks, callouts, tables, homepage hero. |
 | `_includes/title.html` | The sidebar wordmark, REV[o]LT, with the mark standing in for the O. |
 | `_includes/head_custom.html` | Web fonts, icons, social image, and the console script. |
+| `_includes/head.html` | The theme's own head, copied from just-the-docs v0.10.0 only to put a build stamp (`?v=`) on its stylesheet links, so a deploy never shows new pages with cached old CSS.  Recopy it if the theme version changes. |
 | `assets/js/revolt-console.js` | Marks up `>>` / `==` / `**` lines in transcripts so input is bright and results dim, treats fences with no language as Rebol, and marks `negative-test` blocks for the red "Error" style.  Cosmetic; the blocks work without it. |
 | `assets/js/revolt-nav.js` | Expands the sidebar's top-level sections (Documentation) on every page, including Home.  The expander button still collapses them. |
 | `assets/images/revolt-mark.svg` | The flat `[o]` mark (also `favicon.svg`); `favicon.ico`, `icon-*.png` and `apple-touch-icon.png` are rendered from it (the 16px icon is the original hand-pixelled one). |

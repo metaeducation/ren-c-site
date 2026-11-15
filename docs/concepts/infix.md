@@ -3,7 +3,7 @@ layout: default
 title: Infix
 parent: Concepts
 grand_parent: Documentation
-nav_order: 6
+nav_order: 7
 permalink: /docs/concepts/infix/
 ---
 
