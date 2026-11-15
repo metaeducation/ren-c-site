@@ -228,7 +228,8 @@ there too.  SWITCH evaluates its cases, so:
 
 ## Binding
 
-A quasiform word is still a word, and it carries a binding like any other.
+A quasiform word is still a word, and it carries a
+[binding](/docs/concepts/binding/) like any other.
 Taking the tildes off gives back a word that can be looked up, so a dialect
 can use `~x~` to mean something special about the *variable* `x`:
 

@@ -3,7 +3,7 @@ layout: default
 title: Purity
 parent: Concepts
 grand_parent: Documentation
-nav_order: 4
+nav_order: 5
 permalink: /docs/concepts/purity/
 ---
 
@@ -137,12 +137,12 @@ adding protection is always safe.
 ## How It Works: Purity Follows Binding
 
 Revolt doesn't keep a global "now in pure mode" flag.  Pure-ness is part of
-the binding that code runs with, the same machinery that makes local
-variables visible to a function body.  When pure code looks up a word, the
-search goes from the innermost scopes outward.  Variables found before it
-reaches the pure function's own frame belong to that function and may be
-used freely.  Anything found beyond it is outside state, and has to be
-FINAL.
+the [binding](/docs/concepts/binding/) that code runs with, the same
+machinery that makes local variables visible to a function body.  When pure
+code looks up a word, the search goes from the innermost scopes outward.
+Variables found before it reaches the pure function's own frame belong to
+that function and may be used freely.  Anything found beyond it is outside
+state, and has to be FINAL.
 
 One effect of this: a pure function nested inside another pure function
 can't touch the outer one's local variables.  To the inner function, those
