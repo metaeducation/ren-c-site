@@ -1,7 +1,7 @@
 ---
 layout: datatype
 title: FAILURE!
-parent: Antiforms
+parent: Antiform Types
 grand_parent: Datatypes
 nav_order: 8
 permalink: /docs/datatypes/failure/
@@ -116,6 +116,6 @@ is what makes it demand attention:
 
 ## See Also
 
-* [Antiforms](/docs/datatypes/antiforms/) -- the general mechanism, and
+* [Antiforms](/docs/concepts/antiforms/) -- the general mechanism, and
   the history of this one (it has been called RAISED!, and the plain
   object has been called WARNING!)

@@ -1,7 +1,7 @@
 ---
 layout: datatype
 title: PACK!
-parent: Antiforms
+parent: Antiform Types
 grand_parent: Datatypes
 nav_order: 7
 permalink: /docs/datatypes/pack/
@@ -130,4 +130,4 @@ produced a [VOID!](/docs/datatypes/void/), which is why the console shows
 * [VOID!](/docs/datatypes/void/) -- the light void, and how it becomes the
   heavy one
 * [REDUCE](/docs/natives/reduce/) -- `:predicate lift/` keeps packs intact
-* [Antiforms](/docs/datatypes/antiforms/) -- the general mechanism
+* [Antiforms](/docs/concepts/antiforms/) -- the general mechanism

@@ -23,8 +23,10 @@ permalink: /
 
 ## Documentation
 
-* **[Datatypes](/docs/datatypes/)** -- every kind of value, and the
-  [antiforms](/docs/datatypes/antiforms/) that carry signals
+* **[Datatypes](/docs/datatypes/)** -- every kind of value
+
+* **[Concepts](/docs/concepts/)** -- the ideas behind them, starting with
+  the [antiforms](/docs/concepts/antiforms/) that carry signals
 
 * **[Natives](/docs/natives/)** -- the functions built into the interpreter
   * [REDUCE](/docs/natives/reduce/)

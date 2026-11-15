@@ -18,7 +18,7 @@ Every datatype is in exactly one of two groups:
 | Parent page | Holds | `parent:` |
 |---|---|---|
 | `fundamentals.md` | Types a value in a list can have (TEXT!, BLOCK!, WORD!...) | `Fundamental Types` |
-| `antiforms.md` | Types that can't be put in a list (VOID!, SPLICE!, LOGIC!...) | `Antiforms` |
+| `antiforms.md` | Types that can't be put in a list (VOID!, SPLICE!, LOGIC!...) | `Antiform Types` |
 
 The index of all of them, with one-line summaries, is `docs/datatypes.md`.
 
@@ -29,18 +29,15 @@ fundamental type.  It doesn't mean "important" or "basic".  So the
 Fundamental Types section holds datatype pages only.  A notable topic that
 isn't a datatype (constness, binding) goes in `docs/concepts/`.
 
-### Why the Antiforms Page Is Here and Not in Concepts
+### The Explanation of Antiforms Is in Concepts
 
-`antiforms.md` explains an idea, but it's also the parent of the eight
-antiform type pages, which makes it the sibling of `fundamentals.md`.
-Something with an obvious home on a datatype page belongs here (see
-`docs/concepts/README.md` for that rule).
+`antiforms.md` here is a short page: a table of the eight antiform types,
+and a link.  The explanation of what antiforms are and how they work is
+`docs/concepts/antiforms.md`, where people look for explanations.
 
-That page does two jobs: listing the eight antiforms, and explaining the
-mechanics (quasiforms, lifting, stable and unstable).  If it grows, or if
-native pages start wanting to link to just the mechanics, the mechanics
-move to a concept page and `antiforms.md` stays as the short "what they
-are, here are the eight" page.
+The same split applies to anything else here that grows into an idea.  The
+reference for a type stays in this folder, and the idea goes in
+`docs/concepts/` (see the README there).
 
 ## Keeping in Step With the Interpreter
 

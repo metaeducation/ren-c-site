@@ -1,7 +1,7 @@
 ---
 layout: datatype
 title: SPLICE!
-parent: Antiforms
+parent: Antiform Types
 grand_parent: Datatypes
 nav_order: 2
 permalink: /docs/datatypes/splice/
@@ -112,5 +112,5 @@ spread "abc"
 
 * [REDUCE](/docs/natives/reduce/) -- accepts a splice only if it holds one
   item, unless given a predicate
-* [Antiforms](/docs/datatypes/antiforms/) -- the general mechanism, and
+* [Antiforms](/docs/concepts/antiforms/) -- the general mechanism, and
   the history of this one, which started life as the antiform of GROUP!

@@ -62,6 +62,17 @@ aux_links:
 plugins:
   - jekyll-sitemap
 
+# The README.md in each content folder is for people working on the site.
+# Without this, the Pages build turns each one into that folder's index
+# page (the jekyll-readme-index plugin), and it shows up in the sidebar
+# titled with its heading, e.g. "docs/natives".
+#
+exclude:
+  - "*/README.md"
+  - "concepts/README.md"
+  - "datatypes/README.md"
+  - "natives/README.md"
+
 defaults:
   - scope:
       path: "README.md"

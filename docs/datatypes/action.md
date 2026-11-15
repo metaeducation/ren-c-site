@@ -1,7 +1,7 @@
 ---
 layout: datatype
 title: ACTION!
-parent: Antiforms
+parent: Antiform Types
 grand_parent: Datatypes
 nav_order: 4
 permalink: /docs/datatypes/action/
@@ -103,4 +103,4 @@ word for the action, or its plain frame, goes in a list instead.
 
 ## See Also
 
-* [Antiforms](/docs/datatypes/antiforms/) -- the general mechanism
+* [Antiforms](/docs/concepts/antiforms/) -- the general mechanism

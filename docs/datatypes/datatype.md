@@ -1,7 +1,7 @@
 ---
 layout: datatype
 title: DATATYPE!
-parent: Antiforms
+parent: Antiform Types
 grand_parent: Datatypes
 nav_order: 3
 permalink: /docs/datatypes/datatype/
@@ -117,4 +117,4 @@ of types; see [Datatypes](/docs/datatypes/#type-constraints).
 ## See Also
 
 * [Datatypes](/docs/datatypes/) -- the list of types
-* [Antiforms](/docs/datatypes/antiforms/) -- the general mechanism
+* [Antiforms](/docs/concepts/antiforms/) -- the general mechanism

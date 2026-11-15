@@ -1,7 +1,7 @@
 ---
 layout: datatype
 title: VOID!
-parent: Antiforms
+parent: Antiform Types
 grand_parent: Datatypes
 nav_order: 5
 permalink: /docs/datatypes/void/
@@ -133,4 +133,4 @@ exactly that purpose:
 * [PACK!](/docs/datatypes/pack/) -- the empty pack is the heavy void
 * [LOGIC!](/docs/datatypes/logic/) -- `~null~` is "false", not "nothing"
 * [REDUCE](/docs/natives/reduce/) -- why REDUCE refuses voids
-* [Antiforms](/docs/datatypes/antiforms/) -- the general mechanism
+* [Antiforms](/docs/concepts/antiforms/) -- the general mechanism

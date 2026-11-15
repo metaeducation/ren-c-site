@@ -7,19 +7,24 @@ This README is not part of the site, and its examples are not tested.  See
 
 ## What Belongs Here
 
-**A page goes in Concepts only if no single native or datatype page could
-be its home.**
+**A page goes in Concepts if it explains an idea, rather than documenting
+one function or one type.**
 
-| Page | Why it passes |
+| Page | The idea |
 |---|---|
-| `constness.md` | Spans CONST, MUTABLE, COPY, EVAL, and every function and loop body. |
-| `purity.md` | Spans PURE, IMPURE, FINAL, and the evaluator's binding. |
+| `antiforms.md` | Values that can't be put in a list: quasiforms, LIFT and UNLIFT, stable and unstable. |
+| `constness.md` | Read-only views of series.  Spans CONST, MUTABLE, COPY, EVAL, and every function and loop body. |
+| `purity.md` | Functions that depend only on their arguments.  Spans PURE, IMPURE, FINAL, and the evaluator's binding. |
 
-If an idea has an obvious home, put it there instead, even if it's
-conceptual.  Antiforms are the example: the explanation lives in
-`datatypes/antiforms.md`, because that page is the parent of the eight
-antiform type pages.  The rule is what keeps this folder from becoming a
-junk drawer.
+The reason is discoverability.  Someone learning the language looks in
+Concepts for "what is this and why", and shouldn't have to know that the
+explanation of antiforms happens to sit above eight type pages in another
+section.
+
+So an idea belongs here **even when it has a matching group of reference
+pages**.  Antiforms are the example: the explanation is here, and the
+reference pages for the eight antiform types stay in `docs/datatypes/`
+under a short "Antiform Types" page that links back.
 
 ## How Concept Pages and Reference Pages Divide the Work
 
@@ -41,11 +46,9 @@ Constness is about whether code may *change* a series it was handed.
 Purity is about what outside state a function may *see*.  Each page has a
 short section linking to the other.
 
-A section of some other page should move here when pages outside its
-section start wanting to link to that one section, rather than to the whole
-page.  (The likely first case: the mechanics of lifting and quasiforms,
-currently in `datatypes/antiforms.md`, which matter to native pages that
-have nothing to do with datatypes.)
+When a reference page finds itself explaining an idea that other pages
+also need, that explanation moves here, and the reference page links to
+it.
 
 ## Page Format
 
@@ -55,7 +58,7 @@ layout: default
 title: Constness
 parent: Concepts
 grand_parent: Documentation
-nav_order: 1
+nav_order: 2
 permalink: /docs/concepts/constness/
 ---
 ```

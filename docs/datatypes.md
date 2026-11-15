@@ -140,7 +140,7 @@ the antiform) or changes how the value is looked up:
 Some fundamental types have an **antiform**: a variant of the value that
 can't be put in a list, used to carry signals (such as "nothing", "splice
 these", "this failed") in a way that ordinary data can't be mistaken for.
-See [Antiforms](/docs/datatypes/antiforms/) for how they work.
+See [Antiforms](/docs/concepts/antiforms/) for how they work.
 
 | Antiform | Of | Summary | Stable? |
 |---|---|---|---|

@@ -1,7 +1,7 @@
 ---
 layout: datatype
 title: LOGIC!
-parent: Antiforms
+parent: Antiform Types
 grand_parent: Datatypes
 nav_order: 1
 permalink: /docs/datatypes/logic/
@@ -181,4 +181,4 @@ them gives the antiforms back:
 ## See Also
 
 * [VOID!](/docs/datatypes/void/) -- "no value", as distinct from "false"
-* [Antiforms](/docs/datatypes/antiforms/) -- the general mechanism
+* [Antiforms](/docs/concepts/antiforms/) -- the general mechanism
