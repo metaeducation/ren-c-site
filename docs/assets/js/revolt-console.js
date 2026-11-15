@@ -20,6 +20,11 @@
 // loaded with `defer`, so it runs before the theme's DOMContentLoaded
 // handlers; it rebuilds bare blocks into that structure first.
 //
+// And: a block right after a `<!-- doctest: negative-test -->` comment is an
+// example that's supposed to fail.  kramdown keeps the comment in the page,
+// so the block after it gets the class `revolt-fails`, which custom.scss
+// draws with a red border and an "Error" tab.
+//
 
 (function () {
   "use strict";
@@ -94,17 +99,45 @@
     pre.className = "highlight";
   }
 
-  // A fenced block with no language named is Rebol.  kramdown gives such a
-  // block no class at all (there's no Rouge lexer for the default language
-  // set in _config.yml), so name it here.
+  // A fenced block with no language named is Rebol.  Depending on the
+  // kramdown and Rouge versions, such a block comes out either with no class
+  // at all, or highlighted as `language-plaintext` (GitHub Pages does the
+  // latter).  Either way, name it Rebol here.  A block that *asks* for plain
+  // text says ```text, which comes out as `language-text` and is left alone.
   function defaultToRebol(code) {
     if (code.parentNode.closest(".highlighter-rouge, figure.highlight")) return;
     code.classList.add("language-rebol");
   }
 
+  function plaintextToRebol(outer) {
+    outer.classList.remove("language-plaintext");
+    outer.classList.add("language-rebol");
+  }
+
+  // Mark the block after each negative-test comment (see top of file).
+  function markFailing() {
+    var main = document.querySelector(".main-content") || document.body;
+    var walker = document.createTreeWalker(main, NodeFilter.SHOW_COMMENT);
+    var comment;
+    while ((comment = walker.nextNode())) {
+      if (!/^\s*doctest:\s*negative-test\b/.test(comment.nodeValue)) continue;
+      var el = comment.nextElementSibling || nextElementAfter(comment);
+      if (el && el.matches(".highlighter-rouge, figure.highlight"))
+        el.classList.add("revolt-fails");
+    }
+  }
+
+  function nextElementAfter(node) {
+    var n = node.nextSibling;
+    while (n && n.nodeType !== 1) n = n.nextSibling;
+    return n;
+  }
+
   function run() {
+    document.querySelectorAll("div.language-plaintext.highlighter-rouge").forEach(plaintextToRebol);
     document.querySelectorAll("pre > code:not([class*='language-'])").forEach(defaultToRebol);
     document.querySelectorAll("pre > code[class*='language-']").forEach(wrap);
+    markFailing();
     document.querySelectorAll("div.language-rebol pre code").forEach(decorate);
   }
 

@@ -474,6 +474,34 @@ figure.highlight {
   }
 }
 
+// An example that's supposed to fail (the block after a negative-test
+// comment, marked by assets/js/revolt-console.js): a red border, with a
+// small "Error" tab on the top edge.  It doesn't name the error, since the
+// messages are still changing.
+div.highlighter-rouge.revolt-fails,
+figure.highlight.revolt-fails {
+  margin-top: 1.4rem;
+  border: 2px solid $revolt-red;
+
+  &::before {
+    position: absolute;
+    top: -0.75em;
+    left: 0.75rem;
+    z-index: 1;
+    padding: 0.05em 0.6em;
+    font-family: $revolt-display-font-family;
+    font-size: 0.7rem;
+    font-weight: 700;
+    line-height: 1.4;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    content: "Error";
+    background: $revolt-red;
+    border-radius: 3px;
+  }
+}
+
 // Rouge has no Rebol lexer, and when it can't highlight a fence kramdown
 // emits a bare <pre><code class="language-rebol"> with none of the wrappers
 // above.  assets/js/revolt-console.js rebuilds those into the theme's

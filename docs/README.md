@@ -81,7 +81,10 @@ reduce [1 elide 2 3]
 
 A `positive-test` must run without error.  A `negative-test` must error,
 and if `match=` is given, the error message must contain one of the
-`|`-separated phrases (or the error id must equal one).
+`|`-separated phrases (or the error id must equal one).  On the site, a
+`negative-test` block is drawn with a red border and an "Error" tab, so
+readers can see it's an example of what *not* to do.  (The tab doesn't name
+the error, since messages still change.)
 
 Untagged Rebol blocks that aren't transcripts are not tested,
 and the test summary counts them.  To show a transcript that should not be
@@ -130,7 +133,7 @@ hairlines, `#333` text, black for headings and links.  Where it lives:
 | `_sass/custom/custom.scss` | Everything decorative: wordmark, nav, dark console blocks, callouts, tables, homepage hero. |
 | `_includes/title.html` | The sidebar wordmark, REV[o]LT, with the mark standing in for the O. |
 | `_includes/head_custom.html` | Web fonts, icons, social image, and the console script. |
-| `assets/js/revolt-console.js` | Marks up `>>` / `==` / `**` lines in transcripts so input is bright and results dim.  Cosmetic; the blocks work without it. |
+| `assets/js/revolt-console.js` | Marks up `>>` / `==` / `**` lines in transcripts so input is bright and results dim, treats fences with no language as Rebol, and marks `negative-test` blocks for the red "Error" style.  Cosmetic; the blocks work without it. |
 | `assets/js/revolt-nav.js` | Expands the sidebar's top-level sections (Documentation) on every page, including Home.  The expander button still collapses them. |
 | `assets/images/revolt-mark.svg` | The flat `[o]` mark (also `favicon.svg`); `favicon.ico`, `icon-*.png` and `apple-touch-icon.png` are rendered from it (the 16px icon is the original hand-pixelled one). |
 | `assets/images/revolt-3d.png` | The 3-D render of the mark, used in the homepage hero and `og-image.png`. |
