@@ -13,41 +13,129 @@ permalink: /
   <p class="revolt-hero-actions"><a class="btn btn-primary" href="{{ '/console/' | relative_url }}">Open the Web Console</a> <a class="btn" href="https://github.com/metaeducation/revolt">Source on GitHub</a></p>
 </header>
 
-**Revolt** (previously codenamed "Ren-C") is developed at
-[github.com/metaeducation/revolt](https://github.com/metaeducation/revolt).
+Rebol made a promise: because code is data, and control constructs are
+ordinary functions, you can build your own languages inside it, cheaply.
+At the console, in small examples, the promise holds.  It breaks when you
+try to *factor* your code: wrap a construct, nest one inside another, or
+combine pieces written by different people.
 
-## Try It
+**Revolt** (previously codenamed "Ren-C") is a long-running effort to make
+the promise hold.  It keeps what made Rebol a pleasure, and rebuilds the
+parts underneath that kept it from composing.
 
-* **[Web Console](/console/)** -- the interpreter running in your browser
-  (WebAssembly; nothing to install)
+## One Example
 
-## Documentation
+Here is the simplest test of "control constructs are just functions":
+write UNLESS, using IF.  In historical Rebol, the obvious way gives a wrong
+answer, silently:
 
-* **[Datatypes](/docs/datatypes/)** -- every kind of value
+```text
+rebol2>> unless: func [cond block] [if not cond block]
 
-* **[Concepts](/docs/concepts/)** -- the ideas behind them, starting with
-  the [antiforms](/docs/concepts/antiforms/) that carry signals
+rebol2>> check: func [x] [unless x = 10 [return "not 10"] return "it's 10!"]
 
-* **[Natives](/docs/natives/)** -- the functions built into the interpreter
-  * [REDUCE](/docs/natives/reduce/)
-  * *(more to come, just a demo of the statically validated example mechanic)*
+rebol2>> check 20
+== "it's 10!"    ; UNLESS caught the RETURN that was meant for CHECK
+```
 
-Every example in the documentation is run by a current Revolt interpreter
-each time this site is built, and the result has to match what the page
-shows:
+In Revolt, a RETURN belongs to the function it was written in, so the
+wrapper just works:
+
+<!-- doctest: positive-test -->
+```
+/my-unless: func [cond block] [return if not cond (block)]
+
+/check: func [x] [
+    my-unless x = 10 [return "not 10"]
+    return "it's 10!"
+]
+
+assert ["not 10" = check 20]
+```
+
+That's [definitionality](/docs/concepts/definitionality/), and it is one of
+a set of changes that work together.
+
+## Every Claim Here Is Run
+
+That last example isn't an illustration.  It was executed.  **Every example
+in this documentation is run by a current Revolt interpreter each time the
+site is built**, and the result has to match what the page shows:
 
 ```
 >> reduce [1 + 2 3 + 4]
 == [3 7]
 ```
 
-That includes the examples that are *supposed* to fail.  When a page shows
-an error, the interpreter has to produce that error:
+That includes the examples that are *supposed* to fail.  A block marked as
+an error must produce an error, or the site doesn't deploy:
+
+<!-- doctest: negative-test match="bad-antiform" -->
+```
+reduce [null]
+```
+
+When the interpreter changes, the pages that are now wrong turn red.  So
+what you read here is what the interpreter does, not what somebody
+remembers it doing.
+
+## What Was Wrong, and What Changed
+
+Each of these was a known problem in Rebol2, R3-Alpha and Red.  Each has a
+page here showing the fix, with tested examples.
+
+| In historical Rebol | In Revolt | |
+|---|---|---|
+| RETURN, BREAK and THROW go to whatever is nearest on the stack, so wrappers intercept them | They belong to where they were written | [Definitionality](/docs/concepts/definitionality/) |
+| A typo and "file not found" arrive the same way, so catching one catches both | Functions *return* failures to their caller; bugs are panics | [Failure](/docs/concepts/failure/) |
+| NONE means "nothing found", "false", "loop broke" and "no value", and can be sitting in your data | Signals are *antiforms*, which can't be put in a block | [Antiforms](/docs/concepts/antiforms/) |
+| Loaded code is bound to one global context, and rebinding is destructive | Code starts unbound and gets its meaning from where it's written | [Binding](/docs/concepts/binding/) |
+| A literal `[]` in a function body is silently modified on every call | Bodies are read-only unless you say MUTABLE | [Constness](/docs/concepts/constness/) |
+| `1 + 2 * 3` and `add 1 2 * 3` disagree, because of a hidden evaluator state | One rule for infix and prefix, with no exceptions | [Infix](/docs/concepts/infix/) |
+| No way to have a function leave no result without tricks | Vanishing is built in, and made safe | [Vanishing](/docs/concepts/vanishing/) |
+
+These aren't independent patches.  Failures and vanishing are built on
+antiforms.  Definitional RETURN is built on binding.  Each mechanism got
+used again by things it wasn't designed for, which is the best evidence
+that it's a design.
+
+## What Didn't Change
+
+The best thing about Rebol was never just that code is data.  It's the
+*literals*: dates, URLs, email addresses, files, tags and more are all
+values you can simply write, so a dialect can read like its subject instead
+of like a programming language.  All of that is here:
 
 ```
->> reduce [null]
-** PANIC: Invalid use of ~null~ antiform
+>> type of 12-Sep-2026
+== \~{date!}~\  ; antiform (datatype!)
+
+>> type of %notes.txt
+== \~{file!}~\  ; antiform (datatype!)
+
+>> type of user@example.com
+== \~{email!}~\  ; antiform (datatype!)
 ```
+
+## Where It Stands
+
+{: .warning }
+> Revolt is experimental.  There is no stable release, and names and
+> behaviors still change.  Pages about the parts in flux say so at the top.
+> What you're getting is a design that is coherent and being held to its
+> claims, not one that is finished.
+
+## Start Here
+
+* **[Web Console](/console/)** -- the interpreter running in your browser
+  (WebAssembly; nothing to install)
+
+* **[Concepts](/docs/concepts/)** -- the ideas, starting with
+  [antiforms](/docs/concepts/antiforms/)
+
+* **[Datatypes](/docs/datatypes/)** -- every kind of value
+
+* **[Natives](/docs/natives/)** -- the functions built into the interpreter
 
 ## Community
 
