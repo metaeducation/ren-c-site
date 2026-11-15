@@ -206,7 +206,7 @@ produces the length of the block.  Then the comparison is made:
 == \~null~\  ; antiform (logic!)
 ```
 
-### The Catch: Prefix Functions Take the Infix After Their Argument
+### The Catch: Prefix Functions Want "Yoda Conditions"
 
 The same rule applies to prefix functions, which gather their arguments
 as full steps too.  So an infix function after the last argument of a
@@ -217,19 +217,41 @@ prefix function belongs to the *argument*:
 length of block = 3
 ```
 
-That's `length of (block = 3)`, which is not what was meant.  Either flip
-the comparison around, or use a group:
+That's `length of (block = 3)`, which is not what was meant.  The fix is to
+put the constant first:
 
 ```
 >> 3 = length of block
 == \~okay~\  ; antiform (logic!)
+```
 
+Programmers in other languages will recognize this.  Writing the constant
+on the left of a comparison, as in `if (3 == x)`, is called a
+[**Yoda condition**](https://en.wikipedia.org/wiki/Yoda_conditions), after
+the *Star Wars* character's way of putting words in reverse order: "three,
+the length is."  In C, it's a defense against typing `=` when you meant
+`==`.  `if (x = 3)` silently assigns, but `if (3 = x)` won't compile.  Some
+style guides (WordPress's, for one) require Yoda conditions for that
+reason.
+
+In Revolt, the reason is different but the habit is the same.  When one
+side of a comparison is a function call, put that call on the *right*:
+
+| Instead of | Write |
+|---|---|
+| `length of block = 3` | `3 = length of block` |
+| `first block = 'a` | `'a = first block` |
+| `index of pos > 1` | `1 < index of pos` |
+
+If you'd rather read it the other way around, a group works too:
+
+```
 >> (length of block) = 3
 == \~okay~\  ; antiform (logic!)
 ```
 
-The same trap is waiting in `first block = 'a`.  This is the price of one
-rule with no exceptions.
+This is the price of one rule with no exceptions, and the habit soon
+becomes second nature.
 
 ## The Modes
 
