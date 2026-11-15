@@ -17,7 +17,9 @@ one function or one type.**
 | `constness.md` | Read-only views of series.  Spans CONST, MUTABLE, COPY, EVAL, and every function and loop body. |
 | `purity.md` | Functions that depend only on their arguments.  Spans PURE, IMPURE, FINAL, and the evaluator's binding. |
 | `infix.md` | Functions that run in the same step as their left side.  Spans INFIX, THEN, ELSE, ALSO, the operators, and how every expression is evaluated. |
+| `definitionality.md` | RETURN, BREAK, THROW and failures belong to where they're defined, not to whatever is on the stack, so wrappers and loops built from loops (UNLESS, FOR-BOTH) work. |
 | `failure.md` | Failures, panics and crashes: definitional errors, FAILURE! as a returned value, and TRY, EXCEPT, RESCUE, TRAP. |
+| `vanishing.md` | COMMENT, ELIDE and GHOST: VOID!, heavy void, VANISHABLE, and the "ghost busting" that keeps voids from vanishing by accident. |
 | `binding.md` | How code gets meaning from contexts, and how separately bound and unbound pieces can be composed. |
 
 The reason is discoverability.  Someone learning the language looks in
@@ -62,7 +64,7 @@ layout: default
 title: Constness
 parent: Concepts
 grand_parent: Documentation
-nav_order: 5
+nav_order: 6
 permalink: /docs/concepts/constness/
 ---
 ```

@@ -3,7 +3,7 @@ layout: default
 title: Binding
 parent: Concepts
 grand_parent: Documentation
-nav_order: 4
+nav_order: 5
 permalink: /docs/concepts/binding/
 ---
 
