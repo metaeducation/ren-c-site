@@ -8,16 +8,28 @@ This README is not part of the site, and its examples are not tested.
 
 ## Every Example Is Tested
 
-Before the site deploys, `tools/run-doctests.py` pulls the ```` ```rebol ````
+Before the site deploys, `tools/run-doctests.py` pulls the Rebol code
 blocks out of these pages and runs them with a current interpreter.  If
 anything doesn't behave as the page says, the site doesn't deploy.
 
+### Code blocks are Rebol unless they say otherwise
+
+A fenced block with no language named is Rebol: it's tested, and it's
+styled as a console on the site.  There's no need to write
+```` ```rebol ```` (though it still works).  To show something else, name
+the language, as in ```` ```c ````, ```` ```yaml ```` or ```` ```text ````,
+and the block is left alone.
+
+Three places follow this rule and have to agree: `default_lang` in
+`_config.yml`, `tools/extract-doctests.py`, and
+`assets/js/revolt-console.js`.
+
 ### Console transcripts (the usual case)
 
-Any ```` ```rebol ```` block whose first line starts with `>>` is a
+Any Rebol block whose first line starts with `>>` is a
 transcript, and is tested without needing a tag:
 
-```rebol
+```
 >> reduce [1 + 2 3 + 4]
 == [3 7]
 
@@ -56,13 +68,13 @@ immediately before the fence (Jekyll doesn't show it):
 
 ````markdown
 <!-- doctest: positive-test -->
-```rebol
+```
 data: reduce [1 + 1, 2 * 3]
 assert [data = [2 6]]
 ```
 
 <!-- doctest: negative-test match="Cannot decay VOID!|bad-antiform" -->
-```rebol
+```
 reduce [1 elide 2 3]
 ```
 ````
@@ -71,7 +83,7 @@ A `positive-test` must run without error.  A `negative-test` must error,
 and if `match=` is given, the error message must contain one of the
 `|`-separated phrases (or the error id must equal one).
 
-Untagged ```` ```rebol ```` blocks that aren't transcripts are not tested,
+Untagged Rebol blocks that aren't transcripts are not tested,
 and the test summary counts them.  To show a transcript that should not be
 tested, tag it `<!-- doctest: skip -->`.
 

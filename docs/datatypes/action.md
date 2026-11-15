@@ -16,7 +16,7 @@ An ACTION! is a function that runs when the word holding it is evaluated.
 Writing the word with a trailing slash gives the action itself, without
 running it:
 
-```rebol
+```
 >> f: lambda [x] [x * 2]
 == \~&[frame! [
     x: ~null~  ; hole
@@ -38,7 +38,7 @@ The display shows what an action is underneath: a FRAME! (the function's
 arguments, not yet filled) in its antiform state.  That is why its type
 answers as FRAME!:
 
-```rebol
+```
 >> type of f/
 == \~{frame!}~\  ; antiform (datatype!)
 ```
@@ -47,7 +47,7 @@ A plain FRAME! does nothing when a word holding it is evaluated; the
 antiform is what makes it run.  `GET` on the word also gives the action
 without running it:
 
-```rebol
+```
 >> get $f
 == \~&[frame! [
     x: ~null~  ; hole
@@ -56,7 +56,7 @@ without running it:
 
 An action in a group is applied like any other:
 
-```rebol
+```
 >> (lambda [x] [x]) 5
 == 5
 ```
@@ -66,7 +66,7 @@ An action in a group is applied like any other:
 `MAKE FRAME!` on an action gives its plain frame.  Fill in the arguments
 and `EVAL` it to run the function:
 
-```rebol
+```
 >> fr: make frame! f/
 == &[frame! [
     x: ~null~  ; hole
@@ -87,7 +87,7 @@ and `EVAL` it to run the function:
 
 `UNRUN` goes the other way, from an action to its plain frame:
 
-```rebol
+```
 >> type of unrun append/
 == \~{frame!}~\  ; antiform (datatype!)
 

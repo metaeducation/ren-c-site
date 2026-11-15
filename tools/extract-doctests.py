@@ -8,30 +8,33 @@ the block is to be tested.  Jekyll ignores the comment, so it is invisible
 on the rendered page.
 
     <!-- doctest: positive-test -->
-    ```rebol
+    ```
     ; Script code -- must run without error.
     ```
 
     <!-- doctest: negative-test match="phrase1|phrase2" -->
-    ```rebol
+    ```
     ; Script code -- must PANIC or produce a FAILURE!, and the message (or
     ; the error's id) must contain one of the phrases.
     ```
 
     <!-- doctest: transcript -->
-    ```rebol
+    ```
     >> reduce [1 + 2 3 + 4]
     == [3 7]
     ```
 
     <!-- doctest: skip -->
-    ```rebol
+    ```
     >> this block looks like a transcript but is not tested
     ```
 
-A ```rebol block whose first non-blank line starts with `>>` is a transcript
+A fence with no language named is Rebol.  (```rebol works too.)  A fence
+that names another language, such as ```c or ```text, is left alone.
+
+A Rebol block whose first non-blank line starts with `>>` is a transcript
 even without a tag.  (So every console-style example is tested unless it
-opts out with `skip`.)  Other untagged ```rebol blocks are not tested, and
+opts out with `skip`.)  Other untagged Rebol blocks are not tested, and
 are counted in the summary so they're visible.
 
 Pages whose front matter has `native:` and a `spec: |` literal block also
@@ -76,7 +79,11 @@ _DOCTEST_COMMENT = re.compile(
     r'\s*-->\s*$'
 )
 
-_FENCE_OPEN = re.compile(r'^```(?:rebol|revolt|r3)\s*$')
+# A fence with no language is Rebol (the site's default language; see
+# `default_lang` in docs/_config.yml).  Naming another language (```c,
+# ```yaml, ```text) opts a block out.
+#
+_FENCE_OPEN = re.compile(r'^```(?:rebol|revolt|r3)?\s*$')
 _ANY_FENCE_OPEN = re.compile(r'^```')
 _FENCE_CLOSE = re.compile(r'^```\s*$')
 

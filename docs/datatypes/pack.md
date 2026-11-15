@@ -15,7 +15,7 @@ sample: "pack [1 2]"
 A PACK! carries several results at once.  It is how a function returns
 more than one value.  `PACK` makes one from a block of expressions:
 
-```rebol
+```
 >> pack [1 2]
 == \~('1 '2)~\  ; antiform (pack!)
 
@@ -32,7 +32,7 @@ kept in a group.
 A pack is unstable: it can't be held in a variable.  Where a single value
 is wanted, the pack *decays* to its first item:
 
-```rebol
+```
 >> p: pack [1 2]
 == \~('1 '2)~\  ; antiform (pack!)
 
@@ -53,7 +53,7 @@ is wanted, the pack *decays* to its first item:
 
 A block of words on the left of a `:` takes the items apart:
 
-```rebol
+```
 >> [a b]: pack [10 20]
 == \~('10 '20)~\  ; antiform (pack!)
 
@@ -66,7 +66,7 @@ A block of words on the left of a `:` takes the items apart:
 
 Extra items are dropped:
 
-```rebol
+```
 >> [c]: pack [1 2 3]
 == \~('1 '2 '3)~\  ; antiform (pack!)
 
@@ -78,7 +78,7 @@ Extra items are dropped:
 the match, and the position after it.  Used plainly it decays to the
 first, and unpacking gets both:
 
-```rebol
+```
 >> [pos rest]: find [a b c] 'b
 == \~('[b c] '[c])~\  ; antiform (pack!)
 
@@ -97,7 +97,7 @@ first, and unpacking gets both:
 Lifting a pack gives a quasiform group, which can be stored like any
 other element:
 
-```rebol
+```
 >> lift pack [1 2]
 == ~('1 '2)~
 
@@ -110,7 +110,7 @@ other element:
 A pack with nothing in it is the **heavy void**, written `~()~`.  It has
 no first item to decay to:
 
-```rebol
+```
 >> pack []
 == \~()~\  ; antiform (pack!)
 

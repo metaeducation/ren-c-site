@@ -36,7 +36,7 @@ Every example in the documentation is run by a current Revolt interpreter
 each time this site is built, and the result has to match what the page
 shows:
 
-```rebol
+```
 >> reduce [1 + 2 3 + 4]
 == [3 7]
 ```
@@ -44,7 +44,7 @@ shows:
 That includes the examples that are *supposed* to fail.  When a page shows
 an error, the interpreter has to produce that error:
 
-```rebol
+```
 >> reduce [null]
 ** PANIC: Invalid use of ~null~ antiform
 ```

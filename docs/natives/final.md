@@ -19,7 +19,7 @@ FINAL does two things to a value:
 2. It marks it so that the variable it's assigned to can't be changed
    afterward.
 
-```rebol
+```
 >> x: final [a b c]
 == [a b c]
 ```
@@ -27,14 +27,14 @@ FINAL does two things to a value:
 Now the series can't be changed:
 
 <!-- doctest: negative-test match="series-frozen" -->
-```rebol
+```
 append x 'd
 ```
 
 And neither can the variable:
 
 <!-- doctest: negative-test match="final-variable" -->
-```rebol
+```
 x: [d e f]
 ```
 
@@ -44,7 +44,7 @@ FINAL is what makes [PURE](/docs/natives/pure/) functions possible.  A pure
 function's answer may only depend on its arguments and on outside state
 that can never change.  FINAL is how a variable promises that:
 
-```rebol
+```
 >> /length-of-x: pure lambda [] [length of x]
 
 >> length-of-x
@@ -60,7 +60,7 @@ Finality belongs to the variable.  When you read a FINAL variable, you get
 a value that's still frozen, but assigning it somewhere else doesn't make
 another FINAL variable:
 
-```rebol
+```
 >> y: x
 == [a b c]
 
@@ -75,13 +75,13 @@ FINAL for you.  It only accepts actions, so it's the way to define a
 function that can't be redefined out from under the code that calls it:
 
 <!-- doctest: positive-test -->
-```rebol
+```
 /double: lambda [n] [n * 2]
 assert [20 = double 10]
 ```
 
 <!-- doctest: negative-test match="final-variable" -->
-```rebol
+```
 double: lambda [n] [n * 3]
 ```
 
@@ -90,7 +90,7 @@ double: lambda [n] [n * 3]
 UNPROTECT can release a FINAL variable so it can be assigned again:
 
 <!-- doctest: positive-test -->
-```rebol
+```
 unprotect $double
 double: lambda [n] [n * 3]
 assert [30 = double 10]

@@ -33,7 +33,7 @@ While a pure function is running, code inside it may not:
    the function that it reads or writes must be [FINAL](/docs/natives/final/).
 
 <!-- doctest: positive-test -->
-```rebol
+```
 /square: pure lambda [n] [n * n]
 assert [100 = square 10]
 ```
@@ -47,7 +47,7 @@ in variables.  Here's a function that isn't marked IMPURE, but whose answer
 depends on what day it is:
 
 <!-- doctest: positive-test -->
-```rebol
+```
 /square-of: func [x] [
     if now:weekday > 5 [  ; 6 = Saturday, 7 = Sunday
         return "I don't do math on weekends!"
@@ -59,7 +59,7 @@ depends on what day it is:
 Calling it from pure code fails when it reaches NOW:
 
 <!-- doctest: negative-test match="impure-call" -->
-```rebol
+```
 1 + eval pure does [square-of 2]
 ```
 
@@ -73,14 +73,14 @@ So pure code may only see variables that can never change, which is what
 FINAL means:
 
 <!-- doctest: negative-test match="pure-non-final" -->
-```rebol
+```
 x: 10
 foo: pure does [x]
 foo
 ```
 
 <!-- doctest: positive-test -->
-```rebol
+```
 x: final [a b c]
 foo: pure does [x]
 assert [foo = [a b c]]
@@ -98,7 +98,7 @@ something impure when called from a pure function.  It doesn't matter how
 far down the call is:
 
 <!-- doctest: negative-test match="impure-call" -->
-```rebol
+```
 /bad: impure does [print "side effect"]
 /middleman: does [bad]
 caller: pure does [middleman]
@@ -115,7 +115,7 @@ Pure doesn't mean nothing changes.  A pure function can:
 * **Make new series and modify them**, for the same reason.
 
 <!-- doctest: positive-test -->
-```rebol
+```
 /evens-of: pure lambda [block] [
     let result: copy []
     for-each 'item block [
@@ -155,7 +155,7 @@ result is pointless, and is almost certainly a mistake.  The evaluator
 treats it like discarding a literal value:
 
 <!-- doctest: negative-test match="discarded-value" -->
-```rebol
+```
 ten-twenty: pure does [1000 + 20]
 ten-twenty 304
 ```

@@ -7,7 +7,7 @@ the ones that are supposed to fail.
 | Path | What |
 |---|---|
 | `docs/` | The site (Jekyll + just-the-docs).  See `docs/README.md` for how to write tested examples. |
-| `tools/extract-doctests.py` | Pulls tagged/transcript ```` ```rebol ```` blocks out of the Markdown (same tag vocabulary as the Needful docs). |
+| `tools/extract-doctests.py` | Pulls tagged/transcript code blocks out of the Markdown (a fence with no language is Rebol) (same tag vocabulary as the Needful docs). |
 | `tools/doctest-runner.r` | Ren-C script that runs the extracted blocks and checks results, errors, and native specs. |
 | `tools/run-doctests.py` | Runs extraction, then the runner once per page.  Exit code 0 means everything matched. |
 | `.github/workflows/pages.yml` | Installs the interpreter (`metaeducation/ren-c-action`), runs the tests, builds and deploys. |

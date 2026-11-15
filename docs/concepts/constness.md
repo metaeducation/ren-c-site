@@ -25,7 +25,7 @@ In historical Rebol, this function remembered every value it had ever been
 called with:
 
 <!-- doctest: skip -->
-```rebol
+```
 accumulate: func [x] [
     data: []
     append data x
@@ -47,7 +47,7 @@ It's worse when a function hands out a literal from its body, because
 then the *caller* can modify the function:
 
 <!-- doctest: positive-test -->
-```rebol
+```
 symbol-to-string: func [s] [
     return switch s [
         '+ ["plus"]
@@ -66,7 +66,7 @@ anything the evaluator pulls out of a const body is const too.  So that
 caller gets an error instead:
 
 <!-- doctest: negative-test match="const-value" -->
-```rebol
+```
 p: symbol-to-string '+
 insert p "double-"
 ```
@@ -74,7 +74,7 @@ insert p "double-"
 Loops do the same:
 
 <!-- doctest: negative-test match="const-value" -->
-```rebol
+```
 repeat 2 [append [] <item>]
 ```
 
@@ -87,7 +87,7 @@ WORD! carries whatever constness it had when it was stored, so this is
 fine:
 
 <!-- doctest: positive-test -->
-```rebol
+```
 block: []
 repeat 2 [append block <item>]
 assert [block = [<item> <item>]]
@@ -98,7 +98,7 @@ assert [block = [<item> <item>]]
 When you really do want to modify a literal, say so with
 [MUTABLE](/docs/natives/mutable/):
 
-```rebol
+```
 >> repeat 2 [append mutable [] <legal>]
 == [<legal> <legal>]
 ```
@@ -110,7 +110,7 @@ just won't let it happen by accident.
 A caller can use MUTABLE on a const value it was handed, too:
 
 <!-- doctest: positive-test -->
-```rebol
+```
 p: mutable symbol-to-string '+
 insert p "you-" append p "-asked-for-it"
 assert ["you-plus-asked-for-it" = symbol-to-string '+]
@@ -123,7 +123,7 @@ mutable.  But a shallow COPY doesn't copy the series inside it, so those
 are the same series as before, still viewed as const:
 
 <!-- doctest: positive-test -->
-```rebol
+```
 data: ~
 repeat 1 [data: copy [a [b [c]]]]
 
@@ -137,7 +137,7 @@ assert [e.id = 'const-value]
 COPY:DEEP copies the nested series as well, so they're all mutable:
 
 <!-- doctest: positive-test -->
-```rebol
+```
 data: ~
 repeat 1 [data: copy:deep [a [b [c]]]]
 append data <success>
@@ -152,7 +152,7 @@ EVAL runs a block once, so it doesn't make it const.  If the block you
 give it is mutable, it runs as mutable:
 
 <!-- doctest: positive-test -->
-```rebol
+```
 d: ~
 block: [append d: [] <item>]
 assert [[<item> <item>] = repeat 2 [eval block]]
@@ -163,7 +163,7 @@ because you made it const or because it was written out in a loop body,
 it runs as const:
 
 <!-- doctest: negative-test match="const-value" -->
-```rebol
+```
 d: ~
 repeat 2 [eval [append d: [] <item>]]
 ```
@@ -175,7 +175,7 @@ composed in, the series is part of the loop body's literal source, and the
 loop makes it const, even if you made it mutable:
 
 <!-- doctest: negative-test match="const-value" -->
-```rebol
+```
 block: mutable []
 eval compose:deep [repeat 2 [append (block) <illegal>]]
 ```
@@ -184,7 +184,7 @@ Either put MUTABLE in the composed code, or quote the group so the series
 is fetched as a literal value instead of evaluated from the body:
 
 <!-- doctest: positive-test -->
-```rebol
+```
 block: []
 eval compose:deep [repeat 2 [append mutable (block) <legal>]]
 assert [block = [<legal> <legal>]]
@@ -211,7 +211,7 @@ itself:
 MUTABLE can't get around a lock:
 
 <!-- doctest: negative-test match="series-frozen" -->
-```rebol
+```
 frozen: freeze [a b c]
 append mutable frozen 'd
 ```

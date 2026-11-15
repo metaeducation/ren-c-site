@@ -35,7 +35,7 @@ The console shows an antiform between backslashes, with a comment giving
 its type.  The notation inside the backslashes is the antiform's
 *quasiform*: the same payload with tildes around it.
 
-```rebol
+```
 >> spread [a b]
 == \~[a b]~\  ; antiform (splice!)
 
@@ -51,7 +51,7 @@ its type.  The notation inside the backslashes is the antiform's
 An antiform can't go in a list, but its quasiform can.  Evaluating a
 quasiform gives the antiform back:
 
-```rebol
+```
 >> first [~[a b]~]
 == ~[a b]~
 
@@ -64,7 +64,7 @@ quasiforms, and everything else gains a level of quoting.  `UNLIFT` undoes
 it exactly.  So a signal can be put into "suspended animation" in a list,
 and brought back later:
 
-```rebol
+```
 >> lift spread [a b]
 == ~[a b]~
 
@@ -89,14 +89,14 @@ Antiforms come in two grades.
 **Stable** antiforms (LOGIC!, SPLICE!, DATATYPE!, ACTION!) can be held in
 a variable and passed as an argument.  They just can't be put in a list:
 
-```rebol
+```
 >> reduce [null]
 ** PANIC: Invalid use of ~null~ antiform
 ```
 
 But while antiforms cannot themselves be put *literally* in lists, they may represent signals that direct list operations, for instance SPLICE!s are understood by APPEND:
 
-```rebol
+```
 >> s: spread [a b]
 == \~[a b]~\  ; antiform (splice!)
 
@@ -110,7 +110,7 @@ But while antiforms cannot themselves be put *literally* in lists, they may repr
 (FAILURE!).  They have to be dealt with where they are produced, or
 `LIFT`ed first.
 
-```rebol
+```
 >> p: pack [1 2]
 == \~('1 '2)~\  ; antiform (pack!)
 
@@ -127,7 +127,7 @@ can't be tested are exactly the ones that can't be passed as normal arguments.
 
 ## Telling Them Apart
 
-```rebol
+```
 >> antiform? spread [a]
 == \~okay~\  ; antiform (logic!)
 
@@ -150,7 +150,7 @@ can't be tested are exactly the ones that can't be passed as normal arguments.
 To ask which fundamental type an antiform came from, lift it, take the
 quasi off, and ask that:
 
-```rebol
+```
 >> type of unquasi lift spread [a]
 == \~{block!}~\  ; antiform (datatype!)
 

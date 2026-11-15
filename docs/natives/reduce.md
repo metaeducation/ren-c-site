@@ -18,7 +18,7 @@ REDUCE evaluates each expression in a list, and collects the results into a
 new list of the same type.
 
 <!-- doctest: transcript -->
-```rebol
+```
 >> reduce [1 + 2 3 + 4]
 == [3 7]
 
@@ -32,7 +32,7 @@ new list of the same type.
 Commas can be used to make the boundaries between expressions clear.  They
 don't produce anything themselves:
 
-```rebol
+```
 >> reduce [1 + 2, 3 + 4]
 == [3 7]
 ```
@@ -46,7 +46,7 @@ there will be three values in the output.
 This means that an expression which produces "nothing" (a VOID!) is an
 error, not something that silently drops out:
 
-```rebol
+```
 >> reduce [1 elide 2 3]
 ** PANIC: Cannot decay VOID! to a stable value
 ```
@@ -54,7 +54,7 @@ error, not something that silently drops out:
 The same goes for anything else that produces VOID!, such as COMMENT, or an
 IF whose condition was false:
 
-```rebol
+```
 >> reduce [comment "hi" 1]
 ** PANIC: Cannot decay VOID! to a stable value
 
@@ -64,7 +64,7 @@ IF whose condition was false:
 
 Antiforms such as NULL can't be put in a list, so they are errors too:
 
-```rebol
+```
 >> reduce [null]
 ** PANIC: Invalid use of ~null~ antiform
 ** Id: bad-antiform
@@ -73,7 +73,7 @@ Antiforms such as NULL can't be put in a list, so they are errors too:
 A SPLICE! is accepted only if it holds exactly one item, because that keeps
 the one-expression-one-value rule:
 
-```rebol
+```
 >> reduce [spread [a]]
 == [a]
 
@@ -85,7 +85,7 @@ the one-expression-one-value rule:
 > **If you want VOID! to vanish, use JOIN.**  JOIN with a type evaluates the
 > list the way REDUCE does, but drops VOID! results and splices SPLICE!s.
 
-```rebol
+```
 >> join block! [1 elide 2 3]
 == [1 3]
 ```
@@ -97,7 +97,7 @@ collected.  The predicate is allowed to break the one-to-one rule: if it
 returns VOID! the value is dropped, and if it returns a SPLICE! all of its
 items are added.
 
-```rebol
+```
 >> reduce:predicate [1 2 3] lambda [x] [x * 10]
 == [10 20 30]
 
@@ -111,7 +111,7 @@ items are added.
 The predicate LIFT keeps antiforms as quasiforms, which is how PACK gets
 its values:
 
-```rebol
+```
 >> reduce:predicate [1 null 2] lift/
 == ['1 ~null~ '2]
 ```
@@ -120,7 +120,7 @@ its values:
 
 If any expression produces a VETO, the whole REDUCE returns NULL:
 
-```rebol
+```
 >> reduce [1 veto 2]
 == \~null~\  ; antiform (logic!)
 ```
@@ -130,7 +130,7 @@ If any expression produces a VETO, the whole REDUCE returns NULL:
 Values that don't evaluate to anything other than themselves are returned
 as is:
 
-```rebol
+```
 >> reduce "text"
 == "text"
 ```
@@ -140,7 +140,7 @@ as is:
 Blocks tagged `positive-test` run as scripts and must not error.
 
 <!-- doctest: positive-test -->
-```rebol
+```
 data: reduce [1 + 1, 2 * 3, length of "abc"]
 assert [data = [2 6 3]]
 ```
@@ -149,7 +149,7 @@ Blocks tagged `negative-test` must error, and the error must match the
 phrase given in the tag:
 
 <!-- doctest: negative-test match="Cannot decay VOID!" -->
-```rebol
+```
 reduce [1 + 1, elide print "side effect", 3]
 ```
 

@@ -15,7 +15,7 @@ sample: "type of 1"
 A DATATYPE! is the type of a value.  `TYPE OF` gives one, and the words
 ending in `!` hold them:
 
-```rebol
+```
 >> type of 1
 == \~{integer!}~\  ; antiform (datatype!)
 
@@ -32,7 +32,7 @@ ending in `!` hold them:
 Being an antiform of a FENCE!, a datatype can't itself be put in a list.
 Its quasiform can, and evaluates back to the datatype:
 
-```rebol
+```
 >> lift integer!
 == ~{integer!}~
 
@@ -49,7 +49,7 @@ The `?` functions answer for one type.  `MATCH` returns the value if it
 has one of the given types and `~null~` if not; `ENSURE` returns the
 value or panics:
 
-```rebol
+```
 >> integer? 1
 == \~okay~\  ; antiform (logic!)
 
@@ -69,7 +69,7 @@ value or panics:
 Since datatypes compare equal to themselves, `SWITCH` can dispatch on
 one:
 
-```rebol
+```
 >> switch type of "abc" [text! [<text>] integer! [<int>]]
 == <text>
 ```
@@ -81,7 +81,7 @@ of types; see [Datatypes](/docs/datatypes/#type-constraints).
 
 `MAKE` builds a new value of a type, and `TO` converts one:
 
-```rebol
+```
 >> make block! 3
 == []
 
@@ -100,7 +100,7 @@ of types; see [Datatypes](/docs/datatypes/#type-constraints).
 
 ## Datatypes Are Values
 
-```rebol
+```
 >> datatype? integer!
 == \~okay~\  ; antiform (logic!)
 

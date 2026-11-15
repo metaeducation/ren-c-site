@@ -16,7 +16,7 @@ A SPLICE! is a run of values with no container around them.  When one is
 added to a list, its items go in individually.  A plain block goes in as
 one item:
 
-```rebol
+```
 >> append [1 2] [a b c]
 == [1 2 [a b c]]
 
@@ -26,7 +26,7 @@ one item:
 
 `SPREAD` makes a splice from any list:
 
-```rebol
+```
 >> spread [a b c]
 == \~[a b c]~\  ; antiform (splice!)
 
@@ -38,7 +38,7 @@ The intent to splice travels with the value.  So it can be held in a
 variable and used later, and the operation that receives it needs no
 refinement to say what to do:
 
-```rebol
+```
 >> s: spread [a b c]
 == \~[a b c]~\  ; antiform (splice!)
 
@@ -56,7 +56,7 @@ refinement to say what to do:
 
 Splicing nothing is allowed, and adds nothing:
 
-```rebol
+```
 >> spread []
 == \~[]~\  ; antiform (splice!)
 
@@ -68,7 +68,7 @@ Splicing nothing is allowed, and adds nothing:
 
 A splice is not itself a list.  The series operations don't take one:
 
-```rebol
+```
 >> splice? s
 == \~okay~\  ; antiform (logic!)
 
@@ -79,7 +79,7 @@ A splice is not itself a list.  The series operations don't take one:
 To get at the items as a block, lift the splice (which gives its
 quasiform) and take the quasi off:
 
-```rebol
+```
 >> lift s
 == ~[a b c]~
 
@@ -89,7 +89,7 @@ quasiform) and take the quasi off:
 
 And a quasiform block in a list evaluates to a splice:
 
-```rebol
+```
 >> first [~[a b]~]
 == ~[a b]~
 
@@ -104,7 +104,7 @@ string or a single value; there is nothing to splice, and asking is an
 error:
 
 <!-- doctest: negative-test match="plain lists become splices" -->
-```rebol
+```
 spread "abc"
 ```
 

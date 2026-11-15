@@ -16,7 +16,7 @@ A FAILURE! is an error being *returned*.  `FAIL` produces one from a
 message or an ERROR! object, and many natives return one when given
 something they can't handle:
 
-```rebol
+```
 >> fail "oops"
 ** Failure: oops
 
@@ -33,7 +33,7 @@ something they can't handle:
 The console shows `** Failure:` for one of these, as against `** PANIC:`
 for a `PANIC`, which stops execution outright and can't be returned:
 
-```rebol
+```
 >> panic "boom"
 ** PANIC: boom
 ```
@@ -44,7 +44,7 @@ A failure is unstable: it can't be stored, and it can't be ignored.  If
 the code that receives one doesn't deal with it, it is escalated to a
 panic.  So `THEN` won't run on it, and assigning it is an error:
 
-```rebol
+```
 >> fail "oops" then [1]
 ** Failure: oops
 
@@ -56,7 +56,7 @@ The ways to deal with one:
 
 `TRY` turns a failure into `~null~`:
 
-```rebol
+```
 >> try fail "oops"
 == \~null~\  ; antiform (logic!)
 
@@ -67,7 +67,7 @@ The ways to deal with one:
 `EXCEPT` runs a branch instead.  Given a function (in a group, since the
 branch is taken literally), the function receives the ERROR!:
 
-```rebol
+```
 >> fail "oops" except [<handled>]
 == <handled>
 
@@ -78,7 +78,7 @@ branch is taken literally), the function receives the ERROR!:
 `RESCUE` runs a block and gives back the ERROR! object of the first
 failure in it, or `~null~` if there was none:
 
-```rebol
+```
 >> e: rescue [1 / 0]
 
 >> type of e
@@ -98,7 +98,7 @@ where it came from.  It can be stored, inspected, and put in lists like
 any other value.  The FAILURE! is that object in its antiform state, which
 is what makes it demand attention:
 
-```rebol
+```
 >> e: make error! "custom"
 
 >> error? e

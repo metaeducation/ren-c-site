@@ -16,7 +16,7 @@ CONST gives back a *read-only view* of a value.  The series it points to
 isn't changed in any way.  Only the reference that CONST hands back is
 marked, so other references to the same series can still modify it.
 
-```rebol
+```
 >> data: [a b c]
 == [a b c]
 
@@ -27,14 +27,14 @@ marked, so other references to the same series can still modify it.
 Modifying through the const reference is an error:
 
 <!-- doctest: negative-test match="const-value" -->
-```rebol
+```
 append data-readonly <readonly>
 ```
 
 But the original reference still works, and the const view sees the change,
 because there's only one series:
 
-```rebol
+```
 >> append data <readwrite>
 == [a b c <readwrite>]
 
@@ -53,7 +53,7 @@ the literal source of function bodies and loop bodies, so code like this
 can't quietly modify itself on each pass:
 
 <!-- doctest: negative-test match="const-value" -->
-```rebol
+```
 repeat 2 [append [] <item>]
 ```
 

@@ -21,7 +21,7 @@ it calls) may not:
 * read or write a variable from outside the function, unless that variable
   is [FINAL](/docs/natives/final/)
 
-```rebol
+```
 >> /slow-is-word?: pure lambda [value] [word! = type of value]
 
 >> slow-is-word? 'abba
@@ -37,7 +37,7 @@ they're FINAL, so pure code can use them.
 ## Calling Impure Functions Is an Error
 
 <!-- doctest: negative-test match="impure-call" -->
-```rebol
+```
 roll: pure does [random 6]
 roll
 ```
@@ -47,7 +47,7 @@ marked either way calls an IMPURE one, that's an error when it runs under a
 pure function too:
 
 <!-- doctest: negative-test match="impure-call" -->
-```rebol
+```
 /helper: does [random 6]
 roll: pure does [helper]
 roll
@@ -59,14 +59,14 @@ Reading or writing a non-FINAL variable from outside the function is an
 error, because nothing stops that variable from changing between calls:
 
 <!-- doctest: negative-test match="pure-non-final" -->
-```rebol
+```
 x: 10
 peek-x: pure does [x]
 peek-x
 ```
 
 <!-- doctest: negative-test match="pure-non-final" -->
-```rebol
+```
 x: 10
 poke-x: pure does [x: 20]
 poke-x
@@ -75,7 +75,7 @@ poke-x
 If the variable is FINAL, reading it is fine:
 
 <!-- doctest: positive-test -->
-```rebol
+```
 x: final [a b c]
 peek-x: pure does [x]
 assert [peek-x = [a b c]]
@@ -88,7 +88,7 @@ variables, and can create new series and modify them, because nobody
 outside can see them:
 
 <!-- doctest: positive-test -->
-```rebol
+```
 /evens-of: pure lambda [block] [
     let result: copy []
     for-each 'item block [
@@ -106,7 +106,7 @@ result can't have been what you meant, and the evaluator treats it like
 discarding a literal value:
 
 <!-- doctest: negative-test match="discarded-value" -->
-```rebol
+```
 ten-twenty: pure does [1000 + 20]
 ten-twenty 304
 ```
@@ -120,7 +120,7 @@ before the evaluator moved on to `304`.)
 PURE and IMPURE, so trying to mark an IMPURE function PURE is an error:
 
 <!-- doctest: negative-test match="Can't mark impure function pure" -->
-```rebol
+```
 pure impure does [random 6]
 ```
 

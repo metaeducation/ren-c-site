@@ -11,7 +11,7 @@ permalink: /docs/datatypes/
 
 Every value has a type, and `type of` tells you which:
 
-```rebol
+```
 >> type of [a b c]
 == \~{block!}~\  ; antiform (datatype!)
 
@@ -22,7 +22,7 @@ Every value has a type, and `type of` tells you which:
 The type is itself a value (a [DATATYPE!](/docs/datatypes/datatype/)),
 so it can be compared, matched against, and used to make new values:
 
-```rebol
+```
 >> integer! = type of 1
 == \~okay~\  ; antiform (logic!)
 
@@ -124,7 +124,7 @@ the antiform) or changes how the value is looked up:
 | `PINNED!` | `@a` | the value itself, keeping its binding |
 | `TIED!` | `$a` | the value itself, bound to the current context |
 
-```rebol
+```
 >> type of first ['a]
 == \~{quoted!}~\  ; antiform (datatype!)
 
@@ -159,7 +159,7 @@ Besides the exact types, there are *type constraint* functions that answer
 whether a value belongs to a family.  They are what a function's spec uses
 when it accepts more than one type:
 
-```rebol
+```
 >> any-string? "abc"
 == \~okay~\  ; antiform (logic!)
 

@@ -16,7 +16,7 @@ MUTABLE clears the const bit on a value, giving back a reference that can
 be used to modify the series it points to.  It undoes
 [CONST](/docs/natives/const/):
 
-```rebol
+```
 >> data: [a b c]
 == [a b c]
 
@@ -37,7 +37,7 @@ literal source the evaluator makes const (see
 [Constness](/docs/concepts/constness/)).  If you really do want a literal
 series in a body to be modified each time through, say so:
 
-```rebol
+```
 >> repeat 2 [append mutable [] <legal>]
 == [<legal> <legal>]
 ```
@@ -47,7 +47,7 @@ to the same block as the first.  That's the "magic static" pattern, and
 it's something you have to ask for: without MUTABLE it's an error.
 
 <!-- doctest: negative-test match="const-value" -->
-```rebol
+```
 repeat 2 [append [] <illegal>]
 ```
 
@@ -56,7 +56,7 @@ callers can't change the function's source by accident.  MUTABLE lets a
 caller do it on purpose:
 
 <!-- doctest: positive-test -->
-```rebol
+```
 symbol-to-string: func [s] [
     return switch s [
         '+ ["plus"]
@@ -76,7 +76,7 @@ MUTABLE only affects the const bit on the value.  It can't make a series
 writable if the series itself has been locked:
 
 <!-- doctest: negative-test match="series-frozen" -->
-```rebol
+```
 frozen: freeze [a b c]
 append mutable frozen 'd
 ```

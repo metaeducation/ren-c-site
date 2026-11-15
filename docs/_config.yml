@@ -40,6 +40,15 @@ back_to_top_text: "Back to top"
 
 highlighter: rouge
 
+# A fenced code block with no language named is Rebol, so pages don't have
+# to say ```rebol on every example.  (Name a language to opt out: ```c,
+# ```yaml, ```text.)  tools/extract-doctests.py and
+# assets/js/revolt-console.js follow the same rule.
+#
+kramdown:
+  syntax_highlighter_opts:
+    default_lang: rebol
+
 # "Edit this page on GitHub" link at the bottom of every page.
 # !!! Repository name assumed; change if the repo lives elsewhere.
 gh_edit_link: true

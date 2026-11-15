@@ -3,7 +3,7 @@
 //
 //=============================================================================//
 //
-// Marks up console transcripts in ```rebol blocks so they read like a
+// Marks up console transcripts in Rebol blocks (``` or ```rebol) so they read like a
 // terminal: input lines (>>) bright, results (==) dimmer, errors (**) in
 // between, with the prompt glyphs and ; comments receding.  The classes
 // (rc-in, rc-out, rc-err, rc-txt, rc-mark, rc-cmt) are styled in
@@ -94,7 +94,16 @@
     pre.className = "highlight";
   }
 
+  // A fenced block with no language named is Rebol.  kramdown gives such a
+  // block no class at all (there's no Rouge lexer for the default language
+  // set in _config.yml), so name it here.
+  function defaultToRebol(code) {
+    if (code.parentNode.closest(".highlighter-rouge, figure.highlight")) return;
+    code.classList.add("language-rebol");
+  }
+
   function run() {
+    document.querySelectorAll("pre > code:not([class*='language-'])").forEach(defaultToRebol);
     document.querySelectorAll("pre > code[class*='language-']").forEach(wrap);
     document.querySelectorAll("div.language-rebol pre code").forEach(decorate);
   }

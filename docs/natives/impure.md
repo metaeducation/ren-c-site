@@ -19,7 +19,7 @@ user, the filesystem or the network, reading the clock, or generating
 random numbers.
 
 <!-- doctest: positive-test -->
-```rebol
+```
 /coin-flip: impure does [random-pick [heads tails]]
 assert [find [heads tails] coin-flip]
 ```
@@ -28,7 +28,7 @@ Calling an IMPURE function from pure code is an error, even through a
 FINAL variable and even indirectly:
 
 <!-- doctest: negative-test match="impure-call" -->
-```rebol
+```
 best-of-three: pure does [reduce [coin-flip coin-flip coin-flip]]
 best-of-three
 ```
