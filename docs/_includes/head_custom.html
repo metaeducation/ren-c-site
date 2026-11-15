@@ -11,5 +11,13 @@
 <meta name="theme-color" content="#fdfdfd">
 <meta property="og:image" content="{{ '/assets/images/og-image.png' | absolute_url }}">
 <meta name="twitter:card" content="summary_large_image">
-<script src="{{ '/assets/js/revolt-console.js' | relative_url }}" defer></script>
-<script src="{{ '/assets/js/revolt-nav.js' | relative_url }}" defer></script>
+{%- comment -%}
+  The ?v= is the time of the build.  Pages and scripts are cached separately
+  by browsers, and the pages depend on the scripts (a page built for a new
+  version of revolt-console.js shows plain unstyled code blocks with an old
+  one).  A new address for each build means a new page never gets an old
+  script.
+{%- endcomment -%}
+{%- assign v = site.time | date: '%s' -%}
+<script src="{{ '/assets/js/revolt-console.js' | relative_url }}?v={{ v }}" defer></script>
+<script src="{{ '/assets/js/revolt-nav.js' | relative_url }}?v={{ v }}" defer></script>
