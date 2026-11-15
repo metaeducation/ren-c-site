@@ -376,6 +376,17 @@ code {
     }
   }
 
+  // The theme puts a divider above the "Table of contents" heading on
+  // pages with children.  The heading has its own underline, and the page
+  // footer brings another divider, so drop this one.
+  hr:has(+ .text-delta) {
+    display: none;
+  }
+
+  .text-delta {
+    margin-top: 2.5rem;
+  }
+
   blockquote {
     padding: 0.2rem 0 0.2rem 1.1rem;
     margin-left: 0;

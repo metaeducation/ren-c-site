@@ -119,6 +119,7 @@ hairlines, `#333` text, black for headings and links.  Where it lives:
 | `_includes/title.html` | The sidebar wordmark, REV[o]LT, with the mark standing in for the O. |
 | `_includes/head_custom.html` | Web fonts, icons, social image, and the console script. |
 | `assets/js/revolt-console.js` | Marks up `>>` / `==` / `**` lines in transcripts so input is bright and results dim.  Cosmetic; the blocks work without it. |
+| `assets/js/revolt-nav.js` | Expands the sidebar's top-level sections (Documentation) on every page, including Home.  The expander button still collapses them. |
 | `assets/images/revolt-mark.svg` | The flat `[o]` mark (also `favicon.svg`); `favicon.ico`, `icon-*.png` and `apple-touch-icon.png` are rendered from it (the 16px icon is the original hand-pixelled one). |
 | `assets/images/revolt-3d.png` | The 3-D render of the mark, used in the homepage hero and `og-image.png`. |
 
