@@ -87,7 +87,14 @@ collection of special types.
 Antiforms come in two grades.
 
 **Stable** antiforms (LOGIC!, SPLICE!, DATATYPE!, ACTION!) can be held in
-a variable and passed as an argument.  They just can't be put in a list.
+a variable and passed as an argument.  They just can't be put in a list:
+
+```rebol
+>> reduce [null]
+** PANIC: Invalid use of ~null~ antiform
+```
+
+But while antiforms cannot themselves be put *literally* in lists, they may represent signals that direct list operations, for instance SPLICE!s are understood by APPEND:
 
 ```rebol
 >> s: spread [a b]
@@ -96,12 +103,9 @@ a variable and passed as an argument.  They just can't be put in a list.
 >> append [x] s
 == [x a b]
 
->> reduce [null]
-** PANIC: Invalid use of ~null~ antiform
 ```
 
-**Unstable** antiforms (VOID!, TRASH!, PACK!, FAILURE!) can't even be
-held in a variable.  Assigning one either *decays* it to a stable value
+**Unstable** antiforms (VOID!, TRASH!, PACK!, FAILURE!) go further: they can't be fetched from WORD! variables or passed as normal arguments.  Assigning one either *decays* it to a stable value
 (a PACK! becomes its first item), unsets the variable (VOID!), or errors
 (FAILURE!).  They have to be dealt with where they are produced, or
 `LIFT`ed first.
@@ -119,7 +123,7 @@ held in a variable.  Assigning one either *decays* it to a stable value
 
 The practical consequence: anything that can sit in a variable can be
 tested by `IF` without special handling, because the antiforms that
-can't be tested are exactly the ones that can't sit in a variable.
+can't be tested are exactly the ones that can't be passed as normal arguments.
 
 ## Telling Them Apart
 
