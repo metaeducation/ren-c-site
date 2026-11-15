@@ -18,6 +18,8 @@ one function or one type.**
 | `purity.md` | Functions that depend only on their arguments.  Spans PURE, IMPURE, FINAL, and the evaluator's binding. |
 | `infix.md` | Functions that run in the same step as their left side.  Spans INFIX, THEN, ELSE, ALSO, the operators, and how every expression is evaluated. |
 | `definitionality.md` | RETURN, BREAK, THROW and failures belong to where they're defined, not to whatever is on the stack, so wrappers and loops built from loops (UNLESS, FOR-BOTH) work. |
+| `flex-logic.md` | Flexible Logic: NULL as the only false state, OKAY, and TRUE/FALSE, YES/NO, ON/OFF as words with their own predicates. |
+| `packs.md` | PACK!: multiple return values, decay, unpacking with `[a b]:`, and heavy null. |
 | `failure.md` | Failures, panics and crashes: definitional errors, FAILURE! as a returned value, and TRY, EXCEPT, RESCUE, TRAP. |
 | `vanishing.md` | COMMENT, ELIDE and GHOST: VOID!, heavy void, VANISHABLE, and the "ghost busting" that keeps voids from vanishing by accident. |
 | `binding.md` | How code gets meaning from contexts, and how separately bound and unbound pieces can be composed. |
@@ -64,7 +66,7 @@ layout: default
 title: Constness
 parent: Concepts
 grand_parent: Documentation
-nav_order: 6
+nav_order: 9
 permalink: /docs/concepts/constness/
 ---
 ```

@@ -89,6 +89,8 @@ page here showing the fix, with tested examples.
 | RETURN, BREAK and THROW go to whatever is nearest on the stack, so wrappers intercept them | They belong to where they were written | [Definitionality](/docs/concepts/definitionality/) |
 | A typo and "file not found" arrive the same way, so catching one catches both | Functions *return* failures to their caller; bugs are panics | [Failure](/docs/concepts/failure/) |
 | NONE means "nothing found", "false", "loop broke" and "no value", and can be sitting in your data | Signals are *antiforms*, which can't be put in a block | [Antiforms](/docs/concepts/antiforms/) |
+| Two false values, one of which prints like the word `false` | One false state, NULL, and it can't be in a block | [Flexible Logic](/docs/concepts/flexible-logic/) |
+| Extra results come back in a block, or by writing to variables you name | Functions return a *pack*, which wrappers can see and callers can ignore | [Packs](/docs/concepts/packs/) |
 | Loaded code is bound to one global context, and rebinding is destructive | Code starts unbound and gets its meaning from where it's written | [Binding](/docs/concepts/binding/) |
 | A literal `[]` in a function body is silently modified on every call | Bodies are read-only unless you say MUTABLE | [Constness](/docs/concepts/constness/) |
 | `1 + 2 * 3` and `add 1 2 * 3` disagree, because of a hidden evaluator state | One rule for infix and prefix, with no exceptions | [Infix](/docs/concepts/infix/) |
@@ -120,10 +122,11 @@ of like a programming language.  All of that is here:
 ## Where It Stands
 
 {: .warning }
-> Revolt is experimental.  There is no stable release, and names and
-> behaviors still change.  Pages about the parts in flux say so at the top.
-> What you're getting is a design that is coherent and being held to its
-> claims, not one that is finished.
+> Revolt is experimental, and isn't being offered as something to build on.
+> There is no stable release, and names and behaviors still change.  This
+> site is a record of the experiments and what they found, kept so that the
+> results aren't lost, and so the remaining work can be prioritized.  Pages
+> about the parts in flux say so at the top.
 
 ## Start Here
 

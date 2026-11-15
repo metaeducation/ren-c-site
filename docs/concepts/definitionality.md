@@ -3,7 +3,7 @@ layout: default
 title: Definitionality
 parent: Concepts
 grand_parent: Documentation
-nav_order: 9
+nav_order: 8
 permalink: /docs/concepts/definitionality/
 ---
 

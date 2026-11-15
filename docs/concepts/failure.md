@@ -3,7 +3,7 @@ layout: default
 title: Failure
 parent: Concepts
 grand_parent: Documentation
-nav_order: 3
+nav_order: 5
 permalink: /docs/concepts/failure/
 ---
 
