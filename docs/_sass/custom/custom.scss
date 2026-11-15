@@ -325,15 +325,27 @@ code {
     color: $revolt-black;
   }
 
-  // Code inside a link reads as a link, not as inline code with a faint
-  // underline under it.
-  a:not([class]) code {
-    color: $revolt-black;
-    border-color: $revolt-rule-dk;
+  // Code that's a link (like `INFIX` pointing at the INFIX page) has to look
+  // different from code that isn't.  Plain inline code is gray; linked code
+  // takes the cyan of the console selection and the button hover: cyan text
+  // in a cyan-tinted box, filling solid cyan with white text on hover.  The
+  // box replaces the link underline, which would be redundant under it.
+  a:not([class]):has(> code:only-child) {
+    text-decoration: none;
   }
 
-  a:hover code {
-    border-color: $revolt-black;
+  a:not([class]) code {
+    color: $revolt-cyan-dk;
+    background-color: rgba($revolt-cyan, 0.08);
+    border-color: rgba($revolt-cyan, 0.45);
+    transition: color 120ms ease, background-color 120ms ease,
+      border-color 120ms ease;
+  }
+
+  a:not([class]):hover code {
+    color: #fff;
+    background-color: $revolt-cyan-dk;
+    border-color: $revolt-cyan-dk;
   }
 
   ul > li::before {
