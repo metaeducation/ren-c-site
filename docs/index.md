@@ -143,6 +143,8 @@ of like a programming language.  All of that is here:
 
 * **[Natives](/docs/natives/)** -- the functions built into the interpreter
 
+* **[Downloads](/downloads/)** -- there aren't any, and why
+
 ## Community
 
 * [Forum](https://revolt.metaeducation.com/forum/) -- design discussion and
