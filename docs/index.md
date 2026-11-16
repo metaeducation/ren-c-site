@@ -130,6 +130,9 @@ of like a programming language.  All of that is here:
 
 ## Start Here
 
+* **[Why Revolt](/why/)** -- what the experiment is for, in terms of
+  problems you know from other languages
+
 * **[Web Console](/console/)** -- the interpreter running in your browser
   (WebAssembly; nothing to install)
 
