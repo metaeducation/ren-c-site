@@ -110,7 +110,7 @@ abandoned.  The reasons they failed say what a pack has to be.
 
 A pack avoids all three.  It decays for callers who don't care.  Nothing is
 written to the caller's variables until the function has returned.  It
-can't be stored, so it can't leak into data.  And since the values are in
+can't be put in a block, so it can't leak into data.  And since the values are in
 the *result*, a wrapper sees all of them.
 
 ### Wrappers See Everything
@@ -179,8 +179,19 @@ same part for [vanishing](/docs/concepts/vanishing/#heavy-void).
 
 ## Keeping a Pack
 
-A pack is unstable, so a variable can't hold one.  LIFT turns it into a
-quasiform that can be stored, and UNLIFT brings the pack back:
+A pack is unstable, so a plain variable can't hold one: assigning it
+keeps only the first value.  A variable written with the
+[`^` sigil](/docs/concepts/sigils/#meta) holds the pack as it is:
+
+<!-- doctest: positive-test -->
+```
+^whole: pack [1 2]
+[a b]: ^whole
+assert [[1 2] = reduce [a b]]
+```
+
+To put one somewhere a pack can't go, such as in a block, LIFT turns it
+into a quasiform, and UNLIFT brings the pack back:
 
 <!-- doctest: positive-test -->
 ```

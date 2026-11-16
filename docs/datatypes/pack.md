@@ -29,8 +29,9 @@ kept in a group.
 
 ## Decay
 
-A pack is unstable: it can't be held in a variable.  Where a single value
-is wanted, the pack *decays* to its first item:
+A pack is unstable: it can't be held in a plain variable.  Where a single
+value is wanted, the pack *decays* to its first item.  (A
+[`^` variable](/docs/concepts/sigils/#meta) keeps the whole pack.)
 
 ```
 >> p: pack [1 2]

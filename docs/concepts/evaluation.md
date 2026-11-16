@@ -243,8 +243,8 @@ while [[position ^product]: eval:step position] [
 assert [results = [3 30]]
 ```
 
-The `^` on `^product` is needed because a step can produce a void, and an
-ordinary variable can't hold one.
+The [`^`](/docs/concepts/sigils/#meta) on `^product` is needed because a
+step can produce a void, and a plain variable can't hold one.
 
 ## Blocks and Groups Are Evaluated Differently
 

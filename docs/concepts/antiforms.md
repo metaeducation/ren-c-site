@@ -113,7 +113,9 @@ But while antiforms cannot themselves be put *literally* in lists, they may repr
 can't be fetched from WORD! variables or passed as normal arguments.  Assigning
 one either *decays* it to a stable value (a PACK! becomes its first item),
 unsets the variable (VOID!), or errors (FAILURE!).  They have to be dealt with
-where they are produced, or `LIFT`ed first.
+where they are produced, or `LIFT`ed first, or stored and fetched with
+the [`^` sigil](/docs/concepts/sigils/#meta), which turns those
+conversions off.
 
 ```
 >> p: pack [1 2]
@@ -126,8 +128,8 @@ where they are produced, or `LIFT`ed first.
 ** Failure: oops
 ```
 
-The practical consequence: anything that can sit in a variable can be
-tested by `IF` without special handling.
+The practical consequence: anything you can get from a plain variable can
+be tested by `IF` without special handling.
 
 ## Telling Them Apart
 

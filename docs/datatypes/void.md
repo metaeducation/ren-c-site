@@ -90,7 +90,7 @@ for the light one, and says so if given the heavy one:
 
 ## Unstable
 
-A VOID! can't be held in a variable.  Assigning one *unsets* the variable,
+A VOID! can't be held in a plain variable.  Assigning one *unsets* the variable,
 and reading it is then an error:
 
 ```

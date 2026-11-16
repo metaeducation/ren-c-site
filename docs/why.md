@@ -43,9 +43,11 @@ by a compiler.  Revolt has no compiler.  It solves it with a rule about
   function and held in a variable, but can't be put in a block.  NULL is
   one.  So "nothing was there" can never be an item that was there.
 
-* An **unstable** antiform can't be held in a variable either.  It exists
-  only between a function returning it and something reacting to it.
-  A [failure](/docs/concepts/failure/) is one, so it can't be ignored.
+* An **unstable** antiform can't be held in an ordinary variable either.
+  Left alone, it exists only between a function returning it and
+  something reacting to it.  A [failure](/docs/concepts/failure/) is one,
+  so it can't be ignored.  (Keeping one takes a deliberate mark, the
+  [`^` sigil](/docs/concepts/sigils/#meta).)
 
 Almost everything below follows from those two rules.
 
@@ -268,7 +270,7 @@ of things in transit.  Everything above is an instance of it:
 
 And they lean on each other.  ELSE can tell "the branch didn't run" from
 "the branch ran and gave nothing" because of packs.  TRY is safe because
-failures can't be stored.  A wrapper can adjust a function's extra results
+a failure can't be stored by accident.  A wrapper can adjust a function's extra results
 because they're in the return value.  Taking one away would break the
 others.
 

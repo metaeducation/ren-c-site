@@ -161,7 +161,7 @@ assert [null = try second-or-fail [a]]
 
 FAILURE! is an *unstable* [antiform](/docs/concepts/antiforms/): the
 antiform of [ERROR!](/docs/datatypes/error/).  Unstable means it can't be
-stored in a variable or passed as an ordinary argument.  If a failure
+stored in a plain variable or passed as an ordinary argument.  If a failure
 reaches anywhere it would have to be stored or skipped over, it turns into
 a panic.
 
@@ -291,9 +291,9 @@ rescue [prnit "hello"]
 
 ### Keeping One With LIFT
 
-A failure can't be stored, but its [lifted](/docs/concepts/quasiforms/#the-lifting-ladder)
-form can.  LIFT gives a quasiform ERROR!, and UNLIFT turns it back into the
-failure later:
+A plain variable can't hold a failure, but it can hold the
+[lifted](/docs/concepts/quasiforms/#the-lifting-ladder) form.  LIFT gives
+a quasiform ERROR!, and UNLIFT turns it back into the failure later:
 
 <!-- doctest: positive-test -->
 ```
@@ -301,6 +301,15 @@ kept: lift fail "oops"
 assert [quasiform? kept]
 assert ["oops" = (unquasi kept).message]
 assert [failure? unlift kept]
+```
+
+The other way is a [`^` variable](/docs/concepts/sigils/#meta), which
+stores the failure itself:
+
+<!-- doctest: positive-test -->
+```
+try ^held: fail "oops"
+assert [failure? ^held]
 ```
 
 ### Making Your Own

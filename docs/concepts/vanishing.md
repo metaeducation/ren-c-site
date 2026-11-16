@@ -72,8 +72,9 @@ antiform of BLANK!:
 
 A void at the end of a step means "this step produced nothing", and the
 result of the step before it is kept.  That's the whole mechanism of
-vanishing.  Like other unstable antiforms, a VOID! can't be stored:
-assigning one leaves the variable unset.
+vanishing.  Like other unstable antiforms, a VOID! can't be read from a
+plain variable: assigning one leaves the variable unset.  (A
+[`^` variable](/docs/concepts/sigils/#meta) can give it back.)
 
 ## The Danger
 
