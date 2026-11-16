@@ -147,7 +147,7 @@ So the specialization from the table now does what it says:
 
 <!-- doctest: positive-test -->
 ```
-/my-unset: specialize set/ [value: ~]
+my-unset: specialize set/ [value: ~]
 
 counter: 10
 my-unset $counter
@@ -180,7 +180,7 @@ f: make frame! append/
 f.series: copy [a b c]
 f.value: <d>
 
-/add-d: runs f
+add-d: runs f
 assert [[a b c <d>] = add-d]
 ```
 
@@ -200,7 +200,7 @@ disappear from the new function:
 
 <!-- doctest: positive-test -->
 ```
-/append-d: specialize append/ [value: <d>]
+append-d: specialize append/ [value: <d>]
 
 assert [[a <d>] = append-d copy [a]]
 assert [[series part dup line] = words of make frame! append-d/]
@@ -211,7 +211,7 @@ goes on to the original:
 
 <!-- doctest: positive-test -->
 ```
-/append-twice: adapt append/ [value: reduce [value value]]
+append-twice: adapt append/ [value: reduce [value value]]
 
 assert [[a [1 1]] = append-twice copy [a] 1]
 ```
@@ -221,7 +221,7 @@ whether to run it, and what to do with the result:
 
 <!-- doctest: positive-test -->
 ```
-/append-count: enclose append/ func [f] [
+append-count: enclose append/ func [f] [
     let series: f.series
     eval f
     return length of series
@@ -234,7 +234,7 @@ assert [2 = append-count copy [a] <b>]
 
 <!-- doctest: positive-test -->
 ```
-/append-extra: augment append/ [extra [integer!]]
+append-extra: augment append/ [extra [integer!]]
 
 assert [[series value part dup line extra] = words of make frame! append-extra/]
 ```
@@ -265,7 +265,7 @@ local, and the function returns its own frame:
 
 <!-- doctest: positive-test -->
 ```
-/inside-view: func [return: [frame!] public {private}] [
+inside-view: func [return: [frame!] public {private}] [
     private: 304
     return binding of $public
 ]
@@ -295,7 +295,7 @@ AUGMENT adds a `private` *argument* to a function that already has a
 ```
 prelude-view: null
 
-/wrapped: adapt (augment inside-view/ [:private [tag!]]) [
+wrapped: adapt (augment inside-view/ [:private [tag!]]) [
     prelude-view: binding of $private
 ]
 

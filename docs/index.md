@@ -43,9 +43,9 @@ wrapper just works:
 
 <!-- doctest: positive-test -->
 ```
-/my-unless: func [cond block] [return if not cond (block)]
+my-unless: func [cond block] [return if not cond (block)]
 
-/check: func [x] [
+check: func [x] [
     my-unless x = 10 [return "not 10"]
     return "it's 10!"
 ]

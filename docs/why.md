@@ -150,9 +150,9 @@ construct made up on the spot:
 
 <!-- doctest: positive-test -->
 ```
-/twice: func [body] [eval body, return eval body]
+twice: func [body] [eval body, return eval body]
 
-/first-try: func [n] [
+first-try: func [n] [
     twice [if n < 5 [return <early>]]
     return <late>
 ]
@@ -173,7 +173,7 @@ and don't have to know:
 
 <!-- doctest: positive-test -->
 ```
-/both-ends: func [block] [return pack [first block, last block]]
+both-ends: func [block] [return pack [first block, last block]]
 
 x: both-ends [10 20 30]
 assert [x = 10]
@@ -197,7 +197,7 @@ time it runs:
 
 <!-- doctest: negative-test match="const-value" -->
 ```
-/remember: func [x] [
+remember: func [x] [
     let seen: []
     append seen x
     return seen

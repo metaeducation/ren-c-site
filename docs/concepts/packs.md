@@ -35,7 +35,7 @@ first value.
 
 <!-- doctest: positive-test -->
 ```
-/both-ends: func [block] [
+both-ends: func [block] [
     return pack [first block, last block]
 ]
 
@@ -121,7 +121,7 @@ be written:
 
 <!-- doctest: positive-test -->
 ```
-/both-ends-plus: enclose both-ends/ lambda [f] [
+both-ends-plus: enclose both-ends/ lambda [f] [
     let [low high]: eval-free f
     pack [low + 100, high]
 ]

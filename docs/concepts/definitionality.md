@@ -53,9 +53,9 @@ The same wrapper works, with nothing to opt into:
 
 <!-- doctest: positive-test -->
 ```
-/my-unless: func [cond block] [return if not cond (block)]
+my-unless: func [cond block] [return if not cond (block)]
 
-/bar: func [x] [
+bar: func [x] [
     my-unless x = 10 [return "not 10"]
     return "it's 10!"
 ]
@@ -84,7 +84,7 @@ turn:
 
 <!-- doctest: positive-test -->
 ```
-/for-both: lambda [@(var) blk1 blk2 body] [
+for-both: lambda [@(var) blk1 blk2 body] [
     unlift* all [
         ^ lift* for-each (var) blk1 body
         ^ lift* for-each (var) blk2 body
@@ -132,7 +132,7 @@ THROWs:
 
 <!-- doctest: positive-test -->
 ```
-/run-and-tag: func [code] [
+run-and-tag: func [code] [
     let result: catch [eval code, throw <wrapper-done>]
     return reduce [result]
 ]

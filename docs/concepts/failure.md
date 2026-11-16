@@ -55,12 +55,12 @@ of its problems are failures for the caller to handle.  It does that by
 
 <!-- doctest: positive-test -->
 ```
-/bigtest: func [n] [
+bigtest: func [n] [
     if n < 1020 [panic [n "is not big"]]
     return n
 ]
 
-/definitional-bigtest: func [n] [
+definitional-bigtest: func [n] [
     if n < 1020 [return fail [n "is not big"]]
     return n
 ]
@@ -116,7 +116,7 @@ returns it.  If the function body ignores it, it becomes a panic:
 
 <!-- doctest: positive-test -->
 ```
-/average: func [block] [
+average: func [block] [
     let total: 0
     for-each 'n block [total: total + n]
     let result: total / length of block  ; empty block: divides by zero
@@ -139,7 +139,7 @@ returns the result of a call that failed:
 
 <!-- doctest: positive-test -->
 ```
-/ratio: func [a b] [return a / b]
+ratio: func [a b] [return a / b]
 assert [null = try ratio 1 0]
 ```
 
@@ -149,7 +149,7 @@ the function right away:
 
 <!-- doctest: positive-test -->
 ```
-/second-or-fail: func [block] [
+second-or-fail: func [block] [
     let item: trap pick block 2
     return item
 ]

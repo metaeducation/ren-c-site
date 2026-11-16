@@ -338,7 +338,7 @@ state machine for this reason.
 
 <!-- doctest: positive-test -->
 ```
-/countdown: func [n] [
+countdown: func [n] [
     if n = 0 [return <bottom>]
     return countdown n - 1
 ]

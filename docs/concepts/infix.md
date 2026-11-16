@@ -58,13 +58,15 @@ That's how the operators are defined, and how you'd define your own:
 
 <!-- doctest: positive-test -->
 ```
-/average-with: infix lambda [a b] [(a + b) / 2]
+average-with: infix lambda [a b] [(a + b) / 2]
 assert [15 = (10 average-with 20)]
 ```
 
-(The leading slash in `/average-with:` makes the variable
-[FINAL](/docs/natives/final/), so nobody can redefine it out from under
-code that uses it.  It's the usual way to define a function.)
+(AVERAGE-WITH is a function with no side-effects.  So frequently in library
+code you'd see such functions this written as `/average-with:`, with a leading
+slash.  That makes the variable [FINAL](/docs/natives/final/), which
+matters to [pure](/docs/concepts/purity/) functions.  You don't *need* it to
+define a function, but using the slash with pure functions offers benefits.)
 
 ## The Left Side Is One Unit
 
@@ -269,9 +271,9 @@ arguments:
 
 <!-- doctest: positive-test -->
 ```
-/tight: infix lambda [a b] [reduce [a b]]
-/deferred: infix:defer lambda [a b] [reduce [a b]]
-/postponed: infix:postpone lambda [a b] [reduce [a b]]
+tight: infix lambda [a b] [reduce [a b]]
+deferred: infix:defer lambda [a b] [reduce [a b]]
+postponed: infix:postpone lambda [a b] [reduce [a b]]
 ```
 
 ### Tight
@@ -380,7 +382,7 @@ any other:
 
 <!-- doctest: positive-test -->
 ```
-/double: infix lambda [x] [x * 2]
+double: infix lambda [x] [x * 2]
 assert [20 = (10 double)]
 assert [21 = (10 double + 1)]
 assert [21 = (1 + 10 double)]
@@ -392,7 +394,7 @@ result:
 
 <!-- doctest: positive-test -->
 ```
-/chime: infix func [] [return <ding>]
+chime: infix func [] [return <ding>]
 assert [<ding> = (1020 chime)]
 ```
 
@@ -404,7 +406,7 @@ right, each a full step:
 
 <!-- doctest: positive-test -->
 ```
-/between: infix lambda [a b c] [reduce [a b c]]
+between: infix lambda [a b c] [reduce [a b c]]
 assert [[1 3 6] = (1 between 2 + 1 3 * 2)]
 ```
 

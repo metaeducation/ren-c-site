@@ -161,7 +161,7 @@ literally from the call:
 
 <!-- doctest: positive-test -->
 ```
-/name-of: func [@what] [return what]
+name-of: func [@what] [return what]
 
 assert ['foo = name-of foo]
 assert ['(1 + 2) = name-of (1 + 2)]
@@ -210,7 +210,7 @@ what it's given.  `^name` fetches exactly what's there.
 
 <!-- doctest: positive-test -->
 ```
-/both: func [] [return pack [1 2]]
+both: func [] [return pack [1 2]]
 
 first-only: both
 assert [first-only = 1]         ; decayed
@@ -258,7 +258,7 @@ the caller's expression produced:
 
 <!-- doctest: positive-test -->
 ```
-/describe: func [^value] [
+describe: func [^value] [
     if failure? ^value [return <failure>]
     if pack? ^value [return <pack>]
     if void? ^value [return <void>]
@@ -293,8 +293,8 @@ the same way as with any variable, by putting `^` on the access:
 
 <!-- doctest: positive-test -->
 ```
-/takes-plain: func [x] [return x]
-/takes-meta: func [^x] [let [a b]: ^x, return reduce [a b]]
+takes-plain: func [x] [return x]
+takes-meta: func [^x] [let [a b]: ^x, return reduce [a b]]
 
 f: make frame! takes-plain/
 ^f.x: pack [1 2]
@@ -311,7 +311,7 @@ in ordinary values needs no `^` at all:
 
 <!-- doctest: positive-test -->
 ```
-/double-first: enclose add/ func [f] [
+double-first: enclose add/ func [f] [
     f.value1: f.value1 * 2
     return eval f
 ]

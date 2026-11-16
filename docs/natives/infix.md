@@ -22,7 +22,7 @@ add/`).  After that, `add 1 2` can be written the other way around:
 
 <!-- doctest: positive-test -->
 ```
-/plus: infix add/
+plus: infix add/
 assert [3 = (1 plus 2)]
 ```
 
@@ -49,12 +49,12 @@ value on its left is available.  `:defer` and `:postpone` give the two
 modes that run later.
 
 ```
->> /deferred: infix:defer lambda [a b] [reduce [a b]]
+>> deferred: infix:defer lambda [a b] [reduce [a b]]
 
 >> append [a] 1 + 2 deferred 10
 == [a [3 10]]
 
->> /postponed: infix:postpone lambda [a b] [reduce [a b]]
+>> postponed: infix:postpone lambda [a b] [reduce [a b]]
 
 >> append [a] 1 + 2 postponed 10
 == [[a 3] 10]
@@ -109,7 +109,7 @@ postfix function; with three, the second and third come from the right.
 
 <!-- doctest: positive-test -->
 ```
-/twice: infix lambda [x] [x * 2]
+twice: infix lambda [x] [x * 2]
 assert [20 = (10 twice)]
 ```
 

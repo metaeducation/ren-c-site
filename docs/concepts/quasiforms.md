@@ -182,7 +182,7 @@ Here's a small version of that dialect:
 
 <!-- doctest: positive-test -->
 ```
-/run-tests: func [
+run-tests: func [
     "Run tests: (code) must be true, ~error-id~ !! (code) must raise that error"
     return: [integer!]
     tests [block!]

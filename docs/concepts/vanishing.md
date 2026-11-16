@@ -214,7 +214,7 @@ ones included:
 
 <!-- doctest: positive-test -->
 ```
-/note: vanishable func [message] [return ~]
+note: vanishable func [message] [return ~]
 assert [3 = (1 + 2 note "this vanishes")]
 ```
 
@@ -222,7 +222,7 @@ Without VANISHABLE, the same function busts its own ghost:
 
 <!-- doctest: negative-test match="discarded-value" -->
 ```
-/note-heavy: func [message] [return ~]
+note-heavy: func [message] [return ~]
 1 + 2 note-heavy "this does not vanish"
 ```
 
