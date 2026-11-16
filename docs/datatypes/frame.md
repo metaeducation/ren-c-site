@@ -247,10 +247,10 @@ can be given in order or by name:
 == [a b c <d> <d>]
 ```
 
-These stack.  A specialization of an adaptation of an enclosure is one
-frame, passed down through each layer.  That's cheaper than the usual way
-of wrapping functions, where each layer makes a new call and copies the
-arguments across.
+These stack.  A specialization of an adaptation of an augmentation is one
+frame, and its memory is reused by each layer in turn.  The usual way of
+wrapping functions has each layer make a new call and copy the arguments
+across.
 
 ## Views of a Frame
 
@@ -313,6 +313,38 @@ The author of the wrapper didn't need to know what locals the inner
 function has, and the author of the inner function is free to rename
 them.
 
+### How a View Works
+
+A frame's memory is one row of slots.  Next to it, each layer of a
+composed function has a *parameter list*, which says what each slot is to
+that layer: an argument, a local, or nothing it's allowed to see.  A
+FRAME! value is the memory plus one of those lists, and field access goes
+through the list.
+
+That makes the layers cheap:
+
+* **SPECIALIZE** needs only a new parameter list.  In it, the entry for a
+  specialized argument holds the value itself, in the place where the
+  argument's type information was.  So the argument is gone from the
+  interface, and the value is ready to be copied in when a call starts.
+
+* **AUGMENT** needs only a new parameter list too.  It adds slots on the
+  end.  If a new name matches a hidden one from an inner layer, the old
+  entry is marked sealed, and the name now leads to the new slot.
+
+* **ADAPT** and **ENCLOSE** have code of their own to run, so they need
+  more than a list.  While an ADAPT's prelude runs, the frame is seen
+  through the list of the function being adapted.  That's why the prelude
+  can use the arguments and can't touch the locals.
+
+When the function at the bottom finally runs, its body sees the frame
+through the function's own full list, with the locals and its RETURN.
+
+{: .note }
+> This is the simple account.  The implementation has more cases, for
+> the sake of speed, and its author describes the full picture as hard to
+> explain.
+
 ## See Also
 
 * [ACTION!](/docs/datatypes/action/) -- the antiform
@@ -320,5 +352,7 @@ them.
   values
 * [Definitionality](/docs/concepts/definitionality/) -- why wrappers
   compose
+* [Understanding FRAME! Lensing](https://revolt.metaeducation.com/forum/t/understanding-frame-lensing/1645)
+  (forum, 2021-2026)
 * [Default Values and MAKE FRAME! (2024 Edition)](https://revolt.metaeducation.com/forum/t/default-values-and-make-frame-2024-edition/2347)
   (forum, 2024-2026; the first posts predate holes)
