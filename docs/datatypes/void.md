@@ -171,12 +171,26 @@ stays light.  Busting is about what a step leaves behind.)
 
 The heavy void is an empty [PACK!](/docs/datatypes/pack/), written
 `~()~`.  Like VOID!, it's nothing.  Unlike VOID!, it isn't the "nothing"
-that vanishes.  It's what the console shows for an IF that didn't run,
-and it lifts to the same `~` as a light void:
+that vanishes.  It's what EVAL gives back when a block's last step was
+an IF that didn't run, and it lifts to `~()~`, not `~`:
 
 ```
->> if null [1]
+>> eval [if null [1]]
 == \~()~\  ; antiform (pack!)
+
+>> lift eval [if null [1]]
+== ~()~
+```
+
+EVAL of a GROUP! doesn't bust the ghost, and neither does the console,
+so typing the IF directly gives the light void:
+
+```
+>> eval $(if null [1])
+== \~\  ; antiform (void!)
+
+>> if null [1]
+== \~\  ; antiform (void!)
 
 >> lift if null [1]
 == ~

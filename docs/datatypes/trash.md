@@ -17,13 +17,18 @@ says why.  It is the antiform of a TAG!, so the note is the tag's text:
 
 ```
 >> ~<deprecated>~
-== \~<deprecated>~\  ; antiform (trash!)
 
 >> trash? ~<deprecated>~
 == \~okay~\  ; antiform (logic!)
+
+>> lift ~<deprecated>~
+== ~<deprecated>~
 ```
 
-That sounds modest.  But a value that *refuses to be used, and says
+*(The console doesn't display a trash result at all, which is why the first
+line shows nothing.)*
+
+TRASH! sounds modest.  But a value that *refuses to be used, and says
 why*, turns out to replace a lot of comments, stub functions and
 conventions.  It's the sleeper hit of the antiforms.
 
@@ -201,12 +206,14 @@ themselves, so that using their "result" by mistake is caught:
 ```
 >> print "hi"
 hi
-== \~<print>~\  ; antiform (trash!)
+
+>> lift print "hi"
+hi
+== ~<print>~
 ```
 
-The console doesn't show a trash result, so in practice you just see
-`hi`.  (The listings on this site show it, so you can see what came
-back.)
+Since the console doesn't show a trash result, PRINT doesn't leave an
+`==` line after its output.
 
 ## Getting at One Deliberately
 
@@ -215,7 +222,6 @@ deliberately with `GET` or a `^` access:
 
 ```
 >> t: ~<deprecated>~
-== \~<deprecated>~\  ; antiform (trash!)
 
 >> unset? $t
 == \~null~\  ; antiform (logic!)

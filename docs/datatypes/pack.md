@@ -214,10 +214,10 @@ no first item to decay to:
 == \~okay~\  ; antiform (logic!)
 ```
 
-It is also what a block of code evaluates to when its last expression
-produced a [VOID!](/docs/datatypes/void/), which is why the console shows
-`~()~` for an `IF` that did not run.  The VOID! page explains
-[the part it plays there](/docs/datatypes/void/#heavy-void).
+It is also what EVAL of a block gives back when the block's last
+expression produced a [VOID!](/docs/datatypes/void/) from a function
+that isn't vanishable, such as an `IF` that did not run.  The VOID! page
+explains [the part it plays there](/docs/datatypes/void/#heavy-void).
 
 ## Keeping a Pack
 

@@ -94,6 +94,11 @@ parse-block-file: func [
 ; 1. The LIFT is inside the ENRECOVER so that a definitional error (a
 ;    FAILURE! antiform) comes back as a value we can inspect, instead of
 ;    being escalated into a panic on its way out.
+;
+; 2. EVAL of a BLOCK! busts the ghost of a void from a non-vanishable last
+;    step, giving a heavy void (`eval [if null [1]]` is `~()~`).  EVAL of
+;    a GROUP! doesn't, which matches what the console shows for the same
+;    input typed in (`if null [1]` shows the light void).
 
 evaluate: func [
     return: [object!]
@@ -103,6 +108,7 @@ evaluate: func [
     wrap* system.contexts.user code
     code: inside system.contexts.user code
 
+    code: as group! code  ; [2]
     let r: sys.util/enrecover [lift eval code]  ; [1]
 
     if error? r [
@@ -123,6 +129,14 @@ evaluate: func [
             message: form e
             id: if e.id [form e.id]
             shown: unspaced ["** Failure: " message]
+        ]
+    ]
+
+    if all [quasi? lifted, tag? unquasi lifted] [  ; TRASH!
+        return make object! [
+            outcome: 'silent  ; the console doesn't display a trash
+            molded: mold lifted
+            shown: unspaced ["(nothing shown: trash " molded ")"]
         ]
     ]
 
@@ -188,6 +202,9 @@ error-matches: func [
 ; * `== \X\  ; antiform (...)` is how the console shows antiforms.  The
 ;   result must then be an antiform whose LIFT molds as X.  Writing `== X`
 ;   for an antiform result (or `\X\` for a plain one) is a mismatch.
+;
+; * A TRASH! result shows nothing in the console, so an input that gives
+;   one must have no `==` line.  (LIFT it to show which trash it was.)
 ;
 ; * `** PANIC: msg` or `** Failure: msg` must match the error's message,
 ;   and the kind (panic vs. definitional failure) must agree.  `** Id: x`
@@ -340,6 +357,7 @@ run-transcript: func [
                         append problems unspaced ["    actual: " result.shown]
                     ]
                     any [
+                        result.outcome = 'silent
                         all [anti, result.outcome <> 'antiform]
                         all [not anti, result.outcome = 'antiform]
                         want <> result.molded
