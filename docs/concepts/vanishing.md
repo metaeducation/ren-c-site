@@ -279,7 +279,7 @@ NOTHING.  As of 2026:
 ## See Also
 
 * [VOID!](/docs/datatypes/void/) and [PACK!](/docs/datatypes/pack/)
-* [Antiforms](/docs/concepts/antiforms/) -- stable and unstable
+* [Isotopes](/docs/concepts/isotopes/) -- stable and unstable
 * [REDUCE](/docs/natives/reduce/) -- why it refuses voids
 * [Why COMMENT Vanishes, But Not EVAL of COMMENT](https://revolt.metaeducation.com/forum/t/why-comment-vanishes-but-not-eval-of-comment/2563)
   (forum, 2025-2026)

@@ -39,7 +39,7 @@ Typed languages solve this with types like `Option` and `Result`, checked
 by a compiler.  Revolt has no compiler.  It solves it with a rule about
 *where a value can be*:
 
-* An **[antiform](/docs/concepts/antiforms/)** can be returned from a
+* An **[antiform](/docs/concepts/isotopes/)** can be returned from a
   function and held in a variable, but can't be put in a block.  NULL is
   one.  So "nothing was there" can never be an item that was there.
 
@@ -255,7 +255,7 @@ every construct on this page.
 
 ## Why the Parts Need Each Other
 
-One operation, [lifting](/docs/concepts/quasiforms/#the-lifting-ladder),
+One operation, [lifting](/docs/concepts/isotopes/#the-lifting-ladder),
 moves a value between the plane of things that can be stored and the plane
 of things in transit.  Everything above is an instance of it:
 

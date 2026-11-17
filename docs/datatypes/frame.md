@@ -171,7 +171,7 @@ sigil.
 
 A function is a frame too.  What makes `append` *run* when the evaluator
 reaches the word is that the variable holds the frame as an
-[antiform](/docs/concepts/antiforms/), an ACTION!.  RUNS turns a frame
+[antiform](/docs/concepts/isotopes/), an ACTION!.  RUNS turns a frame
 into an action, and UNRUN goes the other way:
 
 <!-- doctest: positive-test -->

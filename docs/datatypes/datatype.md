@@ -117,4 +117,4 @@ of types; see [Datatypes](/docs/datatypes/#type-constraints).
 ## See Also
 
 * [Datatypes](/docs/datatypes/) -- the list of types
-* [Antiforms](/docs/concepts/antiforms/) -- the general mechanism
+* [Isotopes](/docs/concepts/isotopes/) -- the general mechanism

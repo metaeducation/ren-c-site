@@ -163,7 +163,7 @@ mistaken for the function's own answer.  That's covered in
 
 * [Binding](/docs/concepts/binding/) -- how RETURN finds its function
 * [Failure](/docs/concepts/failure/) -- definitional errors
-* [Antiforms](/docs/concepts/antiforms/) -- how a loop's result can carry
+* [Isotopes](/docs/concepts/isotopes/) -- how a loop's result can carry
   "broken" without being mistaken for data
 * [What Are Definitional Returns?](https://revolt.metaeducation.com/forum/t/what-are-definitional-returns/2191)
   (forum)

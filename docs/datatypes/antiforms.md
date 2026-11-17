@@ -14,10 +14,6 @@ The types a value has when it **can't be put in a list**.  Each is the
 antiform of one [fundamental type](/docs/datatypes/fundamentals/), and is
 used as a signal rather than as data.
 
-What antiforms are, how they're written, and how LIFT and UNLIFT work with
-them is explained in **[Antiforms](/docs/concepts/antiforms/)**, under
-Concepts.  The pages here are the reference for each type.
-
 | Antiform | Of | What it signals | Stable? |
 |---|---|---|---|
 | [`LOGIC!`](/docs/datatypes/logic/) | [`WORD!`](/docs/datatypes/word/) | `~okay~` and `~null~`: true, and the one false | yes |
@@ -28,3 +24,25 @@ Concepts.  The pages here are the reference for each type.
 | [`TRASH!`](/docs/datatypes/trash/) | [`TAG!`](/docs/datatypes/tag/) | an unusable value, with a note saying why | no |
 | [`PACK!`](/docs/datatypes/pack/) | [`GROUP!`](/docs/datatypes/group/) | several results at once | no |
 | [`FAILURE!`](/docs/datatypes/failure/) | [`ERROR!`](/docs/datatypes/error/) | an error that must be dealt with | no |
+
+An antiform is written as its [quasiform](/docs/datatypes/quasiform/),
+the same value with tildes around it.  The console shows it between
+backslashes, and evaluating the quasiform gives the antiform:
+
+```
+>> ~[a b]~
+== \~[a b]~\  ; antiform (splice!)
+```
+
+**Stable** antiforms can be held in a variable and passed as an argument.
+**Unstable** ones can't even do that: assigning one to a plain variable
+decays it (a pack to its first item), or panics (a failure).  Only a
+[`^` variable or parameter](/docs/datatypes/metaform/) holds one as it is.
+
+To put any antiform in a list, LIFT it to its quasiform, and UNLIFT to
+get it back.
+
+How antiforms fit together with quasiforms and quoting, and why they're
+one general mechanism rather than eight special cases, is explained in
+**[Isotopes](/docs/concepts/isotopes/)**, under Concepts.  The pages here
+are the reference for each type.

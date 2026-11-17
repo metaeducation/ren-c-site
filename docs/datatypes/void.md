@@ -133,4 +133,4 @@ exactly that purpose:
 * [PACK!](/docs/datatypes/pack/) -- the empty pack is the heavy void
 * [LOGIC!](/docs/datatypes/logic/) -- `~null~` is "false", not "nothing"
 * [REDUCE](/docs/natives/reduce/) -- why REDUCE refuses voids
-* [Antiforms](/docs/concepts/antiforms/) -- the general mechanism
+* [Isotopes](/docs/concepts/isotopes/) -- the general mechanism

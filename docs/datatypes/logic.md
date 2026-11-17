@@ -186,4 +186,4 @@ them gives the antiforms back:
 ## See Also
 
 * [VOID!](/docs/datatypes/void/) -- "no value", as distinct from "false"
-* [Antiforms](/docs/concepts/antiforms/) -- the general mechanism
+* [Isotopes](/docs/concepts/isotopes/) -- the general mechanism

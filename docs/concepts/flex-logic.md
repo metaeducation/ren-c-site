@@ -15,7 +15,7 @@ can test is true, including `0`, the empty string, an empty block, and the
 
 There are no TRUE and FALSE values built into the language.  The results of
 tests are `~okay~` and `~null~`, a pair of
-[antiforms](/docs/concepts/antiforms/) that can't be put in a block.  When
+[antiforms](/docs/concepts/isotopes/) that can't be put in a block.  When
 you want to *store* a yes-or-no answer, you store a word, and the choice of
 words is yours: `true` and `false`, `yes` and `no`, `on` and `off`.  That
 freedom is what "flexible" means.
@@ -263,7 +263,7 @@ same test, and it's always right.
 ## See Also
 
 * [LOGIC!](/docs/datatypes/logic/) -- the datatype
-* [Antiforms](/docs/concepts/antiforms/) -- why OKAY and NULL can't be in a
+* [Isotopes](/docs/concepts/isotopes/) -- why OKAY and NULL can't be in a
   block
 * [Flexible Logic System: Terminology](https://revolt.metaeducation.com/forum/t/flexible-logic-system-terminology/2252)
   (forum, 2024)

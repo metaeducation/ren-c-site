@@ -124,13 +124,14 @@ the antiform) or changes how the value is looked up:
 
 | Type | Written | Means |
 |---|---|---|
-| `QUOTED!` | `'a` | the value itself, not evaluated |
-| `QUASIFORM!` | `~a~` | evaluates to the antiform (see below) |
+| [`QUOTED!`](/docs/datatypes/quoted/) | `'a` | the value itself, not evaluated |
+| [`QUASIFORM!`](/docs/datatypes/quasiform/) | `~a~` | evaluates to the antiform (see below) |
 | [`TIED!`](/docs/datatypes/tied/) | `$a` | the value bound to the current context, without the `$` |
 | [`PINNED!`](/docs/datatypes/pinned/) | `@a` | the value itself, sigil kept, bound |
 | [`METAFORM!`](/docs/datatypes/metaform/) | `^a` | get or set the variable with nothing converted |
 
-The last three are the [sigil types](/docs/datatypes/sigils/).
+The last three are sigils.  See [Decorated Types](/docs/datatypes/decorated/)
+for what they have in common, and the order they stack in.
 
 ```
 >> type of first ['a]
@@ -148,7 +149,7 @@ The last three are the [sigil types](/docs/datatypes/sigils/).
 Some fundamental types have an **antiform**: a variant of the value that
 can't be put in a list, used to carry signals (such as "nothing", "splice
 these", "this failed") in a way that ordinary data can't be mistaken for.
-See [Antiforms](/docs/concepts/antiforms/) for how they work.
+See [Isotopes](/docs/concepts/isotopes/) for how they work.
 
 | Antiform | Of | Summary | Stable? |
 |---|---|---|---|

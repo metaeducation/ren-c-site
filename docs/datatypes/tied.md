@@ -1,16 +1,16 @@
 ---
 layout: datatype
 title: TIED!
-parent: Sigil Types
+parent: Decorated Types
 grand_parent: Datatypes
-nav_order: 1
+nav_order: 3
 permalink: /docs/datatypes/tied/
 datatype: tied!
 sigil: $
 ---
 
 A value with the TIE sigil, `$`, on the front: `$x`, `$[a b]`, `$a.b`.
-See [Sigil Types](/docs/datatypes/sigils/) for what all three sigils have
+See [Sigils](/docs/datatypes/decorated/#sigils) for what all three sigils have
 in common.
 
 ## What the Evaluator Does With It
@@ -58,5 +58,5 @@ Written alone, `$` evaluates what follows and binds the result here.
 
 ## See Also
 
-* [Sigil Types](/docs/datatypes/sigils/) -- TIE, PIN and META together
+* [Decorated Types](/docs/datatypes/decorated/) -- TIE, PIN and META, and the other decorations
 * [Binding](/docs/concepts/binding/) -- what `$` is for

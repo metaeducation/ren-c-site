@@ -6,7 +6,8 @@ layout: default
   (`datatype:`) and, for an antiform, the fundamental type it is the
   antiform of (`antiform-of:`), whether it is stable (`stable:`), the
   one-line summary from %types.r (`summary:`), for a sigil type the sigil
-  (`sigil:`), and a `sample:` expression
+  (`sigil:`), for QUOTED! and QUASIFORM! what the decoration is
+  (`decoration:`, HTML), and a `sample:` expression
   that produces one.  tools/doctest-runner.r checks the name is a datatype
   and that the sample really is an antiform of the documented type.
 {%- endcomment -%}
@@ -31,7 +32,10 @@ layout: default
   </dd>
   {%- elsif page.sigil %}
   <dt>Kind</dt>
-  <dd>Sigil form: any value that can carry a sigil, with <code>{{ page.sigil }}</code> on the front</dd>
+  <dd>Decorated form: any value that can carry a sigil, with <code>{{ page.sigil }}</code> on the front</dd>
+  {%- elsif page.decoration %}
+  <dt>Kind</dt>
+  <dd>Decorated form: {{ page.decoration }}</dd>
   {%- else %}
   <dt>Kind</dt>
   <dd>Fundamental type{% if page.antiform %}, whose antiform is <code>{{ page.antiform | upcase }}</code>{% endif %}</dd>

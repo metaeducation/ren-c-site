@@ -223,6 +223,51 @@ assert [chain? transcode:one ":a:::<b>::"]
 > run of separators splits into blanks and words like `/` or `::` is
 > being worked out.
 
+## Tildes Belong to the Elements
+
+There are no quasi sequences.  When tildes appear in a sequence, they're
+always read as part of the elements, never as tildes around the whole
+thing.  So `~foo~/bar/~baz~` is a PATH! of a quasiform word, a plain
+word, and another quasiform word:
+
+<!-- doctest: positive-test -->
+```
+p: '~foo~/bar/~baz~
+assert [path? p]
+assert [[~foo~ bar ~baz~] = as block! p]
+assert [quasiform? first p]
+```
+
+A `~` on its own is the quasiform of BLANK!, so it can fill an end
+position the way a blank does.  That's how `~/foo/bar`, the start of a
+file path in the home directory, is a path, and why `~/foo/bar/~` is too
+(not a quasiform of `/foo/bar/`):
+
+<!-- doctest: positive-test -->
+```
+assert [[~ foo bar] = as block! '~/foo/bar]
+
+p: '~/foo/bar/~
+assert [path? p]
+assert [[~ foo bar ~] = as block! p]
+```
+
+QUASI won't make one either:
+
+<!-- doctest: negative-test match="non-isotopic-type" -->
+```
+quasi 'a/b
+```
+
+The reason is the same as for nesting: a spelling should only mean one
+thing.  If `~a/b~` could be a quasi path, it would look just like a path
+starting with `~a` and ending with `b~`, and a reader would have to know
+the rule to tell them apart.  With tildes always going to the elements,
+there's nothing to know.  It also means a sequence never has an
+[antiform](/docs/datatypes/antiforms/), so the
+[lifting ladder](/docs/concepts/isotopes/#the-lifting-ladder) for a
+sequence is just the plain form and its quotes.
+
 ## See Also
 
 * [List Types](/docs/datatypes/lists/) -- the mutable containers

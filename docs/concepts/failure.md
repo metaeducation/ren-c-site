@@ -159,7 +159,7 @@ assert [null = try second-or-fail [a]]
 
 ## A Failure Can't Be Ignored
 
-FAILURE! is an *unstable* [antiform](/docs/concepts/antiforms/): the
+FAILURE! is an *unstable* [antiform](/docs/concepts/isotopes/): the
 antiform of [ERROR!](/docs/datatypes/error/).  Unstable means it can't be
 stored in a plain variable or passed as an ordinary argument.  If a failure
 reaches anywhere it would have to be stored or skipped over, it turns into
@@ -292,7 +292,7 @@ rescue [prnit "hello"]
 ### Keeping One With LIFT
 
 A plain variable can't hold a failure, but it can hold the
-[lifted](/docs/concepts/quasiforms/#the-lifting-ladder) form.  LIFT gives
+[lifted](/docs/concepts/isotopes/#the-lifting-ladder) form.  LIFT gives
 a quasiform ERROR!, and UNLIFT turns it back into the failure later:
 
 <!-- doctest: positive-test -->
@@ -403,7 +403,7 @@ Older forum posts use the old names.)
 ## See Also
 
 * [FAILURE!](/docs/datatypes/failure/) and [ERROR!](/docs/datatypes/error/)
-* [Antiforms](/docs/concepts/antiforms/) -- stable and unstable
+* [Isotopes](/docs/concepts/isotopes/) -- stable and unstable
 * [PANIC vs. RETURN FAIL: The Age of Definitional Errors](https://revolt.metaeducation.com/forum/t/panic-vs-return-fail-the-age-of-definitional-errors/1852)
   (forum, 2022; examples use older names)
 * [Rebol2's Hot Errors, Abandoned by R3-Alpha and Red](https://revolt.metaeducation.com/forum/t/rebol2s-hot-errors-abandoned-by-r3-alpha-red/2505)

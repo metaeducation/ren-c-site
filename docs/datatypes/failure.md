@@ -117,6 +117,6 @@ is what makes it demand attention:
 
 ## See Also
 
-* [Antiforms](/docs/concepts/antiforms/) -- the general mechanism, and
+* [Isotopes](/docs/concepts/isotopes/) -- the general mechanism, and
   the history of this one (it has been called RAISED!, and the plain
   object has been called WARNING!)

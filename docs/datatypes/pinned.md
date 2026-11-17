@@ -1,16 +1,16 @@
 ---
 layout: datatype
 title: PINNED!
-parent: Sigil Types
+parent: Decorated Types
 grand_parent: Datatypes
-nav_order: 2
+nav_order: 4
 permalink: /docs/datatypes/pinned/
 datatype: pinned!
 sigil: '@'
 ---
 
 A value with the PIN sigil, `@`, on the front: `@x`, `@[a b]`, `@(a b)`.
-See [Sigil Types](/docs/datatypes/sigils/) for what all three sigils have
+See [Sigils](/docs/datatypes/decorated/#sigils) for what all three sigils have
 in common.
 
 ## What the Evaluator Does With It
@@ -89,5 +89,5 @@ Written alone, `@` takes what follows literally:
 
 ## See Also
 
-* [Sigil Types](/docs/datatypes/sigils/) -- TIE, PIN and META together
+* [Decorated Types](/docs/datatypes/decorated/) -- TIE, PIN and META, and the other decorations
 * [Binding](/docs/concepts/binding/) -- why a value needs one

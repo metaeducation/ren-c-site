@@ -90,5 +90,5 @@ vanish the way a [VOID!](/docs/datatypes/void/) from `COMMENT` does:
 
 * [VOID!](/docs/datatypes/void/) -- "no value", for when there is nothing
   to say about why
-* [Antiforms](/docs/concepts/antiforms/) -- the general mechanism, and
+* [Isotopes](/docs/concepts/isotopes/) -- the general mechanism, and
   the history of this one (it has been the antiform of RUNE! as well)

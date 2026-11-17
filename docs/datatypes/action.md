@@ -103,4 +103,4 @@ word for the action, or its plain frame, goes in a list instead.
 
 ## See Also
 
-* [Antiforms](/docs/concepts/antiforms/) -- the general mechanism
+* [Isotopes](/docs/concepts/isotopes/) -- the general mechanism

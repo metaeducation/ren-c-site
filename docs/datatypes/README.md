@@ -21,16 +21,17 @@ Every datatype page is in exactly one of five groups:
 | `lists.md` | BLOCK!, GROUP!, FENCE!: the mutable containers | `List Types` |
 | `sequences.md` | TUPLE!, CHAIN!, PATH!: the immutable containers | `Sequence Types` |
 | `antiforms.md` | Types that can't be put in a list (VOID!, SPLICE!, LOGIC!...) | `Antiform Types` |
-| `sigils.md` | TIED!, PINNED!, METAFORM!: any value with `$`, `@` or `^` on the front | `Sigil Types` |
+| `decorated.md` | QUOTED!, QUASIFORM!, TIED!, PINNED!, METAFORM!: any value with `'`, `~`, `$`, `@` or `^` added | `Decorated Types` |
 
 Lists and sequences are fundamental types in the technical sense, but get
-groups of their own because each family shares a lot.  Like `sigils.md`,
-`lists.md` and `sequences.md` are full pages explaining what the family
-has in common (for sequences: immutability, the nesting order, blanks),
-and the type pages say only what's particular to each.  `sigils.md` is a
-full page since what the sigils share (one per value, the heart
-underneath, TIE/PIN/META to add them) is the same for all three.  Each sigil page gives `sigil:` in its front
-matter, and has no `summary:`, since `types.r` doesn't give one.
+groups of their own because each family shares a lot.  `lists.md`,
+`sequences.md` and `decorated.md` are full pages explaining what the
+family has in common (for sequences: immutability, the nesting order,
+blanks; for decorations: the heart underneath, the order they stack in,
+and the sigils), and the type pages say only what's particular to each.
+The decorated types have no `summary:`, since `types.r` doesn't give
+one.  Each sigil page gives `sigil:` in its front matter instead, and
+QUOTED! and QUASIFORM! give `decoration:`.
 
 The index of all of them, with one-line summaries, is `docs/datatypes.md`.
 
@@ -41,11 +42,13 @@ fundamental type.  It doesn't mean "important" or "basic".  So the
 Fundamental Types section holds datatype pages only.  A notable topic that
 isn't a datatype (constness, binding) goes in `docs/concepts/`.
 
-### The Explanation of Antiforms Is in Concepts
+### The Explanation of Isotopes Is in Concepts
 
 `antiforms.md` here is a short page: a table of the eight antiform types,
-and a link.  The explanation of what antiforms are and how they work is
-`docs/concepts/antiforms.md`, where people look for explanations.
+a few paragraphs, and a link.  The big picture of antiforms, quasiforms,
+quoting and the lifting ladder is `docs/concepts/isotopes.md`, where
+people look for explanations.  `quasiform.md` and `quoted.md` cover the
+details of their own types.
 
 The same split applies to anything else here that grows into an idea.  The
 reference for a type stays in this folder, and the idea goes in

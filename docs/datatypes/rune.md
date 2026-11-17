@@ -150,7 +150,7 @@ assert [_ = any [null _]]       ; truthy
 ```
 
 For "no value" that can't sneak into data, Revolt uses
-[antiforms](/docs/concepts/antiforms/) instead.
+[antiforms](/docs/concepts/isotopes/) instead.
 
 ## Not the Same as BLANK!
 

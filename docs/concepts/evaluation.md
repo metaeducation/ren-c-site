@@ -34,7 +34,7 @@ type:
 | `word:` | runs one more step, and assigns the result |
 | `(1 + 2)` | evaluates the contents |
 | `'word` | removes one quote |
-| `~null~` | gives the [antiform](/docs/concepts/antiforms/) |
+| `~null~` | gives the [antiform](/docs/concepts/isotopes/) |
 | `obj.field` | picks the field |
 | `@word` | gives the value back, sigil and all |
 | `$word` | [binds](/docs/concepts/binding/) the word and gives it back |

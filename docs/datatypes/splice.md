@@ -112,5 +112,5 @@ spread "abc"
 
 * [REDUCE](/docs/natives/reduce/) -- accepts a splice only if it holds one
   item, unless given a predicate
-* [Antiforms](/docs/concepts/antiforms/) -- the general mechanism, and
+* [Isotopes](/docs/concepts/isotopes/) -- the general mechanism, and
   the history of this one, which started life as the antiform of GROUP!

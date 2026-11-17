@@ -17,7 +17,7 @@ report where the match started *and* where it ended.  A scanner can give
 the item it read *and* what's left to read.
 
 In Revolt such a function returns a **pack**: several values travelling as
-one result.  A pack is the [antiform](/docs/concepts/antiforms/) of
+one result.  A pack is the [antiform](/docs/concepts/isotopes/) of
 GROUP!, and PACK makes one from a block of expressions:
 
 ```
@@ -158,7 +158,7 @@ assert [high = 30]
 
 ## What's Inside a Pack
 
-A pack holds its values [lifted](/docs/concepts/quasiforms/#the-lifting-ladder),
+A pack holds its values [lifted](/docs/concepts/isotopes/#the-lifting-ladder),
 which is why the items display with quote marks (`'1` rather than `1`).
 Lifting is what lets a pack carry values that couldn't go in an ordinary
 block, like NULL:
@@ -252,7 +252,7 @@ assert [[1 2] = reduce [a b]]
 
 ## See Also
 
-* [Antiforms](/docs/concepts/antiforms/) -- stable and unstable
+* [Isotopes](/docs/concepts/isotopes/) -- stable and unstable
 * [METAFORM!](/docs/datatypes/metaform/) -- `^` variables and parameters,
   which keep a pack whole
 * [VOID!](/docs/datatypes/void/) -- the light void, and how it becomes the

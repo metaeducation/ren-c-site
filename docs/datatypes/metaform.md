@@ -1,16 +1,16 @@
 ---
 layout: datatype
 title: METAFORM!
-parent: Sigil Types
+parent: Decorated Types
 grand_parent: Datatypes
-nav_order: 3
+nav_order: 5
 permalink: /docs/datatypes/metaform/
 datatype: metaform!
 sigil: ^
 ---
 
 A value with the META sigil, `^`, on the front: `^x`, `^x:`, `^a.b`.
-See [Sigil Types](/docs/datatypes/sigils/) for what all three sigils have
+See [Sigils](/docs/datatypes/decorated/#sigils) for what all three sigils have
 in common.
 
 This is the sigil with the most behind it.  In ordinary code, `^` means
@@ -179,7 +179,7 @@ This is the third design, and older writing describes the first two.
 
 **First: `^` meant "lifted".**  For years no variable could hold an
 unstable antiform, with no exceptions.  A `^` parameter worked by
-receiving its argument [lifted](/docs/concepts/quasiforms/#the-lifting-ladder):
+receiving its argument [lifted](/docs/concepts/isotopes/#the-lifting-ladder):
 a pack arrived as a quasiform, an ordinary value arrived with a quote on
 it, and the function body had to UNLIFT it.  That meant a frame's fields
 were lifted for `^` parameters and not for plain ones.  Anything that
@@ -241,10 +241,10 @@ untouched:
 
 ## See Also
 
-* [Sigil Types](/docs/datatypes/sigils/) -- TIE, PIN and META together
+* [Decorated Types](/docs/datatypes/decorated/) -- TIE, PIN and META, and the other decorations
 * [PACK!](/docs/datatypes/pack/), [Failure](/docs/concepts/failure/) and
   [Vanishing](/docs/concepts/vanishing/) -- what `^` lets through
-* [Quasiforms](/docs/concepts/quasiforms/) -- lifting, which `^` used to
+* [Isotopes](/docs/concepts/isotopes/) -- lifting, which `^` used to
   mean
 * [Solving the Pox of the (^)... LIFT the Universe?](https://revolt.metaeducation.com/forum/t/solving-the-pox-of-the-lift-the-universe/2477)
   (forum, 2025)

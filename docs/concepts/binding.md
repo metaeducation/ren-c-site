@@ -256,7 +256,7 @@ designed to work together.
 
 ## See Also
 
-* [Quasiforms: Binding](/docs/concepts/quasiforms/#binding) -- how binding
+* [QUASIFORM!: Binding](/docs/datatypes/quasiform/#binding) -- how binding
   interacts with quasiforms and antiforms
 * [Purity](/docs/concepts/purity/) -- how pure code uses binding to tell
   local variables from outside state

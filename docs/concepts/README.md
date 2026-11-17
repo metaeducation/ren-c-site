@@ -12,8 +12,7 @@ one function or one type.**
 
 | Page | The idea |
 |---|---|
-| `antiforms.md` | Values that can't be put in a list: how they're written, LIFT and UNLIFT, stable and unstable. |
-| `quasiforms.md` | Values with tildes (`~foo~`): how they stand in for antiforms, the lifting ladder, and their use in dialects. |
+| `isotopes.md` | Antiforms, quasiforms and quoting as one family: the lifting ladder, LIFT and UNLIFT, stable and unstable antiforms. |
 | `constness.md` | Read-only views of series.  Spans CONST, MUTABLE, COPY, EVAL, and every function and loop body. |
 | `purity.md` | Functions that depend only on their arguments.  Spans PURE, IMPURE, FINAL, and the evaluator's binding. |
 | `infix.md` | Functions that run in the same step as their left side.  Spans INFIX, THEN, ELSE, ALSO, the operators, and how every expression is evaluated. |
@@ -31,10 +30,12 @@ section.
 
 So an idea belongs here **even when it has a matching group of reference
 pages**.  (Two exceptions were made on request: packs are explained on the
-PACK! page, and sigils on the Sigil Types page in `docs/datatypes/`, since
-each is really about one type or one family of types.)  Antiforms are the example: the explanation is here, and the
-reference pages for the eight antiform types stay in `docs/datatypes/`
-under a short "Antiform Types" page that links back.
+PACK! page, and sigils on the Decorated Types page in `docs/datatypes/`,
+since each is really about one type or one family of types.)  Isotopes
+are the example: the big picture of antiforms, quasiforms and quoting is
+here, and the reference pages for the eight antiform types stay in
+`docs/datatypes/` under a short "Antiform Types" page that links back,
+with QUASIFORM! and QUOTED! under "Decorated Types".
 
 ## How Concept Pages and Reference Pages Divide the Work
 
