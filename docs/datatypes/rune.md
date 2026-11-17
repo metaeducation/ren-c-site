@@ -139,7 +139,7 @@ here.  Two others have gone:
   one-character piece of text now, and nothing more.
 
 * **It isn't false.**  The only false state is the
-  [NULL](/docs/concepts/flex-logic/) antiform, which can't be put in a
+  [NULL](/docs/datatypes/logic/) antiform, which can't be put in a
   block.
 
 <!-- doctest: positive-test -->

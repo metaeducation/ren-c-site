@@ -130,7 +130,7 @@ last one.  It applies three rules along the way.
 
 ### Voids Don't Replace the Result
 
-If a step produces a [VOID!](/docs/concepts/vanishing/), the result of the
+If a step produces a [VOID!](/docs/datatypes/void/), the result of the
 step before it is kept:
 
 ```
@@ -250,7 +250,7 @@ step can produce a void, and a plain variable can't hold one.
 
 EVAL accepts a GROUP! as well as a BLOCK!, and treats them differently in
 one respect: what happens to a void from a function that isn't
-[VANISHABLE](/docs/concepts/vanishing/#ghost-busting), like the void from
+[VANISHABLE](/docs/datatypes/void/#ghost-busting), like the void from
 an IF that didn't run its branch.
 
 **In a block, every step is treated alike.**  Such a void becomes a heavy
@@ -447,7 +447,7 @@ and the generators.
 ## See Also
 
 * [Infix](/docs/concepts/infix/) -- the third part of a step
-* [Vanishing](/docs/concepts/vanishing/) -- voids, and why EVAL isn't
+* [VOID!](/docs/datatypes/void/) -- voids, and why EVAL isn't
   vanishable
 * [Purity](/docs/concepts/purity/) -- which results can't be discarded
 * [PACK!](/docs/datatypes/pack/) -- what EVAL:STEP returns

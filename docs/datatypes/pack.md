@@ -216,8 +216,8 @@ no first item to decay to:
 
 It is also what a block of code evaluates to when its last expression
 produced a [VOID!](/docs/datatypes/void/), which is why the console shows
-`~()~` for an `IF` that did not run.  [Vanishing](/docs/concepts/vanishing/#heavy-void)
-explains the part it plays there.
+`~()~` for an `IF` that did not run.  The VOID! page explains
+[the part it plays there](/docs/datatypes/void/#heavy-void).
 
 ## Keeping a Pack
 

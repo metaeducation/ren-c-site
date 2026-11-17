@@ -228,7 +228,7 @@ follows:
 ```
 
 `^` here is the IDENTITY function, which is also how a void is
-[allowed to vanish](/docs/concepts/vanishing/#asking-for-vanishing).
+[allowed to vanish](/docs/datatypes/void/#asking-for-vanishing).
 
 ## See Also
 

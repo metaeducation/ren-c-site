@@ -89,7 +89,7 @@ const count = settings.count || 10;   // a count of 0 becomes 10
 ```
 
 JavaScript added `??` to fix that.  Revolt has
-[one false state](/docs/concepts/flexible-logic/), so the ordinary form is
+[one false state](/docs/datatypes/logic/#null-is-the-only-false), so the ordinary form is
 already right:
 
 ```
@@ -261,10 +261,10 @@ of things in transit.  Everything above is an instance of it:
 
 | In transit | What it gives |
 |---|---|
-| the words `null` and `okay` | absence, and [logic](/docs/concepts/flexible-logic/) |
+| the words `null` and `okay` | absence, and [logic](/docs/datatypes/logic/) |
 | an error | a [failure](/docs/datatypes/failure/) that must be handled |
 | a group of values | a [pack](/docs/datatypes/pack/): several results in one |
-| an empty marker | a [void](/docs/concepts/vanishing/): a function that leaves no result |
+| an empty marker | a [void](/docs/datatypes/void/): a function that leaves no result |
 | a block | a splice: items added, not a block added |
 | a function's frame | an action: a function that runs when its word is reached |
 

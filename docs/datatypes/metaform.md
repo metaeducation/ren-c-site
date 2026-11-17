@@ -21,7 +21,7 @@ This is the sigil with the most behind it.  In ordinary code, `^` means
 A plain variable holds a single, ordinary value.  Assigning to one
 converts whatever arrives.  A [pack](/docs/datatypes/pack/) decays to its
 first item.  A [failure](/docs/datatypes/failure/) isn't stored at all,
-and becomes a panic.  A [void](/docs/concepts/vanishing/) leaves the
+and becomes a panic.  A [void](/docs/datatypes/void/) leaves the
 variable unset.
 
 `^` turns the conversion off, in both directions.  `^name:` stores exactly
@@ -243,7 +243,7 @@ untouched:
 
 * [Decorated Types](/docs/datatypes/decorated/) -- TIE, PIN and META, and the other decorations
 * [PACK!](/docs/datatypes/pack/), [FAILURE!](/docs/datatypes/failure/) and
-  [Vanishing](/docs/concepts/vanishing/) -- what `^` lets through
+  [VOID!](/docs/datatypes/void/) -- what `^` lets through
 * [Isotopes](/docs/concepts/isotopes/) -- lifting, which `^` used to
   mean
 * [Solving the Pox of the (^)... LIFT the Universe?](https://revolt.metaeducation.com/forum/t/solving-the-pox-of-the-lift-the-universe/2477)
