@@ -13,17 +13,23 @@ for TEXT!).  All the pages sit in this one folder, and their URLs are flat
 (`/docs/datatypes/text/`).  The grouping is done by `parent:` in the front
 matter, not by subfolders.
 
-Every datatype page is in exactly one of three groups:
+Every datatype page is in exactly one of five groups:
 
 | Parent page | Holds | `parent:` |
 |---|---|---|
-| `fundamentals.md` | Types a value in a list can have (TEXT!, BLOCK!, WORD!...) | `Fundamental Types` |
+| `fundamentals.md` | Types a value in a list can have (TEXT!, WORD!, OBJECT!...), except the containers | `Fundamental Types` |
+| `lists.md` | BLOCK!, GROUP!, FENCE!: the mutable containers | `List Types` |
+| `sequences.md` | TUPLE!, CHAIN!, PATH!: the immutable containers | `Sequence Types` |
 | `antiforms.md` | Types that can't be put in a list (VOID!, SPLICE!, LOGIC!...) | `Antiform Types` |
 | `sigils.md` | TIED!, PINNED!, METAFORM!: any value with `$`, `@` or `^` on the front | `Sigil Types` |
 
-Unlike the other two, `sigils.md` is a full page, since what the sigils
-share (one per value, the heart underneath, TIE/PIN/META to add them) is
-the same for all three.  Each sigil page gives `sigil:` in its front
+Lists and sequences are fundamental types in the technical sense, but get
+groups of their own because each family shares a lot.  Like `sigils.md`,
+`lists.md` and `sequences.md` are full pages explaining what the family
+has in common (for sequences: immutability, the nesting order, blanks),
+and the type pages say only what's particular to each.  `sigils.md` is a
+full page since what the sigils share (one per value, the heart
+underneath, TIE/PIN/META to add them) is the same for all three.  Each sigil page gives `sigil:` in its front
 matter, and has no `summary:`, since `types.r` doesn't give one.
 
 The index of all of them, with one-line summaries, is `docs/datatypes.md`.

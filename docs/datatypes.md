@@ -56,12 +56,15 @@ are the ones the interpreter's own `types.r` table gives them.
 | [`TEXT!`](/docs/datatypes/text/) | text string series of characters | `"abc"` |
 | [`FILE!`](/docs/datatypes/file/) | file name or path | `%file.txt` |
 | [`TAG!`](/docs/datatypes/tag/) | markup string (HTML or XML) | `<div>` |
-| [`URL!`](/docs/datatypes/url/) | uniform resource locator or identifier | `http://example.com` |
+| [`URL!`](/docs/datatypes/url/) | uniform resource locator or identifier | `decode-url <http://example.com>` |
 | [`EMAIL!`](/docs/datatypes/email/) | email address | `user@example.com` |
 | [`RUNE!`](/docs/datatypes/rune/) | immutable codepoint or codepoint sequence | `#a` |
 | [`BLOB!`](/docs/datatypes/blob/) | series of bytes | `#{DECAFBAD}` |
 
 ### Lists
+
+Mutable series, as in historical Rebol.  See
+[List Types](/docs/datatypes/lists/).
 
 | Type | Summary | Example |
 |---|---|---|
@@ -70,6 +73,9 @@ are the ones the interpreter's own `types.r` table gives them.
 | [`FENCE!`](/docs/datatypes/fence/) | list of elements that are used in construction via MAKE | `{a b}` |
 
 ### Sequences
+
+Immutable, and not series.  See
+[Sequence Types](/docs/datatypes/sequences/).
 
 | Type | Summary | Example |
 |---|---|---|
@@ -177,11 +183,11 @@ when it accepts more than one type:
 | `ANY-NUMBER?` | INTEGER!, DECIMAL!, PERCENT! |
 | `ANY-SCALAR?` | the numbers, plus PAIR!, TIME!, and TUPLE! |
 | `ANY-STRING?` | TEXT!, FILE!, TAG! |
-| `ANY-UTF8?` | the strings, plus URL!, EMAIL!, RUNE!, and WORD! |
+| `ANY-UTF8?` | the strings, plus EMAIL!, RUNE!, and WORD! |
 | `ANY-SERIES?` | the strings, BLOB!, and the lists |
 | `ANY-LIST?` | BLOCK!, GROUP!, FENCE! |
 | `ANY-SEQUENCE?` | TUPLE!, CHAIN!, PATH! |
-| `ANY-CONTEXT?` | OBJECT!, MODULE!, ERROR!, PORT!, FRAME!, LET! |
+| `ANY-CONTEXT?` | OBJECT!, MODULE!, ERROR!, PORT!, FRAME!, LET!, and now URL! |
 | `ANY-BRANCH?` | what IF and friends accept as a branch: the lists, PATH!, and FRAME! |
 | `ANY-INERT?` | types that evaluate to themselves |
 | `ELEMENT?` | anything that can be put in a list (so, not an antiform) |

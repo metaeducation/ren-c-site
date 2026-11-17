@@ -3,12 +3,14 @@ layout: default
 title: Sigil Types
 parent: Datatypes
 grand_parent: Documentation
-nav_order: 3
+nav_order: 5
 has_children: true
 permalink: /docs/datatypes/sigils/
 ---
 
 # Sigil Types
+
+![The three sigils, labelled TIE, PIN and META](/assets/images/sigils-tie-pin-meta.webp)
 
 A **sigil** is one of three marks that can go on the front of a value.
 Each gives the value a type of its own:
@@ -18,8 +20,6 @@ Each gives the value a type of its own:
 | `$` | **TIE** | [`TIED!`](/docs/datatypes/tied/) | [binds](/docs/concepts/binding/) the value to where it's written |
 | `@` | **PIN** | [`PINNED!`](/docs/datatypes/pinned/) | stays as it is (but bound) |
 | `^` | **META** | [`METAFORM!`](/docs/datatypes/metaform/) | reads or writes a variable with nothing converted |
-
-![The three sigils, labelled TIE, PIN and META](/assets/images/sigils-tie-pin-meta.webp)
 
 The names are meant to be easy to hold on to.  A `$` looks like a knot, and
 it ties a word to a context.  A pin `@` holds a value in place, so it

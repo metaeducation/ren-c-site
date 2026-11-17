@@ -1,9 +1,9 @@
 ---
 layout: datatype
 title: BLOCK!
-parent: Fundamental Types
+parent: List Types
 grand_parent: Datatypes
-nav_order: 30
+nav_order: 1
 permalink: /docs/datatypes/block/
 datatype: block!
 summary: 'list of elements that blocks evaluation unless EVAL is used'

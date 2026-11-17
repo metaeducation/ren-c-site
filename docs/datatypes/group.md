@@ -1,9 +1,9 @@
 ---
 layout: datatype
 title: GROUP!
-parent: Fundamental Types
+parent: List Types
 grand_parent: Datatypes
-nav_order: 32
+nav_order: 2
 permalink: /docs/datatypes/group/
 datatype: group!
 summary: 'list that evaluates expressions as an isolated group'
