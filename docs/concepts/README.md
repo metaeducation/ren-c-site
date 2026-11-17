@@ -17,11 +17,9 @@ one function or one type.**
 | `constness.md` | Read-only views of series.  Spans CONST, MUTABLE, COPY, EVAL, and every function and loop body. |
 | `purity.md` | Functions that depend only on their arguments.  Spans PURE, IMPURE, FINAL, and the evaluator's binding. |
 | `infix.md` | Functions that run in the same step as their left side.  Spans INFIX, THEN, ELSE, ALSO, the operators, and how every expression is evaluated. |
-| `sigils.md` | TIE (`$`), PIN (`@`) and META (`^`): what the evaluator does with each, that dialects may use them freely, and how `^` stores and fetches unstable antiforms (with the "lift the universe" history). |
 | `evaluation.md` | What a step is, what EVAL does between steps (voids, failures, discarded values), commas, why BLOCK! and GROUP! differ, and the stackless trampoline inside the interpreter. |
 | `definitionality.md` | RETURN, BREAK, THROW and failures belong to where they're defined, not to whatever is on the stack, so wrappers and loops built from loops (UNLESS, FOR-BOTH) work. |
 | `flex-logic.md` | Flexible Logic: NULL as the only false state, OKAY, and TRUE/FALSE, YES/NO, ON/OFF as words with their own predicates. |
-| `packs.md` | PACK!: multiple return values, decay, unpacking with `[a b]:`, and heavy null. |
 | `failure.md` | Failures, panics and crashes: definitional errors, FAILURE! as a returned value, and TRY, EXCEPT, RESCUE, TRAP. |
 | `vanishing.md` | COMMENT, ELIDE and GHOST: VOID!, heavy void, VANISHABLE, and the "ghost busting" that keeps voids from vanishing by accident. |
 | `binding.md` | How code gets meaning from contexts, and how separately bound and unbound pieces can be composed. |
@@ -32,7 +30,9 @@ explanation of antiforms happens to sit above eight type pages in another
 section.
 
 So an idea belongs here **even when it has a matching group of reference
-pages**.  Antiforms are the example: the explanation is here, and the
+pages**.  (Two exceptions were made on request: packs are explained on the
+PACK! page, and sigils on the Sigil Types page in `docs/datatypes/`, since
+each is really about one type or one family of types.)  Antiforms are the example: the explanation is here, and the
 reference pages for the eight antiform types stay in `docs/datatypes/`
 under a short "Antiform Types" page that links back.
 

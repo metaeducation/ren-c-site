@@ -47,7 +47,7 @@ by a compiler.  Revolt has no compiler.  It solves it with a rule about
   Left alone, it exists only between a function returning it and
   something reacting to it.  A [failure](/docs/concepts/failure/) is one,
   so it can't be ignored.  (Keeping one takes a deliberate mark, the
-  [`^` sigil](/docs/concepts/sigils/#meta).)
+  [`^` sigil](/docs/datatypes/metaform/).)
 
 Almost everything below follows from those two rules.
 
@@ -168,7 +168,7 @@ See [Definitionality](/docs/concepts/definitionality/).
 When a function that returned one thing needs to return two, the usual
 choices are to return a tuple and break every existing caller, or to add
 an output parameter.  A Revolt function returns a
-[pack](/docs/concepts/packs/).  Callers who want one value get the first,
+[pack](/docs/datatypes/pack/).  Callers who want one value get the first,
 and don't have to know:
 
 <!-- doctest: positive-test -->
@@ -263,7 +263,7 @@ of things in transit.  Everything above is an instance of it:
 |---|---|
 | the words `null` and `okay` | absence, and [logic](/docs/concepts/flexible-logic/) |
 | an error | a [failure](/docs/concepts/failure/) that must be handled |
-| a group of values | a [pack](/docs/concepts/packs/): several results in one |
+| a group of values | a [pack](/docs/datatypes/pack/): several results in one |
 | an empty marker | a [void](/docs/concepts/vanishing/): a function that leaves no result |
 | a block | a splice: items added, not a block added |
 | a function's frame | an action: a function that runs when its word is reached |

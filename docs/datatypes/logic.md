@@ -95,13 +95,18 @@ The infix `AND` and `OR` take a group (or a word) on their right, so that
 the right side is only evaluated if it has to be:
 
 ```
->> okay and (2)
+>> okay and (print "evaluated" 2)
+evaluated
 == \~okay~\  ; antiform (logic!)
 
->> null and (2)
+>> null and (print "not evaluated", 2)
 == \~null~\  ; antiform (logic!)
 
->> null or (1)
+>> null or (print "not evaluated", 1)
+== \~okay~\  ; antiform (logic!)
+
+>> null or (print "evaluated" 1)
+evaluated
 == \~okay~\  ; antiform (logic!)
 ```
 

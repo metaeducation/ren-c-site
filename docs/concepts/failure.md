@@ -303,7 +303,7 @@ assert ["oops" = (unquasi kept).message]
 assert [failure? unlift kept]
 ```
 
-The other way is a [`^` variable](/docs/concepts/sigils/#meta), which
+The other way is a [`^` variable](/docs/datatypes/metaform/), which
 stores the failure itself:
 
 <!-- doctest: positive-test -->

@@ -120,9 +120,11 @@ the antiform) or changes how the value is looked up:
 |---|---|---|
 | `QUOTED!` | `'a` | the value itself, not evaluated |
 | `QUASIFORM!` | `~a~` | evaluates to the antiform (see below) |
-| `METAFORM!` | `^a` | get the value without decaying it |
-| `PINNED!` | `@a` | the value itself, keeping its binding |
-| `TIED!` | `$a` | the value itself, bound to the current context |
+| [`TIED!`](/docs/datatypes/tied/) | `$a` | the value bound to the current context, without the `$` |
+| [`PINNED!`](/docs/datatypes/pinned/) | `@a` | the value itself, sigil kept, bound |
+| [`METAFORM!`](/docs/datatypes/metaform/) | `^a` | get or set the variable with nothing converted |
+
+The last three are the [sigil types](/docs/datatypes/sigils/).
 
 ```
 >> type of first ['a]

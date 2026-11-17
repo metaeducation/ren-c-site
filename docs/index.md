@@ -90,7 +90,7 @@ page here showing the fix, with tested examples.
 | A typo and "file not found" arrive the same way, so catching one catches both | Functions *return* failures to their caller; bugs are panics | [Failure](/docs/concepts/failure/) |
 | NONE means "nothing found", "false", "loop broke" and "no value", and can be sitting in your data | Signals are *antiforms*, which can't be put in a block | [Antiforms](/docs/concepts/antiforms/) |
 | Two false values, one of which prints like the word `false` | One false state, NULL, and it can't be in a block | [Flexible Logic](/docs/concepts/flexible-logic/) |
-| Extra results come back in a block, or by writing to variables you name | Functions return a *pack*, which wrappers can see and callers can ignore | [Packs](/docs/concepts/packs/) |
+| Extra results come back in a block, or by writing to variables you name | Functions return a *pack*, which wrappers can see and callers can ignore | [PACK!](/docs/datatypes/pack/) |
 | Loaded code is bound to one global context, and rebinding is destructive | Code starts unbound and gets its meaning from where it's written | [Binding](/docs/concepts/binding/) |
 | A literal `[]` in a function body is silently modified on every call | Bodies are read-only unless you say MUTABLE | [Constness](/docs/concepts/constness/) |
 | `1 + 2 * 3` and `add 1 2 * 3` disagree, because of a hidden evaluator state | One rule for infix and prefix, with no exceptions | [Infix](/docs/concepts/infix/) |

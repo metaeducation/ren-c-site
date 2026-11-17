@@ -41,7 +41,7 @@ for a `PANIC`, which stops execution outright and can't be returned:
 ## Triage
 
 A failure is unstable: a plain variable can't hold it, and it can't be
-ignored.  (Storing one takes the [`^` sigil](/docs/concepts/sigils/#meta).)  If
+ignored.  (Storing one takes the [`^` sigil](/docs/datatypes/metaform/).)  If
 the code that receives one doesn't deal with it, it is escalated to a
 panic.  So `THEN` won't run on it, and assigning it is an error:
 

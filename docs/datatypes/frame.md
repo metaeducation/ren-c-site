@@ -163,7 +163,7 @@ assert [unset? $counter]
 A field holds exactly what the function will receive.  For a parameter
 that accepts unstable values, that includes packs and failures, and those
 are written and read with the
-[`^` sigil](/docs/concepts/sigils/#frames-hold-values-as-they-are) like
+[`^` sigil](/docs/datatypes/metaform/#frames-hold-values-as-they-are) like
 any other variable.  Code that only handles ordinary values needs no
 sigil.
 
@@ -348,7 +348,7 @@ through the function's own full list, with the locals and its RETURN.
 ## See Also
 
 * [ACTION!](/docs/datatypes/action/) -- the antiform
-* [Sigils](/docs/concepts/sigils/#meta) -- `^` for fields holding unstable
+* [METAFORM!](/docs/datatypes/metaform/) -- `^` for fields holding unstable
   values
 * [Definitionality](/docs/concepts/definitionality/) -- why wrappers
   compose

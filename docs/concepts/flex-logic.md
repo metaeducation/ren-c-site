@@ -224,7 +224,7 @@ To flip a word, test it, negate the logic, and turn it back into a word:
 ```
 
 This is the clumsiest part of the design at present.  There isn't yet a
-good short name for "the opposite word".
+good short name for "the opposite word" (though BOOLEAN-NOT isn't too bad).
 
 ## ALL and ANY Give Back Values
 

@@ -114,7 +114,7 @@ can't be fetched from WORD! variables or passed as normal arguments.  Assigning
 one either *decays* it to a stable value (a PACK! becomes its first item),
 unsets the variable (VOID!), or errors (FAILURE!).  They have to be dealt with
 where they are produced, or `LIFT`ed first, or stored and fetched with
-the [`^` sigil](/docs/concepts/sigils/#meta), which turns those
+the [`^` sigil](/docs/datatypes/metaform/), which turns those
 conversions off.
 
 ```

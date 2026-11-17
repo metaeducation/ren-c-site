@@ -66,7 +66,7 @@ its branch as data and decide whether to run it.
 ## A Step
 
 EVAL runs a whole block.  EVAL:STEP runs one step, and gives back a
-[pack](/docs/concepts/packs/) of two things: the position where the next
+[pack](/docs/datatypes/pack/) of two things: the position where the next
 step would start, and the result of the step it ran.
 
 ```
@@ -243,7 +243,7 @@ while [[position ^product]: eval:step position] [
 assert [results = [3 30]]
 ```
 
-The [`^`](/docs/concepts/sigils/#meta) on `^product` is needed because a
+The [`^`](/docs/datatypes/metaform/) on `^product` is needed because a
 step can produce a void, and a plain variable can't hold one.
 
 ## Blocks and Groups Are Evaluated Differently
@@ -436,7 +436,7 @@ and the generators.
 
 | | Rebol2, R3-Alpha, Red | Revolt |
 |---|---|---|
-| Running one step | `do/next`, which wrote the new position to a variable you named | EVAL:STEP, which returns a [pack](/docs/concepts/packs/) of position and result |
+| Running one step | `do/next`, which wrote the new position to a variable you named | EVAL:STEP, which returns a [pack](/docs/datatypes/pack/) of position and result |
 | A result nobody uses | dropped without comment | an error, if getting it had no side effect |
 | Marking the end of an expression | nothing; line breaks mean nothing to the evaluator | `,` |
 | The right side of an infix function | gathered with a hidden "no lookahead" flag | a step like any other |
@@ -450,7 +450,7 @@ and the generators.
 * [Vanishing](/docs/concepts/vanishing/) -- voids, and why EVAL isn't
   vanishable
 * [Purity](/docs/concepts/purity/) -- which results can't be discarded
-* [Packs](/docs/concepts/packs/) -- what EVAL:STEP returns
+* [PACK!](/docs/datatypes/pack/) -- what EVAL:STEP returns
 * [Re-imagining EVAL:NEXT](https://revolt.metaeducation.com/forum/t/re-imagining-eval-next/767)
   (forum; uses older names)
 * [Why COMMENT Vanishes, But Not EVAL of COMMENT](https://revolt.metaeducation.com/forum/t/why-comment-vanishes-but-not-eval-of-comment/2563)
