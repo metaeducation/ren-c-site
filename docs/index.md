@@ -87,7 +87,7 @@ page here showing the fix, with tested examples.
 | In historical Rebol | In Revolt | |
 |---|---|---|
 | RETURN, BREAK and THROW go to whatever is nearest on the stack, so wrappers intercept them | They belong to where they were written | [Definitionality](/docs/concepts/definitionality/) |
-| A typo and "file not found" arrive the same way, so catching one catches both | Functions *return* failures to their caller; bugs are panics | [Failure](/docs/concepts/failure/) |
+| A typo and "file not found" arrive the same way, so catching one catches both | Functions *return* failures to their caller; bugs are panics | [FAILURE!](/docs/datatypes/failure/) |
 | NONE means "nothing found", "false", "loop broke" and "no value", and can be sitting in your data | Signals are *antiforms*, which can't be put in a block | [Isotopes](/docs/concepts/isotopes/) |
 | Two false values, one of which prints like the word `false` | One false state, NULL, and it can't be in a block | [Flexible Logic](/docs/concepts/flexible-logic/) |
 | Extra results come back in a block, or by writing to variables you name | Functions return a *pack*, which wrappers can see and callers can ignore | [PACK!](/docs/datatypes/pack/) |

@@ -45,7 +45,7 @@ by a compiler.  Revolt has no compiler.  It solves it with a rule about
 
 * An **unstable** antiform can't be held in an ordinary variable either.
   Left alone, it exists only between a function returning it and
-  something reacting to it.  A [failure](/docs/concepts/failure/) is one,
+  something reacting to it.  A [failure](/docs/datatypes/failure/) is one,
   so it can't be ignored.  (Keeping one takes a deliberate mark, the
   [`^` sigil](/docs/datatypes/metaform/).)
 
@@ -129,7 +129,7 @@ goes straight through:
 try pikc [a b] 3
 ```
 
-See [Failure](/docs/concepts/failure/).
+See [FAILURE!](/docs/datatypes/failure/).
 
 ### Constructs You Can't Write Yourself
 
@@ -262,7 +262,7 @@ of things in transit.  Everything above is an instance of it:
 | In transit | What it gives |
 |---|---|
 | the words `null` and `okay` | absence, and [logic](/docs/concepts/flexible-logic/) |
-| an error | a [failure](/docs/concepts/failure/) that must be handled |
+| an error | a [failure](/docs/datatypes/failure/) that must be handled |
 | a group of values | a [pack](/docs/datatypes/pack/): several results in one |
 | an empty marker | a [void](/docs/concepts/vanishing/): a function that leaves no result |
 | a block | a splice: items added, not a block added |

@@ -140,7 +140,7 @@ step before it is kept:
 
 ### A Failure Can't Be Passed Over
 
-A [failure](/docs/concepts/failure/) may be the result of the *last* step,
+A [failure](/docs/datatypes/failure/) may be the result of the *last* step,
 and then it's the result of the EVAL.  Anywhere earlier, nothing is going
 to handle it, so it becomes a panic at once:
 

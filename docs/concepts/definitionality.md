@@ -23,7 +23,7 @@ that nothing in between can catch them by accident.
 | RETURN | the function it's written in | the nearest function on the stack |
 | BREAK, CONTINUE | the loop whose body it's written in | the nearest loop on the stack |
 | THROW | the CATCH it's written in | the nearest CATCH on the stack |
-| A [failure](/docs/concepts/failure/) | the function that returns it, to its caller | any code anywhere above that catches errors |
+| A [failure](/docs/datatypes/failure/) | the function that returns it, to its caller | any code anywhere above that catches errors |
 
 ## Definitional Return
 
@@ -157,12 +157,12 @@ In Revolt, a function that wants its caller to handle a problem *returns*
 a failure, and only that caller sees it.  A failure inside the function
 that the function doesn't return becomes a panic instead, so it can't be
 mistaken for the function's own answer.  That's covered in
-[Failure](/docs/concepts/failure/#failures-are-definitional).
+[FAILURE!](/docs/datatypes/failure/#failures-are-definitional).
 
 ## See Also
 
 * [Binding](/docs/concepts/binding/) -- how RETURN finds its function
-* [Failure](/docs/concepts/failure/) -- definitional errors
+* [FAILURE!](/docs/datatypes/failure/) -- definitional errors
 * [Isotopes](/docs/concepts/isotopes/) -- how a loop's result can carry
   "broken" without being mistaken for data
 * [What Are Definitional Returns?](https://revolt.metaeducation.com/forum/t/what-are-definitional-returns/2191)
