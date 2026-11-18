@@ -114,7 +114,7 @@ is up to its combinator:
 
 | Rule | What it does |
 |---|---|
-| `[...]` | Sequence parse rules together, and return any alternate that matches |
+| `[...]` | Sequence parse rules together, and return any alternate that matches (`\|` and `\|\|` are handled here; see [Sequencing](/docs/dialects/parse/concepts/sequencing/)) |
 | `"text"` | Match TEXT! and return the rule matched against |
 | `#rune` | Match RUNE! and return rule rune matched against |
 | `#{...}` | Match BLOB! and return rule blob matched against |

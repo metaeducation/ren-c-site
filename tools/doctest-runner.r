@@ -115,7 +115,7 @@ evaluate: func [
         return make object! [
             outcome: 'panic
             message: form r
-            id: if r.id [form r.id]
+            id: all [r.id, form r.id]  ; NULL, not unset, if no id
             shown: unspaced ["** PANIC: " message]
         ]
     ]
@@ -127,7 +127,7 @@ evaluate: func [
         return make object! [
             outcome: 'failure
             message: form e
-            id: if e.id [form e.id]
+            id: all [e.id, form e.id]  ; NULL, not unset, if no id
             shown: unspaced ["** Failure: " message]
         ]
     ]

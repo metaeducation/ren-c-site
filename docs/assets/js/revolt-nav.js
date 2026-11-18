@@ -1,5 +1,7 @@
 // Sidebar: "Concepts" starts out expanded on every page, including Home,
-// since the concept pages are the heart of the site.
+// since the concept pages are the heart of the site.  Inside the PARSE
+// universe, its own Concepts and Combinators start out expanded the same
+// way.
 //
 // just-the-docs only expands a section when the current page is inside it.
 // This marks the item "active" the same way the theme's own expander button
@@ -16,7 +18,8 @@ document.addEventListener('DOMContentLoaded', function () {
   var links = document.querySelectorAll('#site-nav .nav-list-link');
   links.forEach(function (link) {
     var path = link.getAttribute('href') || '';
-    if (/\/docs\/concepts\/?$/.test(path))
+    if (/\/docs\/(dialects\/parse\/)?concepts\/?$/.test(path)
+        || /\/docs\/dialects\/parse\/combinators\/?$/.test(path))
       expand(link.closest('.nav-list-item'));
   });
 });
