@@ -2,7 +2,6 @@
 layout: native
 title: ELSE
 parent: Natives
-grand_parent: Documentation
 permalink: /docs/natives/else/
 native: else
 spec: |

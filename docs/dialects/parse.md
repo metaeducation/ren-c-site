@@ -2,7 +2,6 @@
 layout: default
 title: PARSE
 parent: Dialects
-grand_parent: Documentation
 nav_order: 1
 permalink: /docs/dialects/parse/
 universe: parse

@@ -102,7 +102,6 @@ A native's page uses `layout: native` and puts its spec in the front matter:
 layout: native
 title: REDUCE
 parent: Natives
-grand_parent: Documentation
 permalink: /docs/natives/reduce/
 native: reduce
 spec: |
@@ -135,7 +134,7 @@ hairlines, `#333` text, black for headings and links.  Where it lives:
 | `_includes/head_custom.html` | Web fonts, icons, social image, and the console script. |
 | `_includes/head.html` | The theme's own head, copied from just-the-docs v0.10.0 only to put a build stamp (`?v=`) on its stylesheet links, so a deploy never shows new pages with cached old CSS.  Recopy it if the theme version changes. |
 | `assets/js/revolt-console.js` | Marks up `>>` / `==` / `**` lines in transcripts so input is bright and results dim, treats fences with no language as Rebol, and marks `negative-test` blocks for the red "Error" style.  Cosmetic; the blocks work without it. |
-| `assets/js/revolt-nav.js` | Expands the sidebar's top-level sections (Documentation) on every page, including Home.  The expander button still collapses them. |
+| `assets/js/revolt-nav.js` | Expands the sidebar's Concepts section on every page, including Home.  The expander button still collapses it. |
 | `_includes/components/breadcrumbs.html` | Overrides the theme's breadcrumbs to add the pencil "Edit page" link (`_includes/edit_link.html`) at the right end of the row.  The theme's original is kept as `_includes/breadcrumbs_theme.html`, copied from v0.10.0; recopy it if the theme version changes. |
 | `_includes/components/sidebar.html` | Overrides the theme's sidebar so a page in a dialect's "universe" shows that universe's pages (`_includes/universe_nav.html`) under a link back home, instead of the main sidebar.  Universe pages get their breadcrumbs from `_includes/universe_breadcrumbs.html`. |
 | `assets/js/revolt-edit.js` | Moves the "Edit page" link beside the page's `<h1>` as a small "Edit" chip, wiki style.  Without JavaScript it stays in the breadcrumb row. |

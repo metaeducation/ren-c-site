@@ -2,7 +2,6 @@
 layout: default
 title: Sequence Types
 parent: Datatypes
-grand_parent: Documentation
 nav_order: 3
 has_children: true
 permalink: /docs/datatypes/sequences/

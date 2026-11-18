@@ -2,8 +2,7 @@
 layout: default
 title: Evaluation
 parent: Concepts
-grand_parent: Documentation
-nav_order: 12
+nav_order: 1
 permalink: /docs/concepts/evaluation/
 ---
 

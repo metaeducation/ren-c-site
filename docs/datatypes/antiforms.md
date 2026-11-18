@@ -2,7 +2,6 @@
 layout: default
 title: Antiform Types
 parent: Datatypes
-grand_parent: Documentation
 nav_order: 4
 has_children: true
 permalink: /docs/datatypes/antiforms/

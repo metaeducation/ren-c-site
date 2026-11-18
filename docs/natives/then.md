@@ -2,7 +2,6 @@
 layout: native
 title: THEN
 parent: Natives
-grand_parent: Documentation
 permalink: /docs/natives/then/
 native: then
 spec: |

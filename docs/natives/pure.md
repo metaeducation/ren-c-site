@@ -2,7 +2,6 @@
 layout: native
 title: PURE
 parent: Natives
-grand_parent: Documentation
 permalink: /docs/natives/pure/
 native: pure
 spec: |

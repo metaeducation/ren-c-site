@@ -2,7 +2,6 @@
 layout: native
 title: IMPURE
 parent: Natives
-grand_parent: Documentation
 permalink: /docs/natives/impure/
 native: impure
 spec: |

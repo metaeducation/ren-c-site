@@ -2,7 +2,6 @@
 layout: native
 title: MUTABLE
 parent: Natives
-grand_parent: Documentation
 permalink: /docs/natives/mutable/
 native: mutable
 spec: |

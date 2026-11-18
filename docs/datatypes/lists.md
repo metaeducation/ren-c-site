@@ -2,7 +2,6 @@
 layout: default
 title: List Types
 parent: Datatypes
-grand_parent: Documentation
 nav_order: 2
 has_children: true
 permalink: /docs/datatypes/lists/

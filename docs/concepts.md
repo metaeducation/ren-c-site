@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Concepts
-parent: Documentation
 nav_order: 3
 has_children: true
 permalink: /docs/concepts/

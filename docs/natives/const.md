@@ -2,7 +2,6 @@
 layout: native
 title: CONST
 parent: Natives
-grand_parent: Documentation
 permalink: /docs/natives/const/
 native: const
 spec: |

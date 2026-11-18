@@ -2,8 +2,7 @@
 layout: default
 title: Isotopes
 parent: Concepts
-grand_parent: Documentation
-nav_order: 1
+nav_order: 4
 permalink: /docs/concepts/isotopes/
 ---
 

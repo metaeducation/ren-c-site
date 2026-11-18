@@ -2,7 +2,6 @@
 layout: native
 title: FINAL
 parent: Natives
-grand_parent: Documentation
 permalink: /docs/natives/final/
 native: final
 spec: |

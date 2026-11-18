@@ -2,7 +2,6 @@
 layout: native
 title: REDUCE
 parent: Natives
-grand_parent: Documentation
 permalink: /docs/natives/reduce/
 native: reduce
 spec: |

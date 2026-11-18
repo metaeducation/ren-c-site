@@ -2,7 +2,6 @@
 layout: default
 title: Fundamental Types
 parent: Datatypes
-grand_parent: Documentation
 nav_order: 1
 has_children: true
 permalink: /docs/datatypes/fundamentals/

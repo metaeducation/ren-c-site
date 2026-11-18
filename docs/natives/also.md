@@ -2,7 +2,6 @@
 layout: native
 title: ALSO
 parent: Natives
-grand_parent: Documentation
 permalink: /docs/natives/also/
 native: also
 spec: |

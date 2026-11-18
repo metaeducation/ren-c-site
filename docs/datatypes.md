@@ -1,8 +1,7 @@
 ---
 layout: default
 title: Datatypes
-parent: Documentation
-nav_order: 2
+nav_order: 4
 has_children: true
 permalink: /docs/datatypes/
 ---

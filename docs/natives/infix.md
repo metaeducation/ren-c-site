@@ -2,7 +2,6 @@
 layout: native
 title: INFIX
 parent: Natives
-grand_parent: Documentation
 permalink: /docs/natives/infix/
 native: infix
 spec: |
