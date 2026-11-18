@@ -138,7 +138,8 @@ hairlines, `#333` text, black for headings and links.  Where it lives:
 | `_includes/components/breadcrumbs.html` | Overrides the theme's breadcrumbs to add the pencil "Edit page" link (`_includes/edit_link.html`) at the right end of the row.  The theme's original is kept as `_includes/breadcrumbs_theme.html`, copied from v0.10.0; recopy it if the theme version changes. |
 | `_includes/components/sidebar.html` | Overrides the theme's sidebar so a page in a dialect's "universe" shows that universe's pages (`_includes/universe_nav.html`) under a link back home, instead of the main sidebar.  Universe pages get their breadcrumbs from `_includes/universe_breadcrumbs.html`. |
 | `assets/js/revolt-edit.js` | Moves the "Edit page" link beside the page's `<h1>` as a small "Edit" chip, wiki style.  Without JavaScript it stays in the breadcrumb row. |
-| `assets/images/revolt-mark.svg` | The flat `[o]` mark (also `favicon.svg`); `favicon.ico`, `icon-*.png` and `apple-touch-icon.png` are rendered from it (the 16px icon is the original hand-pixelled one). |
+| `assets/images/revolt-mark.svg` | The flat `[o]` mark; `icon-*.png` and `apple-touch-icon.png` are rendered from it. |
+| `assets/images/favicon.ico` | The tab icon, shared with the forum.  16 and 32 are the hand-tuned originals; 64 is the 32 doubled pixel-for-pixel, and 48 is resampled from the 32.  Don't add an SVG icon: browsers would prefer it over these. |
 | `assets/images/revolt-3d.png` | The 3-D render of the mark, used in the homepage hero and `og-image.png`. |
 
 ### Datatype pages
