@@ -1,0 +1,23 @@
+{%- comment -%}
+  Breadcrumbs for a page inside a dialect's universe.  The theme finds a
+  page's ancestors in the main sidebar, where universe pages aren't, so this
+  builds the trail from the universe's front page and the page's `parent:`
+  and `grand_parent:` (looked up by title among the universe's pages).
+  Same markup as the theme's, so it looks the same.
+{%- endcomment -%}
+{%- assign universe = site.just_the_docs.collections[page.universe] -%}
+{%- assign universe_pages = site[page.universe] -%}
+<nav aria-label="Breadcrumb" class="breadcrumb-nav">
+  <ol class="breadcrumb-nav-list">
+    <li class="breadcrumb-nav-list-item"><a href="{{ universe.home | relative_url }}">{{ universe.name }}</a></li>
+    {%- if page.grand_parent %}
+    {%- assign crumb = universe_pages | where: "title", page.grand_parent | first %}
+    <li class="breadcrumb-nav-list-item"><a href="{{ crumb.url | relative_url }}">{{ page.grand_parent }}</a></li>
+    {%- endif %}
+    {%- if page.parent %}
+    {%- assign crumb = universe_pages | where: "title", page.parent | first %}
+    <li class="breadcrumb-nav-list-item"><a href="{{ crumb.url | relative_url }}">{{ page.parent }}</a></li>
+    {%- endif %}
+    <li class="breadcrumb-nav-list-item"><span>{{ page.title }}</span></li>
+  </ol>
+</nav>

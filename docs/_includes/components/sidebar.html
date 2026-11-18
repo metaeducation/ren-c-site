@@ -1,0 +1,34 @@
+{%- comment -%}
+  Override of just-the-docs v0.10.0 _includes/components/sidebar.html.  The
+  only change is the navigation: a page in a dialect's "universe" (it has a
+  `universe:` in its front matter, as every page of the dialect's collection
+  does through the defaults in _config.yml) gets that universe's own sidebar
+  (_includes/universe_nav.html) instead of the site's.  Recopy the rest if
+  the theme version changes.
+{%- endcomment -%}
+
+<div class="side-bar">
+  <div class="site-header" role="banner">
+    <a href="{{ '/' | relative_url }}" class="site-title lh-tight">{% include title.html %}</a>
+    <button id="menu-button" class="site-button btn-reset" aria-label="Toggle menu" aria-pressed="false">
+      <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-menu"></use></svg>
+    </button>
+  </div>
+
+  {% if page.universe %}
+    {% include universe_nav.html universe=page.universe %}
+  {% else %}
+    {% include_cached components/site_nav.html %}
+  {% endif %}
+
+  {% capture nav_footer_custom %}
+    {%- include nav_footer_custom.html -%}
+  {% endcapture %}
+  {% if nav_footer_custom != "" %}
+    {{ nav_footer_custom }}
+  {% else %}
+    <footer class="site-footer">
+      This site uses <a href="https://github.com/just-the-docs/just-the-docs">Just the Docs</a>, a documentation theme for Jekyll.
+    </footer>
+  {% endif %}
+</div>

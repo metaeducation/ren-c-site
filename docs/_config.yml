@@ -89,3 +89,31 @@ defaults:
       path: "README.md"
     values:
       sitemap: false
+  - scope:
+      path: ""
+      type: parse
+    values:
+      layout: default
+      universe: parse
+
+# Dialects are "universes": a dialect's pages are a Jekyll collection (in
+# docs/_parse/ for PARSE), so they stay out of the main sidebar.  Inside a
+# universe the sidebar shows only that universe's pages, under a link back
+# to the home page (_includes/components/sidebar.html).
+#
+# The universe's front page is an ordinary page (docs/dialects/parse.md),
+# so it can sit in the main sidebar under Dialects as the way in.  `home:`
+# is its URL.  `nav_exclude` keeps the theme from adding the collection to
+# the main sidebar; its pages are still searched.
+#
+collections:
+  parse:
+    output: true
+    permalink: /docs/dialects/parse/:path/
+
+just_the_docs:
+  collections:
+    parse:
+      name: PARSE
+      home: /docs/dialects/parse/
+      nav_exclude: true

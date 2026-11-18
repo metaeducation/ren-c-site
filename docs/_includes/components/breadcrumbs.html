@@ -3,7 +3,9 @@
   theme's default layout calls above every page's content.  It renders the
   theme's breadcrumbs (kept in _includes/breadcrumbs_theme.html) and, at the
   right end of the same row, a pencil "Edit page" link to the page's source
-  on GitHub.
+  on GitHub.  Pages inside a dialect's universe get their own trail
+  (_includes/universe_breadcrumbs.html), since the theme's is built from the
+  main sidebar.
 
   assets/js/revolt-edit.js moves the link next to the page's <h1>, where it
   becomes a small "Edit" chip.  Without JavaScript it stays in this row.
@@ -14,7 +16,11 @@
 {%- include breadcrumbs_theme.html -%}
 {%- else -%}
 <div class="revolt-page-top">
+{%- if page.universe and page.collection -%}
+{%- include universe_breadcrumbs.html -%}
+{%- else -%}
 {%- include breadcrumbs_theme.html -%}
+{%- endif -%}
 {%- include edit_link.html -%}
 </div>
 {%- endif -%}

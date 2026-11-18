@@ -224,6 +224,16 @@ def render(block: Block, source: str) -> str:
     return '\n'.join(out) + '\n' + block.text
 
 
+JEKYLL_DIRS = {'_site', '_includes', '_layouts', '_sass', '_data', '_plugins', '_drafts'}
+
+
+def skipped_dir(name: str) -> bool:
+    """Folders with no pages to test.  Other folders starting with `_` are
+    Jekyll collections, like `_parse` (the PARSE dialect's pages), so they
+    are tested like any other."""
+    return name.startswith('.') or name in JEKYLL_DIRS
+
+
 def run(docs_dir: Path, out_dir: Path, quiet=False):
     """Extract everything.  Returns (page_dirs, total_blocks, untested)."""
     if out_dir.exists():
@@ -233,7 +243,7 @@ def run(docs_dir: Path, out_dir: Path, quiet=False):
     md_files = sorted(
         p for p in docs_dir.rglob('*.md')
         if p.name.upper() != 'README.MD'
-        and not any(part.startswith(('_', '.')) for part in p.relative_to(docs_dir).parts)
+        and not any(skipped_dir(part) for part in p.relative_to(docs_dir).parts[:-1])
     )
 
     page_dirs = []

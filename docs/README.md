@@ -137,6 +137,7 @@ hairlines, `#333` text, black for headings and links.  Where it lives:
 | `assets/js/revolt-console.js` | Marks up `>>` / `==` / `**` lines in transcripts so input is bright and results dim, treats fences with no language as Rebol, and marks `negative-test` blocks for the red "Error" style.  Cosmetic; the blocks work without it. |
 | `assets/js/revolt-nav.js` | Expands the sidebar's top-level sections (Documentation) on every page, including Home.  The expander button still collapses them. |
 | `_includes/components/breadcrumbs.html` | Overrides the theme's breadcrumbs to add the pencil "Edit page" link (`_includes/edit_link.html`) at the right end of the row.  The theme's original is kept as `_includes/breadcrumbs_theme.html`, copied from v0.10.0; recopy it if the theme version changes. |
+| `_includes/components/sidebar.html` | Overrides the theme's sidebar so a page in a dialect's "universe" shows that universe's pages (`_includes/universe_nav.html`) under a link back home, instead of the main sidebar.  Universe pages get their breadcrumbs from `_includes/universe_breadcrumbs.html`. |
 | `assets/js/revolt-edit.js` | Moves the "Edit page" link beside the page's `<h1>` as a small "Edit" chip, wiki style.  Without JavaScript it stays in the breadcrumb row. |
 | `assets/images/revolt-mark.svg` | The flat `[o]` mark (also `favicon.svg`); `favicon.ico`, `icon-*.png` and `apple-touch-icon.png` are rendered from it (the 16px icon is the original hand-pixelled one). |
 | `assets/images/revolt-3d.png` | The 3-D render of the mark, used in the homepage hero and `og-image.png`. |
@@ -190,3 +191,23 @@ bundle exec jekyll serve
 ```
 
 Then open `http://localhost:4000`.
+
+## Dialect Universes
+
+A dialect with lots of pages, like PARSE, gets its own section of the site
+with its own sidebar, so the main sidebar doesn't grow deep.  The pieces:
+
+* Its front page is an ordinary page under Dialects, e.g.
+  `dialects/parse.md` with `universe: parse` in its front matter.  That's
+  the way in from the main sidebar.
+
+* Its other pages are a Jekyll collection, e.g. `_parse/`, published under
+  `/docs/dialects/parse/`.  They use `title`, `parent`, `nav_order` and
+  `has_children` like any other page, but only among themselves.
+
+* `_config.yml` declares the collection, gives its pages `universe: parse`,
+  and lists it under `just_the_docs.collections` with its `name` and its
+  front page's URL (`home:`).
+
+Doctests run on collection folders like any other.  A new dialect needs
+the same three things.

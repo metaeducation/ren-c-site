@@ -137,6 +137,86 @@ code {
   }
 }
 
+// Dialect "universes" (see _config.yml).  In the main sidebar, a link into
+// one (every child of Dialects is one) carries an arrow, since following it
+// swaps the sidebar.
+#site-nav:not(.revolt-universe-nav)
+  .nav-list-link[href^="/docs/dialects/"]:not([href="/docs/dialects/"])::after {
+  margin-left: 0.4em;
+  color: $revolt-silver;
+  content: "\2192"; // right arrow
+}
+
+// Inside a universe the sidebar starts with a way back out, then the
+// universe's front page set as a title.
+.revolt-universe-back {
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+  padding: $sp-2 $sp-4;
+  margin-bottom: $sp-2;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: $revolt-graphite;
+  text-decoration: none;
+
+  @include mq(md) {
+    padding-right: $sp-3;
+    padding-left: $sp-3;
+  }
+
+  svg {
+    width: 1.1em;
+    height: 1.1em;
+    fill: none;
+    stroke: currentcolor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform 120ms ease;
+  }
+
+  &:hover,
+  &:focus-visible {
+    color: $revolt-black;
+    background-color: $revolt-wash;
+
+    svg {
+      transform: translateX(-2px);
+    }
+  }
+}
+
+.nav-list.revolt-universe-home {
+  margin-bottom: $sp-2;
+  border-bottom: 1px solid $revolt-hairline;
+
+  .nav-list-item .nav-list-link {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    padding-top: $sp-2;
+    padding-bottom: $sp-3;
+    font-family: $revolt-display-font-family;
+    font-size: 1.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    color: $revolt-black;
+  }
+
+  .revolt-universe-kind {
+    margin-bottom: 0.25rem;
+    font-family: $body-font-family;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: $revolt-smoke;
+  }
+}
+
 .site-footer {
   color: $revolt-smoke;
 }
