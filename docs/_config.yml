@@ -45,9 +45,23 @@ highlighter: rouge
 # ```yaml, ```text.)  tools/extract-doctests.py and
 # assets/js/revolt-console.js follow the same rule.
 #
+#
+# The site is plain ASCII: kramdown would otherwise turn ' and " into curly
+# quotes, -- and --- into dashes, ... into an ellipsis, and << >> into
+# guillemets.  These settings make each one come out as typed.
+#
 kramdown:
   syntax_highlighter_opts:
     default_lang: rebol
+  smart_quotes: ["apos", "apos", "quot", "quot"]
+  typographic_symbols:
+    hellip: "..."
+    mdash: "---"
+    ndash: "--"
+    laquo: "<<"  # kramdown escapes these itself
+    raquo: ">>"
+    laquo_space: "<< "
+    raquo_space: " >>"
 
 # Where the pencil "Edit page" link beside each page's title points
 # (_includes/edit_link.html).  The theme's own "Edit this page on GitHub" link

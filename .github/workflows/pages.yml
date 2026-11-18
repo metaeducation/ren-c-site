@@ -53,6 +53,13 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
+      # The site's text uses plain ASCII punctuation (no curly quotes, dash
+      # or ellipsis characters), LF line endings, and no tabs.  Cheap, so it
+      # runs before anything else.
+      #
+      - name: Check Text Formatting
+        run: python3 tools/check-text.py
+
       # Downloads the latest greenlit interpreter and puts `r3` on the PATH.
       # The checked build is slower but gives better diagnostics if
       # something crashes.

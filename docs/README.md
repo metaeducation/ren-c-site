@@ -6,6 +6,14 @@ setup as [needful.metaeducation.com](https://needful.metaeducation.com)).
 
 This README is not part of the site, and its examples are not tested.
 
+## Plain Text Rules
+
+The site's text uses plain ASCII punctuation (`'` and `"`, `--`, `...`,
+never curly quotes or dash and ellipsis characters), LF line endings, and
+no tabs.  Emoji are fine.  `tools/check-text.py` checks this as the first
+step of the build, and `_config.yml` keeps kramdown from turning ASCII
+punctuation into typographic characters when the site is built.
+
 ## Every Example Is Tested
 
 Before the site deploys, `tools/run-doctests.py` pulls the Rebol code
