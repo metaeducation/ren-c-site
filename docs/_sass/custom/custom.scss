@@ -147,6 +147,31 @@ code {
   content: "\2192"; // right arrow
 }
 
+// Downloads is a different kind of thing from the reference sections above
+// it, so it's set apart: a hairline above it and a download icon.  It's the
+// last item in the main sidebar (nav_order 7), which is what this selects;
+// the theme strips the link's href on the current page, so the href can't be
+// used.
+#site-nav:not(.revolt-universe-nav) > .nav-list > .nav-list-item:last-child {
+  padding-top: $sp-2;
+  margin-top: $sp-2;
+  border-top: 1px solid $revolt-hairline;
+
+  > .nav-list-link::before {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    margin-right: 0.5em;
+    vertical-align: -0.125em;
+    content: "";
+    background-color: currentcolor;
+    // download icon: arrow into a tray (the -webkit- copy is for Safari
+    // before 15.4)
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3v12'/%3E%3Cpath d='m7 10 5 5 5-5'/%3E%3Cpath d='M5 21h14'/%3E%3C/svg%3E") center / contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 3v12'/%3E%3Cpath d='m7 10 5 5 5-5'/%3E%3Cpath d='M5 21h14'/%3E%3C/svg%3E") center / contain no-repeat;
+  }
+}
+
 // Inside a universe the sidebar starts with a way back out, then the
 // universe's front page set as a title.
 .revolt-universe-back {

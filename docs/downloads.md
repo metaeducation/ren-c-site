@@ -7,15 +7,22 @@ permalink: /downloads/
 
 # Downloads
 
-There are no downloads.
+Revolt builds on many platforms using nothing more than a C99 compiler.  It
+runs on Windows, Linux, and macOS...as well as more esoteric platforms like
+Haiku or FreeBSD.
 
-{: .warning }
-> Revolt isn't ready for general use, and no native binaries are packaged
-> or distributed.  The project is experimental and its resources are
-> limited, so the table stakes for taking part are that you're a developer
-> who can build the interpreter yourself.
+But the project is experimental and its resources are limited.  ***We are
+seeking collaborators, not "users".***  So the table stakes for using a native
+executable is that you're a developer who can build the interpreter yourself.
+This self-selects the audience for who should be working with a native
+executable right now--and avoids the grind of being involved in app store
+approval processes, or the modern reality of fighting against antivirus
+flagging software.
 
-## If You Just Want to Try It
+Hence there are no pre-built native ".EXE" downloads packaged or made available
+from this site at this time.  *However...*
+
+## ...If You Just Want to Try It
 
 The one prebuilt experience is the **[Web Console](/console/)**.  It's the
 whole interpreter compiled to WebAssembly, and it runs in your browser
