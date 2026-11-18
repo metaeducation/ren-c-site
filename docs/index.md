@@ -26,16 +26,16 @@ parts underneath that kept it from composing.
 ## One Example
 
 Here is the simplest test of "control constructs are just functions":
-write UNLESS, using IF.  In historical Rebol, the obvious way gives a wrong
-answer, silently:
+write UNLESS *(an IF whose condition is implicitly negated)*, using IF.  In
+historical Rebol, the obvious way gives a wrong answer, silently:
 
 ```text
-rebol2>> unless: func [cond block] [if not cond block]
+rebol2>> my-unless: func [cond block] [return if not cond (block)]
 
-rebol2>> check: func [x] [unless x = 10 [return "not 10"] return "it's 10!"]
+rebol2>> check: func [x] [my-unless x = 10 [return "not 10"] return "it's 10!"]
 
 rebol2>> check 20
-== "it's 10!"    ; UNLESS caught the RETURN that was meant for CHECK
+== "it's 10!"    ; MY-UNLESS caught the RETURN that was meant for CHECK
 ```
 
 In Revolt, a RETURN belongs to the function it was written in, so the
@@ -87,14 +87,14 @@ page here showing the fix, with tested examples.
 | In historical Rebol | In Revolt | |
 |---|---|---|
 | RETURN, BREAK and THROW go to whatever is nearest on the stack, so wrappers intercept them | They belong to where they were written | [Definitionality](/docs/concepts/definitionality/) |
-| A typo and "file not found" arrive the same way, so catching one catches both | Functions *return* failures to their caller; bugs are panics | [FAILURE!](/docs/datatypes/failure/) |
-| NONE means "nothing found", "false", "loop broke" and "no value", and can be sitting in your data | Signals are *antiforms*, which can't be put in a block | [Isotopes](/docs/concepts/isotopes/) |
-| Two false values, one of which prints like the word `false` | One false state, NULL, and it can't be in a block | [LOGIC!](/docs/datatypes/logic/#flexible-logic) |
-| Extra results come back in a block, or by writing to variables you name | Functions return a *pack*, which wrappers can see and callers can ignore | [PACK!](/docs/datatypes/pack/) |
+| A typo and "file not found" arrive the same way, so catching one catches both | Functions *return* failures to their caller; bugs are panics | [Failure](/docs/concepts/failure/) |
+| NONE means "nothing found", "false", "loop broke" and "no value", and can be sitting in your data | Signals are *antiforms*, which can't be put in a block | [Antiforms](/docs/concepts/antiforms/) |
+| Two false values, one of which prints like the word `false` | One false state, NULL, and it can't be in a block | [Flexible Logic](/docs/concepts/flexible-logic/) |
+| Extra results come back in a block, or by writing to variables you name | Functions return a *pack*, which wrappers can see and callers can ignore | [Packs](/docs/concepts/packs/) |
 | Loaded code is bound to one global context, and rebinding is destructive | Code starts unbound and gets its meaning from where it's written | [Binding](/docs/concepts/binding/) |
 | A literal `[]` in a function body is silently modified on every call | Bodies are read-only unless you say MUTABLE | [Constness](/docs/concepts/constness/) |
 | `1 + 2 * 3` and `add 1 2 * 3` disagree, because of a hidden evaluator state | One rule for infix and prefix, with no exceptions | [Infix](/docs/concepts/infix/) |
-| No way to have a function leave no result without tricks | Vanishing is built in, and made safe | [VOID!](/docs/datatypes/void/) |
+| No way to have a function leave no result without tricks | Vanishing is built in, and made safe | [Vanishing](/docs/concepts/vanishing/) |
 
 These aren't independent patches.  Failures and vanishing are built on
 antiforms.  Definitional RETURN is built on binding.  Each mechanism got
@@ -137,7 +137,7 @@ of like a programming language.  All of that is here:
   (WebAssembly; nothing to install)
 
 * **[Concepts](/docs/concepts/)** -- the ideas, starting with
-  [antiforms](/docs/concepts/isotopes/)
+  [antiforms](/docs/concepts/antiforms/)
 
 * **[Datatypes](/docs/datatypes/)** -- every kind of value
 

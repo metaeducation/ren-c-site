@@ -29,19 +29,20 @@ that nothing in between can catch them by accident.
 ### The Problem
 
 In historical Rebol, RETURN went to whichever function happened to be
-nearest on the stack when it ran.  So the obvious way to write UNLESS, in
-terms of IF, silently gave wrong answers:
+nearest on the stack when it ran.  So the obvious way to write UNLESS *(an IF
+with the condition implicitly negated)*, in terms of IF, silently gave wrong
+answers:
 
 ```text
-rebol2>> unless: func [cond block] [if not cond block]
+rebol2>> my-unless: func [cond block] [return if not cond (block)]
 
-rebol2>> bar: func [x] [unless x = 10 [return "not 10"] return "it's 10!"]
+rebol2>> bar: func [x] [my-unless x = 10 [return "not 10"] return "it's 10!"]
 
 rebol2>> bar 20
-== "it's 10!"    ; UNLESS caught the RETURN meant for BAR
+== "it's 10!"    ; MY-UNLESS caught the RETURN meant for BAR
 ```
 
-The RETURN in BAR's block was caught by UNLESS, the nearest function, and
+The RETURN in BAR's block was caught by MY-UNLESS, the nearest function, and
 BAR carried on.  No error: just the wrong answer.  Rebol2 had a `[throw]`
 attribute to make a function let RETURNs through, but every wrapper author
 had to remember it, and it didn't cover BREAK.
