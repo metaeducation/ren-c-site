@@ -16,7 +16,8 @@ one function or one type.**
 | `constness.md` | Read-only views of series.  Spans CONST, MUTABLE, COPY, EVAL, and every function and loop body. |
 | `purity.md` | Functions that depend only on their arguments.  Spans PURE, IMPURE, FINAL, and the evaluator's binding. |
 | `infix.md` | Functions that run in the same step as their left side.  Spans INFIX, THEN, ELSE, ALSO, the operators, and how every expression is evaluated. |
-| `evaluation.md` | What a step is, what EVAL does between steps (voids, failures, discarded values), commas, why BLOCK! and GROUP! differ, and the stackless trampoline inside the interpreter. |
+| `evaluation.md` | What a step is, what EVAL does between steps (voids, failures, discarded values), commas, and why BLOCK! and GROUP! differ. |
+| `stacklessness.md` | Why the interpreter keeps evaluations on the heap instead of the C stack, how the trampoline and state-machine natives work, what it costs, and the provisions made for a future debugger. |
 | `definitionality.md` | RETURN, BREAK, THROW and failures belong to where they're defined, not to whatever is on the stack, so wrappers and loops built from loops (UNLESS, FOR-BOTH) work. |
 | `binding.md` | How code gets meaning from contexts, and how separately bound and unbound pieces can be composed. |
 

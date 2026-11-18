@@ -13,13 +13,7 @@ block from left to right.  The walk goes one **step** at a time.  A step
 is one complete expression: `1 + 2`, or `append block 10`, or just `5`.
 
 This page covers what a step is, what the evaluator does *between* steps,
-why a BLOCK! and a GROUP! are evaluated a little differently, and how the
-interpreter is built to run all of this without using the C stack.
-
-{: .warning }
-> The second half of this page describes the inside of the interpreter.
-> That's where the design is least settled.  It's recorded here because
-> the reasons behind it are hard to recover from the source alone.
+and why a BLOCK! and a GROUP! are evaluated a little differently.
 
 ## What Each Kind of Value Does
 
@@ -59,8 +53,9 @@ type:
 == \~null~\  ; antiform (logic!)
 ```
 
-A block evaluates to itself.  That's what lets a function like IF receive
-its branch as data and decide whether to run it.
+A block evaluates to itself, but with a binding into the "current context".
+That's what lets a function like IF receive its branch as data and decide
+whether to run it.
 
 ## A Step
 
@@ -300,136 +295,17 @@ A refinement could have chosen the behavior instead of the type.  Using
 the type means you get the right one without having to know the choice
 exists.
 
-## How It's Built: No C Stack
+## How It's Built
 
-The rest of this page is about the interpreter's own structure.
+In R3-Alpha and Red, the evaluator is a recursive C function, so every
+level of Rebol recursion is several levels of C recursion.  Revolt's
+evaluator is **stackless**: each evaluation in progress is a structure on
+the heap, and one loop drives them all.  Recursion is limited by memory
+rather than by the C stack, and a running evaluation can be set aside and
+resumed, which is how generators work.
 
-In R3-Alpha and Red, the evaluator is a recursive function.  To evaluate
-an argument, the C (or Red/System) function that runs a step calls itself.
-A Rebol function that calls another Rebol function goes several C calls
-deeper.  The state of the running program lives on the machine stack,
-where nothing but the function that put it there can get at it.
-
-Revolt's evaluator is **stackless**.  Each evaluation in progress is a
-**Level**: a small structure allocated on the heap, with an output cell, a
-position in the code, a state byte, and a pointer to an **executor**,
-which is the C function that knows how to advance it.
-
-One loop runs everything.  It's called the **trampoline**.  It calls the
-top Level's executor, and the executor does a small amount of work and
-*returns*.  What it returns says what should happen next:
-
-| The executor returns | The trampoline |
-|---|---|
-| "My result is in my output cell" | goes back to the Level underneath, which was waiting for it |
-| "Run this other Level, then come back to me" | runs that Level's executor |
-| "Something was thrown" | drops Levels until one of them catches it |
-
-When an executor needs a sub-expression evaluated, it doesn't call the
-evaluator.  It pushes a Level, records in its state byte where it was, and
-returns.  Later it's called again with the answer waiting, and uses the
-state byte to pick up where it left off.  Every executor is written as a
-state machine for this reason.
-
-### What This Buys
-
-**Depth is limited by memory, not by the C stack.**
-
-<!-- doctest: positive-test -->
-```
-countdown: func [n] [
-    if n = 0 [return <bottom>]
-    return countdown n - 1
-]
-
-assert [<bottom> = countdown 50000]
-```
-
-**A running evaluation can be put aside and resumed.**  Since the Levels
-aren't on the C stack, a group of them can be unhooked and kept.  That's
-how a generator works: YIELD sets the generator's Levels aside, and the
-next call puts them back.
-
-<!-- doctest: positive-test -->
-```
-numbers: generator [yield 10 yield 20 yield 30]
-
-assert [[10 20 30] = reduce [numbers numbers numbers]]
-```
-
-**There's one place where anything can happen between steps.**  Garbage
-collection, noticing a Ctrl-C, and (one day) stopping at a breakpoint are
-all done in the trampoline loop, at a moment when no C function is halfway
-through changing something.
-
-**Unwinding is a jump to a Level.**
-[Definitional](/docs/concepts/definitionality/) RETURN names the Level it
-belongs to, and the trampoline drops Levels until it gets there.
-
-**Errors don't need `longjmp`.**  A native reports a panic by returning,
-like any other result, and each Level above it gets a turn to clean up.
-The `longjmp` or C++ exception path still exists, for panics from deep
-inside C code that can't return, but the interpreter doesn't depend on it.
-That matters on platforms like WebAssembly, where it may not be available.
-
-### What It Costs
-
-Every native that runs code has to be a state machine, and that's much
-harder to write and to read than a loop that calls the evaluator.  The
-conversion isn't finished.  A native that hasn't been converted starts a
-second trampoline on the C stack, and a YIELD can't cross it.
-
-It also costs speed.  A tight recursive evaluator can keep its state in
-registers, and a trampoline can't.  Revolt wins some of that back with
-shortcuts.  For example, each step always pushes one spare Level, which is
-reused for whatever the step needs, whether that's a function call or a
-group.
-
-## Built for a Debugger That Doesn't Exist Yet
-
-Many of the choices inside the evaluator were made so that a stepping
-debugger could be written later.  The debugger hasn't been written.  This
-section records what was done in advance, and why, because the code looks
-strangely indirect unless you know.
-
-**Stepping and running-to-the-end are separate executors.**  The
-*stepper* runs one step.  The *evaluator* calls the stepper over and over,
-holding on to the last result.  It would be simpler and faster as one
-function with a "keep going" flag.  But then a block being run would give
-the trampoline only one result, at the end.  With the two apart, the
-stepper can have a Level of its own, and each step's result passes through
-the trampoline, where a debugger could see it.
-
-**The fast path is used when nobody is watching.**  When not debugging,
-the evaluator and stepper share one Level, and the evaluator calls the
-stepper directly without going back to the trampoline.  There are several
-shortcuts like this.  A comma is normally skipped over, but in debug mode
-it's a step of its own that produces a void, so the debugger would see the
-comma.  One function call that leads directly to another normally doesn't
-bounce in between, but in debug mode it does, so that a breakpoint could
-be put there.
-
-**The debug paths are tested without a debugger.**  A path that's never
-run will rot.  So in builds with runtime checks, the question "are we in
-debug mode?" is answered *yes* about one time in 64, decided by the
-trampoline's tick count.  Every test run goes through both the fast and
-the slow paths, and since the tick count is the same on each run, a
-failure can be reproduced.
-
-This forces a discipline.  The answer can be different the next time the
-question is asked, so code that takes the slow path has to remember that
-it did.  A real debugger could be switched on at any moment, so it would
-need the same discipline.
-
-**Every bounce has a number.**  In checked builds the trampoline counts
-its bounces.  Values and Levels record the tick at which they were made,
-and the interpreter can be told to break at a given tick.  A crash seen at
-tick 1,203,881 can be approached again by stopping at tick 1,203,880.
-
-R3-Alpha and Red made no provision of this kind.  Whether it pays off
-can't be known until the debugger exists.  Until then the cost is extra
-states and extra code paths, and the benefit so far is the testing above
-and the generators.
+[Stacklessness](/docs/concepts/stacklessness/) explains why it's built
+that way, how it works, and what it costs.
 
 ## Compared to Historical Rebol
 
@@ -446,6 +322,8 @@ and the generators.
 ## See Also
 
 * [Infix](/docs/concepts/infix/) -- the third part of a step
+* [Stacklessness](/docs/concepts/stacklessness/) -- how the evaluator
+  runs without using the C stack
 * [VOID!](/docs/datatypes/void/) -- voids, and why EVAL isn't
   vanishable
 * [Purity](/docs/concepts/purity/) -- which results can't be discarded

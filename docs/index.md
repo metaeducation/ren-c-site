@@ -136,8 +136,7 @@ of like a programming language.  All of that is here:
 * **[Web Console](/console/)** -- the interpreter running in your browser
   (WebAssembly; nothing to install)
 
-* **[Concepts](/docs/concepts/)** -- the ideas, starting with
-  [antiforms](/docs/concepts/antiforms/)
+* **[Concepts](/docs/concepts/)** -- the ideas that cut across the language
 
 * **[Datatypes](/docs/datatypes/)** -- every kind of value
 
