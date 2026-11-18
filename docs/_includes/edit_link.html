@@ -1,0 +1,14 @@
+{%- comment -%}
+  The pencil "Edit page" link to this page's source on GitHub, built from the
+  same gh_edit_* settings in _config.yml as the theme's footer link.  Placed by
+  components/breadcrumbs.html, and moved beside the title by
+  assets/js/revolt-edit.js.
+{%- endcomment -%}
+{%- if site.gh_edit_repository and site.gh_edit_branch and site.gh_edit_view_mode -%}
+<a class="revolt-edit" id="revolt-edit"
+   href="{{ site.gh_edit_repository }}/{{ site.gh_edit_view_mode }}/{{ site.gh_edit_branch }}{% if site.gh_edit_source %}/{{ site.gh_edit_source }}{% endif %}/{{ page.path }}"
+   title="Edit this page on GitHub (needs a GitHub account)">
+  <svg class="revolt-edit-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/></svg>
+  <span>Edit<span class="revolt-edit-more"> page</span></span>
+</a>
+{%- endif -%}

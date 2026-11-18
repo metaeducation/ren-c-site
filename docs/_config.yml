@@ -49,9 +49,11 @@ kramdown:
   syntax_highlighter_opts:
     default_lang: rebol
 
-# "Edit this page on GitHub" link at the bottom of every page.
+# Where the pencil "Edit page" link beside each page's title points
+# (_includes/edit_link.html).  The theme's own "Edit this page on GitHub" link
+# at the bottom of the page is turned off, since that one replaces it.
 # !!! Repository name assumed; change if the repo lives elsewhere.
-gh_edit_link: true
+gh_edit_link: false
 gh_edit_link_text: "Edit this page on GitHub"
 gh_edit_repository: "https://github.com/metaeducation/revolt-site"
 gh_edit_branch: "main"

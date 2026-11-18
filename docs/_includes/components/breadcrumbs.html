@@ -1,0 +1,20 @@
+{%- comment -%}
+  Override of just-the-docs' breadcrumbs component, which is the one hook the
+  theme's default layout calls above every page's content.  It renders the
+  theme's breadcrumbs (kept in _includes/breadcrumbs_theme.html) and, at the
+  right end of the same row, a pencil "Edit page" link to the page's source
+  on GitHub.
+
+  assets/js/revolt-edit.js moves the link next to the page's <h1>, where it
+  becomes a small "Edit" chip.  Without JavaScript it stays in this row.
+
+  The homepage has no edit link: its title is the hero wordmark.
+{%- endcomment -%}
+{%- if page.url == "/" -%}
+{%- include breadcrumbs_theme.html -%}
+{%- else -%}
+<div class="revolt-page-top">
+{%- include breadcrumbs_theme.html -%}
+{%- include edit_link.html -%}
+</div>
+{%- endif -%}

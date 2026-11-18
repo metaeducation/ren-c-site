@@ -136,6 +136,8 @@ hairlines, `#333` text, black for headings and links.  Where it lives:
 | `_includes/head.html` | The theme's own head, copied from just-the-docs v0.10.0 only to put a build stamp (`?v=`) on its stylesheet links, so a deploy never shows new pages with cached old CSS.  Recopy it if the theme version changes. |
 | `assets/js/revolt-console.js` | Marks up `>>` / `==` / `**` lines in transcripts so input is bright and results dim, treats fences with no language as Rebol, and marks `negative-test` blocks for the red "Error" style.  Cosmetic; the blocks work without it. |
 | `assets/js/revolt-nav.js` | Expands the sidebar's top-level sections (Documentation) on every page, including Home.  The expander button still collapses them. |
+| `_includes/components/breadcrumbs.html` | Overrides the theme's breadcrumbs to add the pencil "Edit page" link (`_includes/edit_link.html`) at the right end of the row.  The theme's original is kept as `_includes/breadcrumbs_theme.html`, copied from v0.10.0; recopy it if the theme version changes. |
+| `assets/js/revolt-edit.js` | Moves the "Edit page" link beside the page's `<h1>` as a small "Edit" chip, wiki style.  Without JavaScript it stays in the breadcrumb row. |
 | `assets/images/revolt-mark.svg` | The flat `[o]` mark (also `favicon.svg`); `favicon.ico`, `icon-*.png` and `apple-touch-icon.png` are rendered from it (the 16px icon is the original hand-pixelled one). |
 | `assets/images/revolt-3d.png` | The 3-D render of the mark, used in the homepage hero and `og-image.png`. |
 

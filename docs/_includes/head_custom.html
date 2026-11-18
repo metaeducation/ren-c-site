@@ -1,7 +1,8 @@
 {%- comment -%}
   just-the-docs hook: extra tags for <head>.  Loads the web fonts named in
   _sass/custom/setup.scss, the icons, the console-transcript script, and the script that
-  keeps the sidebar's top-level sections expanded.
+  keeps the sidebar's top-level sections expanded, and the script that puts
+  the edit link beside the page title.
 {%- endcomment -%}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,3 +22,9 @@
 {%- assign v = site.time | date: '%s' -%}
 <script src="{{ '/assets/js/revolt-console.js' | relative_url }}?v={{ v }}" defer></script>
 <script src="{{ '/assets/js/revolt-nav.js' | relative_url }}?v={{ v }}" defer></script>
+<script src="{{ '/assets/js/revolt-edit.js' | relative_url }}?v={{ v }}" defer></script>
+{%- comment -%}
+  Lets the CSS hold the edit link back from the breadcrumb row until
+  revolt-edit.js has moved it beside the title (see that script).
+{%- endcomment %}
+<script>document.documentElement.classList.add('revolt-js');</script>
