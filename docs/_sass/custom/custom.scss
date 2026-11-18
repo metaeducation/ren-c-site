@@ -26,9 +26,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+// One selection style everywhere: white on the dark cyan.  (Black would
+// vanish inside the black console blocks, so the cyan serves both.)
 ::selection {
   color: #fff;
-  background: $revolt-black;
+  text-shadow: none;
+  background: $revolt-cyan-dk;
 }
 
 code,
@@ -327,7 +330,7 @@ code {
 
   // Code that's a link (like `INFIX` pointing at the INFIX page) has to look
   // different from code that isn't.  Plain inline code is gray; linked code
-  // takes the cyan of the console selection and the button hover: cyan text
+  // takes the cyan of the text selection and the button hover: cyan text
   // in a cyan-tinted box, filling solid cyan with white text on hover.  The
   // box replaces the link underline, which would be redundant under it.
   a:not([class]):has(> code:only-child) {
@@ -535,13 +538,14 @@ figure.highlight.revolt-fails {
   border-radius: 0;
 }
 
-// Selecting text in a dark block: the page's black selection would be
-// invisible, so inside code blocks it is white on cyan.
+// Selecting text in a dark block looks the same as on the page (see
+// ::selection at the top).  Repeated here so the theme's code styles can't
+// override it.
 .main-content pre::selection,
 .main-content pre *::selection {
   color: #fff;
   text-shadow: none;
-  background: $revolt-cyan;
+  background: $revolt-cyan-dk;
 }
 
 // Console transcript lines, marked up by assets/js/revolt-console.js.
@@ -818,8 +822,8 @@ tbody tr:last-child td {
   }
 }
 
-// The primary button is black; on hover it fills with the same cyan as a
-// text selection inside a console block, keeping its black edge.
+// The primary button is black; on hover it fills with the site's cyan (a
+// lighter shade of the text selection), keeping its black edge.
 // (The theme paints these with a background-image gradient, which would sit
 // on top of any background-color, so the gradient is cleared.)
 .btn-primary {

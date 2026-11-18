@@ -71,10 +71,10 @@ $revolt-ash:       #e9e9e9;  // console text
 $revolt-ash-dim:   #b4b4b4;  // console results
 $revolt-ash-faint: #8a8a8a;  // console comments, prompts
 
-$revolt-cyan:      #1d9bb3;  // text selection inside console blocks (the
-                             // page's black selection vanishes on black)
+$revolt-cyan:      #1d9bb3;  // primary button hover
 $revolt-red:       #b3261e;  // examples that are supposed to fail (white
                              // on it is 6.5:1)
-$revolt-cyan-dk:   #137a8f;  // linked inline code: the cyan, darkened so
-                             // it reads as text (4.9:1 on paper; white on
-                             // it is 5:1, where the light cyan is 3.3:1)
+$revolt-cyan-dk:   #137a8f;  // text selection everywhere, and linked
+                             // inline code: the cyan, darkened so it reads
+                             // as text (4.9:1 on paper; white on it is 5:1,
+                             // where the light cyan is 3.3:1)
