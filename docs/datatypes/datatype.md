@@ -63,7 +63,7 @@ value or panics:
 == 1
 
 >> ensure integer! "x"
-** PANIC: ENSURE failed with argument of type ~{text!}~
+** PANIC: ENSURE of ~{integer!}~ failed with argument of type ~{text!}~
 ```
 
 Since datatypes compare equal to themselves, `SWITCH` can dispatch on
